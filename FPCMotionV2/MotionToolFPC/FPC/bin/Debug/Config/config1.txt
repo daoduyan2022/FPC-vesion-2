@@ -1,29 +1,36 @@
 192.168.3.3
 4096
+Home Speed
 200
 200
 100
 50
+Creep Speed
 50
 50
 50
 10
-300
-300
-200
-10
+Jog Continues Speed
 50
 50
 50
 10
+Jog Step Speed
+50
+50
+50
+10
+Jog Step Size
 100
 100
 100
 180000
+Start coordinate
 1000
 335000
 3000
 950
+Start Speed
 1000
 1500
 800

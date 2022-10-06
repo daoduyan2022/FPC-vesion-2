@@ -35,11 +35,11 @@ namespace MotionToolFPC
         public ScanPLC PLC = null;
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public SolidColorBrush StatusConnect { get; set; } = Brushes.Red;
         public void OnPropertyChanged(string Name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(Name));
         }
+        public SolidColorBrush StatusConnect { get; set; } = Brushes.Red;
         public int _targetPoint { get; set; } = 1;
         public int _offsetX1 { get; set; } = 0;
         public int _offsetX2 { get; set; } = 0;
@@ -299,9 +299,10 @@ namespace MotionToolFPC
         private void OntimedEvent(object sender, ElapsedEventArgs e)
         {
             TimerUpdateUI.Enabled = false;
-            if (globals.D0D499[38] == CountOld)
+            if (globals.D0D499[38] != CountOld)
             {
-
+                stflag = true;
+                CountOld = globals.D0D499[38];
             }
             if (globals.D0D499[490] == 1 && stflag)
             {
@@ -594,9 +595,9 @@ namespace MotionToolFPC
                 //int column = e.Column.DisplayIndex;
                 int row = e.Row.GetIndex();
                 globals.Parameter[row] = Parameters[row].HomeSpeed;
-                globals.Parameter[row + 8] = Parameters[row].CreepSpeed;
+                globals.Parameter[row + 4] = Parameters[row].CreepSpeed;
+                globals.Parameter[row + 8] = Parameters[row].JogContinuosSpeed;
                 globals.Parameter[row + 12] = Parameters[row].JogIncreSpeed;
-                globals.Parameter[row + 14] = Parameters[row].JogContinuosSpeed;
                 globals.Parameter[row + 16] = Parameters[row].JogIncreSize;
                 globals.Parameter[row + 20] = Parameters[row].StratPoint;
                 globals.Parameter[row + 24] = Parameters[row].StartPointSpeed;
@@ -638,7 +639,7 @@ namespace MotionToolFPC
 
         private void HomeX1X2_Click(object sender, RoutedEventArgs e)
         {
-            if (globals.D0D499[480] == 0 && globals.D0D499[200] == -1 && globals.ServoReadys[1] && globals.ServoReadys[2])
+            if (!globals.AxisStatus[1] && !globals.AxisStatus[2] && globals.D0D499[200] == -1 && globals.ServoReadys[1] && globals.ServoReadys[2])
             {
                 PLC.dataSends.Add(new dataSend(new int[] { 1 }, 2));
                 PLC.IsRead = Mode.Write;
@@ -652,7 +653,7 @@ namespace MotionToolFPC
 
         private void HomeY_Click(object sender, RoutedEventArgs e)
         {
-            if (globals.D0D499[483] == 0 && globals.D0D499[200] == -1 && globals.ServoReadys[3])
+            if (!globals.AxisStatus[3] && globals.D0D499[200] == -1 && globals.ServoReadys[3])
             {
                 PLC.dataSends.Add(new dataSend(new int[] { 1 }, 4));
                 PLC.IsRead = Mode.Write;
@@ -668,7 +669,7 @@ namespace MotionToolFPC
 
         private void HomeR_Click(object sender, RoutedEventArgs e)
         {
-            if (globals.D0D499[480] == 0 && !globals.Y0Y17[15] && !globals.Y20Y37[0] && globals.X20X37[12] && globals.X20X37[14])
+            if (!globals.AxisStatus[0] && !globals.Y0Y17[15] && !globals.Y20Y37[0] && globals.X20X37[12] && globals.X20X37[14])
             {
                 PLC.dataSends.Add(new dataSend(new int[] { 1 }, 1));
                 PLC.IsRead = Mode.Write;
@@ -836,10 +837,10 @@ namespace MotionToolFPC
             PLC.dataSends.Add(new dataSend(globals.IntToRegister(new List<int> { globals.Parameter[17] }), 970));// StepSzie X2 <=> D970
             PLC.dataSends.Add(new dataSend(globals.IntToRegister(new List<int> { globals.Parameter[18] }), 980));// StepSzie Y <=> D980
 
-            PLC.dataSends.Add(new dataSend(globals.IntToRegister(new List<int> { globals.Parameter[15] }), 958));// StepSzie R <=> D958
-            PLC.dataSends.Add(new dataSend(globals.IntToRegister(new List<int> { globals.Parameter[12] }), 968));// StepSzie X1 <=> D568
-            PLC.dataSends.Add(new dataSend(globals.IntToRegister(new List<int> { globals.Parameter[13] }), 978));// StepSzie X2 <=> D978
-            PLC.dataSends.Add(new dataSend(globals.IntToRegister(new List<int> { globals.Parameter[14] }), 988));// StepSzie Y <=> D988
+            PLC.dataSends.Add(new dataSend(globals.IntToRegister(new List<int> { globals.Parameter[15] }), 958));// JogStepSpeed R <=> D958
+            PLC.dataSends.Add(new dataSend(globals.IntToRegister(new List<int> { globals.Parameter[12] }), 968));// JogStepSpeed X1 <=> D568
+            PLC.dataSends.Add(new dataSend(globals.IntToRegister(new List<int> { globals.Parameter[13] }), 978));// JogStepSpeed X2 <=> D978
+            PLC.dataSends.Add(new dataSend(globals.IntToRegister(new List<int> { globals.Parameter[14] }), 988));// SteJogStepSpeedpSzie Y <=> D988
             PLC.IsRead = Mode.Write;
             while (true)
             {
@@ -1266,8 +1267,15 @@ namespace MotionToolFPC
 
         private void btnCylinder1Up_Click(object sender, RoutedEventArgs e)
         {
-            PLC.dataSends.Add(new dataSend(new int[] { 19071 }, 200));
-            PLC.IsRead = Mode.Write;
+            if (!globals.AxisStatus[0])
+            {
+                PLC.dataSends.Add(new dataSend(new int[] { 19071 }, 200));
+                PLC.IsRead = Mode.Write;
+            }
+            else
+            {
+                MessageBox.Show("Axis R is moving. Can not up cylinder!", "[Operation error]");
+            }
         }
 
         private void btnCylinder1Down_Click(object sender, RoutedEventArgs e)
@@ -1278,8 +1286,16 @@ namespace MotionToolFPC
 
         private void btnCylinder2Up_Click(object sender, RoutedEventArgs e)
         {
-            PLC.dataSends.Add(new dataSend(new int[] { 19201 }, 200));
-            PLC.IsRead = Mode.Write;
+
+            if (!globals.AxisStatus[0])
+            {
+                PLC.dataSends.Add(new dataSend(new int[] { 19201 }, 200));
+                PLC.IsRead = Mode.Write;
+            }
+            else
+            {
+                MessageBox.Show("Axis R is moving. Can not up cylinder!", "[Operation error]");
+            }
         }
 
         private void btnCylinder2Down_Click(object sender, RoutedEventArgs e)
@@ -1533,7 +1549,11 @@ namespace MotionToolFPC
 
         private void btnSelfCheck_Click(object sender, RoutedEventArgs e)
         {
-
+            if(globals.OprAndLimit[0] && globals.OprAndLimit[1] && globals.OprAndLimit[2] && globals.OprAndLimit[3])
+            {
+                var selfCheck = new SelfCheckRecord();
+                selfCheck.ShowDialog();
+            }
         }
 
         private void lvwProgress_SelectionChanged(object sender, SelectionChangedEventArgs e)

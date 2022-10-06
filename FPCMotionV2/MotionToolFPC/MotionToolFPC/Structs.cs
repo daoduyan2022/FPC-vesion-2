@@ -11,18 +11,18 @@ namespace MotionToolFPC
         public string Name { get; set; }
         public int HomeSpeed { get; set; }
         public int CreepSpeed { get; set; }
-        public int JogIncreSpeed { get; set; }
         public int JogContinuosSpeed { get; set; }
+        public int JogIncreSpeed { get; set; }
         public int JogIncreSize { get; set; }
         public int StratPoint { get; set; }
         public int StartPointSpeed { get; set; }
-        public Parameter(string name, int homeSpeed, int creepSpeed, int jogIncreSpeed, int jogContinuosSpeed, int jogIncreSize, int stratPoint, int startPointSpeed)
+        public Parameter(string name, int homeSpeed, int creepSpeed, int jogContinuosSpeed, int jogIncreSpeed,  int jogIncreSize, int stratPoint, int startPointSpeed)
         {
             Name = name;
             HomeSpeed = homeSpeed;
             CreepSpeed = creepSpeed;
-            JogIncreSpeed = jogIncreSpeed;
             JogContinuosSpeed = jogContinuosSpeed;
+            JogIncreSpeed = jogIncreSpeed;
             JogIncreSize = jogIncreSize;
             StratPoint = stratPoint;
             StartPointSpeed = startPointSpeed;
