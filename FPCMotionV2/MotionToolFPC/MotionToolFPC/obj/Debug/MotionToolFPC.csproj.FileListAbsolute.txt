@@ -1,0 +1,99 @@
+D:\TSB_Project\FPCMotion\MotionToolFPC\MotionToolFPC\bin\Debug\MotionToolFPC.dll
+D:\TSB_Project\FPCMotion\MotionToolFPC\MotionToolFPC\bin\Debug\MotionToolFPC.pdb
+D:\TSB_Project\FPCMotion\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.AssemblyReference.cache
+D:\TSB_Project\FPCMotion\MotionToolFPC\MotionToolFPC\obj\Debug\UserControl1.g.cs
+D:\TSB_Project\FPCMotion\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC_MarkupCompile.cache
+D:\TSB_Project\FPCMotion\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC_MarkupCompile.lref
+D:\TSB_Project\FPCMotion\MotionToolFPC\MotionToolFPC\obj\Debug\UserControl1.baml
+D:\TSB_Project\FPCMotion\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.g.resources
+D:\TSB_Project\FPCMotion\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.Properties.Resources.resources
+D:\TSB_Project\FPCMotion\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.GenerateResource.cache
+D:\TSB_Project\FPCMotion\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.CoreCompileInputs.cache
+D:\TSB_Project\FPCMotion\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.dll
+D:\TSB_Project\FPCMotion\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.pdb
+D:\TSB_Project\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\MotionToolFPC.dll
+D:\TSB_Project\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\MotionToolFPC.pdb
+D:\TSB_Project\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.AssemblyReference.cache
+D:\TSB_Project\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC_MarkupCompile.cache
+D:\TSB_Project\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC_MarkupCompile.lref
+D:\TSB_Project\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.g.resources
+D:\TSB_Project\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.Properties.Resources.resources
+D:\TSB_Project\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.GenerateResource.cache
+D:\TSB_Project\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.CoreCompileInputs.cache
+D:\TSB_Project\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.dll
+D:\TSB_Project\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.pdb
+D:\TSB_Project\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\Protocol.dll
+D:\TSB_Project\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\SimpleTCP.dll
+D:\TSB_Project\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionTool.g.cs
+D:\TSB_Project\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\WaittingWindow.g.cs
+D:\TSB_Project\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionTool.baml
+D:\TSB_Project\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\WaittingWindow.baml
+D:\TSB_Project\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.CopyComplete
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\MotionToolFPC.dll
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\MotionToolFPC.pdb
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\Protocol.dll
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\SimpleTCP.dll
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionTool.g.cs
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\WaittingWindow.g.cs
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC_MarkupCompile.cache
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC_MarkupCompile.lref
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionTool.baml
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\WaittingWindow.baml
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.g.resources
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.Properties.Resources.resources
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.GenerateResource.cache
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.CoreCompileInputs.cache
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.CopyComplete
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.dll
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.pdb
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\EasyModbus.dll
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\EasyModbus.xml
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\WaittingConnectPLC.g.cs
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\WaittingConnectPLC.baml
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\SelfCheckRecord.g.cs
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\SelfCheckRecord.baml
+D:\TSB\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.AssemblyReference.cache
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\MotionToolFPC.dll
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\MotionToolFPC.pdb
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\EasyModbus.dll
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\EasyModbus.xml
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.AssemblyReference.cache
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionTool.g.cs
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\SelfCheckRecord.g.cs
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\WaittingConnectPLC.g.cs
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\WaittingWindow.g.cs
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC_MarkupCompile.cache
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC_MarkupCompile.lref
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionTool.baml
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\SelfCheckRecord.baml
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\WaittingConnectPLC.baml
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\WaittingWindow.baml
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.g.resources
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.Properties.Resources.resources
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.GenerateResource.cache
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.CoreCompileInputs.cache
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.CopyComplete
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.dll
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.pdb
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\MotionToolFPC.dll
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\MotionToolFPC.pdb
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\EasyModbus.dll
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\EasyModbus.xml
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.AssemblyReference.cache
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionTool.g.cs
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\SelfCheckRecord.g.cs
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\WaittingConnectPLC.g.cs
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\WaittingWindow.g.cs
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC_MarkupCompile.cache
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC_MarkupCompile.lref
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionTool.baml
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\SelfCheckRecord.baml
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\WaittingConnectPLC.baml
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\WaittingWindow.baml
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.g.resources
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.Properties.Resources.resources
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.GenerateResource.cache
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.CoreCompileInputs.cache
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.CopyComplete
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.dll
+D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.pdb

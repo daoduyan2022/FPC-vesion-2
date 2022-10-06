@@ -1,0 +1,342 @@
+﻿<UserControl x:Class="MotionToolFPC.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MotionToolFPC"
+             mc:Ignorable="d" 
+             Background="DarkGray"
+             d:DesignHeight="800" d:DesignWidth="1200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <!--<ColumnDefinition Width="1*"/>-->
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="2" Margin="10,0,0,0">
+                <TabControl>
+                    <TabItem Header="Result">
+
+                    </TabItem>
+                    <TabItem Header="Connection">
+
+                    </TabItem>
+                    <TabItem Header="I/O List">
+
+                    </TabItem>
+                    <TabItem Header="I/O List">
+
+                    </TabItem>
+                </TabControl>
+            </Grid>
+            <!--<Grid Grid.Column="1" Margin="10,0,0,0">
+                <GroupBox Header="Progress">
+                    <ListView>
+                        
+                    </ListView>
+                </GroupBox>
+            </Grid>-->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TabControl>
+                        <TabItem Header="Home Control">
+                            <Viewbox StretchDirection="Both">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0" Margin="2,0,2,0">
+                                        <StackPanel VerticalAlignment="Center">
+                                            <Button Name="PauseHome" Content="Pause Home" Margin="1,1,1,1" Height="57.92" Width="75" Background="DimGray" Foreground="White"/>
+                                            <Button Name="HomeAll" Content="Home All" Margin="1,1,1,1" Height="57.92" Width="75" Background="DimGray" Foreground="White"/>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Column="1" Margin="2,0,2,0">
+                                        <StackPanel VerticalAlignment="Center">
+                                            <Button x:Name="HomeX1X2" Content="Home X1-X2" Height="38" Width="75" Margin="1,1,1,1" Background="DimGray" Foreground="White"/>
+                                            <Button x:Name="HomeY" Content="Home Y" Height="38"  Width="75" Margin="1,1,1,1" Background="DimGray" Foreground="White"/>
+                                            <Button x:Name="HomeR" Content="Home R" Height="38"  Width="75" Margin="1,1,1,1" Background="DimGray" Foreground="White"/>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Column="2" Margin="2,0,2,0">
+                                        <StackPanel VerticalAlignment="Center">
+                                            <Label Name="StatusX1" Content="X1:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Width="30.02" Background="Yellow" Foreground="Black"/>
+                                            <Label Name="StatusX2" Content="X2:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                            <Label Name="StatusY" Content="Y:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                            <Label Name="StatusR" Content="R:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Column="3">
+                                        <StackPanel VerticalAlignment="Center" Width="164">
+                                            <Label Name="CurrentPosX1" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Height="27.96" Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Content="00000 um"/>
+                                            <Label Name="CurrentPosX2" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96" Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Content="00000 um"/>
+                                            <Label Name="CurrentPosY" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Content="00000 um"/>
+                                            <Label Name="CurrentPosR" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Content="00000 um"/>
+                                        </StackPanel>
+                                    </Grid>
+
+                                </Grid>
+                            </Viewbox>
+                            
+                        </TabItem>
+                        <TabItem Header="Extention">
+                            <Viewbox StretchDirection="Both">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="2">
+                                        <StackPanel VerticalAlignment="Center" Width="164">
+                                            <TextBox Name="txtLowLimitX1" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Height="27.96" Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
+                                            <TextBox Name="txtLowLimitX2" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96" Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
+                                            <TextBox Name="txtLowLimitY" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
+                                            <TextBox Name="txtLowLimitR" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Column="0" Margin="2,0,2,0">
+                                        <StackPanel VerticalAlignment="Center">
+                                            <Label Content="X1" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Width="30.02" Background="Yellow" Foreground="Black"/>
+                                            <Label Content="X2" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                            <Label Content="Y" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                            <Label Content="R" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Column="1" Margin="2,0,2,0">
+                                        <StackPanel VerticalAlignment="Center">
+                                            <Label Content="L:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Width="30.02" Background="Yellow" Foreground="Black"/>
+                                            <Label Content="L:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                            <Label Content="L:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                            <Label Content="L:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Column="3" Margin="20,0,2,0">
+                                        <StackPanel VerticalAlignment="Center">
+                                            <Label Content="H:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Width="30.02" Background="Yellow" Foreground="Black"/>
+                                            <Label Content="H:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                            <Label Content="H:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                            <Label Content="H:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Column="4">
+                                        <StackPanel VerticalAlignment="Center" Width="164">
+                                            <TextBox Name="txtHighLimitX1" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Height="27.96" Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
+                                            <TextBox Name="txtHighLimitX2" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96" Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
+                                            <TextBox Name="txtHighLimitY" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
+                                            <TextBox Name="txtHighLimitR" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                                
+                            </Viewbox>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+                <Grid Grid.Row="1">
+                    
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <GroupBox Header="Control">
+                    <Viewbox StretchDirection="Both">
+                        <StackPanel>
+                            <Button Name="btnStartMachine" Content="START" Margin="2,2,2,2" FontSize="12" Width="100" Height="30" Background="LightGreen" FontWeight="Bold"/>
+                            <Button Name="btnStopMachine" Content="STOP" Margin="2,2,2,2" FontSize="12" Width="100" Height="30" Background="Red" FontWeight="Bold"/>
+                            <Button Name="btnResetMachine" Content="RESET" Margin="2,2,2,2" FontSize="12" Width="100" Height="30" Background="Yellow" FontWeight="Bold"/>
+                            <Button Name="btnManualModeNextStep" Content="NEXT STEP" Margin="2,2,2,2" FontSize="12" Width="100" Height="30" FontWeight="Bold"/>
+                            <Button Name="btnSwitchMode" Content="AUTO/MANUAL" Margin="2,2,2,2" FontSize="12" Width="100" Height="30" Background="Aqua" FontWeight="Bold"/>
+                            <Button Name="btnPointToPointMode" Content="Human Control" Margin="2,2,2,2" FontSize="12" Width="100" Height="30" FontWeight="Bold"/>
+                            <Button Name="btnRecycle" Content="RECYCLE" Margin="2,2,2,2" FontSize="12" Width="100" Height="30" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Viewbox>
+                </GroupBox>
+
+            </Grid>
+            <Grid Grid.Column="1">
+                <TabControl>
+                    <TabItem Header="Jogging">
+                        <Viewbox StretchDirection="Both">
+                            <StackPanel Margin="5,5,5,5">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <StackPanel>
+                                        <Button Name="btnSub_X1" Content="X1--" Margin="2,2,2,2" Width="60" Height="40" Background="DimGray" Foreground="White"/>
+                                        <Button Name="btnSub_R" Content="R--" Margin="2,2,2,2" Width="60" Height="40" Background="DimGray" Foreground="White"/>
+                                        <Button Name="btnSub_X2" Content="X2--" Margin="2,2,2,2" Width="60" Height="40" Background="DimGray" Foreground="White"/>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <Button Name="btnAdd_Y" Content="Y++" Margin="2,2,2,2" Width="60" Height="40" Background="DimGray" Foreground="White"/>
+                                        <Button Name="btnPauseJog" Content="Pause" Margin="2,2,2,2" Width="60" Height="40" Background="DimGray" Foreground="White"/>
+                                        <Button Name="btnSub_Y" Content="Y--" Margin="2,2,2,2" Width="60" Height="40" Background="DimGray" Foreground="White"/>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <Button Name="btnAdd_X1" Content="X1++" Margin="2,2,2,2" Width="60" Height="40" Background="DimGray" Foreground="White"/>
+                                        <Button Name="btnAdd_R" Content="R++" Margin="2,2,2,2" Width="60" Height="40" Background="DimGray" Foreground="White"/>
+                                        <Button Name="btnAdd_X2" Content="X2++" Margin="2,2,2,2" Width="60" Height="40" Background="DimGray" Foreground="White"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                    <Button Name="btnChangeJogMode" Content="Mode" Margin="2,2,2,2" Width="40" Height="40" Background="DimGray" Foreground="White"/>
+                                    <Label Name="lblJogMode" BorderThickness="1" BorderBrush="Gray" Width="144" Margin="2,2,2,2"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Viewbox>
+
+                    </TabItem>
+
+                    <TabItem Header="Manual Device">
+                        <Viewbox StretchDirection="Both">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="5,5,5,5" >
+                                    <GroupBox Header="Camera 1">
+                                        <StackPanel>
+                                            <Button Name="btnLighPowerCam1" Content="Light Power OFF" Margin="2,2,2,2" Width="100" Height="30"/>
+                                            <Button Name="btnFinishCaptureCam1" Content="Finish Capture" HorizontalAlignment="Stretch" Margin="2,2,2,2" Width="100" Height="30"/>
+                                            <Button Name="btnTriggerCam1" Content="Trigger" Margin="2,2,2,2" Width="100" Height="30"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                    <GroupBox Header="Camera 2">
+                                        <StackPanel>
+                                            <Button Name="btnLighPowerCam2" Content="Light Power OFF" Margin="2,2,2,2" Width="100" Height="30"/>
+                                            <Button Name="btnFinishCaptureCam2" Content="Finish Capture" Margin="2,2,2,2" Width="100" Height="30"/>
+                                            <Button Name="btnTriggerCam2" Content="Trigger" Margin="2,2,2,2" Width="100" Height="30"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                    <GroupBox Header="Camera 3">
+                                        <StackPanel>
+                                            <Button Name="btnLighPowerCam3" Content="Light Power OFF" Margin="2,2,2,2" Width="100" Height="30" />
+                                            <Button Name="btnFinishCaptureCam3" Content="Finish Capture" Margin="2,2,2,2" Width="100" Height="30"/>
+                                            <Button Name="btnTriggerCam3" Content="Trigger" Margin="2,2,2,2" Width="100" Height="30"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5,5,5,5">
+                                    <GroupBox Header="Vision Program">
+                                        <StackPanel>
+                                            <Button Name="btnVisionPrReady" Content="Ready" Margin="2,2,2,2" Width="100" Height="30"/>
+                                            <Button Name="btnVisionPrBusy" Content="Busy" Margin="2,2,2,2" Width="100" Height="30"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                    <GroupBox Header="Cylinder 1">
+                                        <StackPanel>
+                                            <Button Name="btnCylinder1Up" Content="Up" Margin="2,2,2,2" Width="100" Height="30"/>
+                                            <Button Name="btnCylinder1Down" Content="Down" Margin="2,2,2,2" Width="100" Height="30"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                    <GroupBox Header="Cylinder 2">
+                                        <StackPanel>
+                                            <Button Name="btnCylinder2Up" Content="Up" Margin="2,2,2,2" Width="100" Height="30"/>
+                                            <Button Name="btnCylinder2Down" Content="Down" Margin="2,2,2,2" Width="100" Height="30"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                </StackPanel>
+                            </StackPanel>
+
+                        </Viewbox>
+                    </TabItem>
+
+                    <TabItem Header="Servo Setup">
+                        <Viewbox StretchDirection="Both" HorizontalAlignment="Left">
+                            <DockPanel>
+                                <StackPanel DockPanel.Dock="Left">
+
+                                    <GroupBox Header="Servo X1 ON/OFF ">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel>
+                                                <Button Name="btnServoOn_X1" Content="ON" Margin="2,2,2,2" Width="40"/>
+                                                <Button Name="btnServoOff_X1" Content="OFF" Margin="2,2,2,2" Width="40"/>
+                                            </StackPanel>
+                                            <Label Name="lblStatusServo_X1" Width="70" Margin="2,2,2,2" BorderBrush="Gray" BorderThickness="1"/>
+                                        </StackPanel>
+
+                                    </GroupBox>
+                                    <GroupBox Header="Servo X2 ON/OFF ">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel>
+                                                <Button Name="btnServoOn_X2" Content="ON" Margin="2,2,2,2" Width="40"/>
+                                                <Button Name="btnServoOff_X2" Content="OFF" Margin="2,2,2,2" Width="40"/>
+                                            </StackPanel>
+                                            <Label Name="lblStatusServo_X2" Width="70" Margin="2,2,2,2" BorderBrush="Gray" BorderThickness="1"/>
+                                        </StackPanel>
+
+                                    </GroupBox>
+                                    <GroupBox Header="Servo Y ON/OFF ">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel>
+                                                <Button Name="btnServoOn_Y" Content="ON" Margin="2,2,2,2" Width="40"/>
+                                                <Button Name="btnServoOff_Y" Content="OFF" Margin="2,2,2,2" Width="40"/>
+                                            </StackPanel>
+                                            <Label Name="lblStatusServo_Y" Width="70" Margin="2,2,2,2" BorderBrush="Gray" BorderThickness="1"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                    <GroupBox Header="Servo R ON/OFF ">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel>
+                                                <Button Name="btnServoOn_R" Content="ON" Margin="2,2,2,2" Width="40"/>
+                                                <Button Name="btnServoOff_R" Content="OFF" Margin="2,2,2,2" Width="40"/>
+                                            </StackPanel>
+                                            <Label Name="lblStatusServo_R" Width="70" Margin="2,2,2,2" BorderBrush="Gray" BorderThickness="1"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                </StackPanel>
+                            </DockPanel>
+                        </Viewbox>
+                    </TabItem>
+                    <TabItem Header="File">
+
+                    </TabItem>
+                </TabControl>
+            </Grid>
+
+            <Grid Grid.Column="2" Margin="5,5,5,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="9*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" >
+                    <DataGrid Name="dgvParameter" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Axis"  Width="1*" />
+                            <DataGridTextColumn Header="Home Speed"  Width="1*" />
+                            <DataGridTextColumn Header="Creep Speed" Width="1*" />
+                            <DataGridTextColumn Header="Jog continuos speed" Width="1*" />
+                            <DataGridTextColumn Header="Jog step speed" Width="1*" />
+                            <DataGridTextColumn Header="Jog step size" Width="1*" />
+                            <DataGridTextColumn Header="Start Point" Width="1*" />
+                            <DataGridTextColumn Header="Start Point Speed" Width="1*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+                <Grid Grid.Row="1" Margin="0,2,2,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Name="btnReadParam" Content="Read Parameter" Margin="0,2,2,2"/>
+                        <Button Name="btnWriteParam" Content="Write Parameter" Margin="2,2,2,2"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</UserControl>

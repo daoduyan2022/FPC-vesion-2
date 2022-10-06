@@ -1,0 +1,764 @@
+﻿<UserControl x:Class="MotionToolFPC.MotionTool"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MotionToolFPC"
+             mc:Ignorable="d" 
+             Background="DarkGray"
+             d:DesignHeight="800" d:DesignWidth="1200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="2">
+            <Label Name="lblStatusPlc" Content="PLC" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" Background="{Binding StatusConnect}" BorderBrush="White" BorderThickness="3" Margin="2,2,2,2" FontWeight="Bold" Foreground="White"/>
+        </Grid>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="2" Margin="10,0,0,0">
+                <TabControl>
+                    <TabItem Header="Machine Diagnostics">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" Margin="2,2,2,2">
+                                    <GroupBox Header="Input Signal">
+                                        <Viewbox StretchDirection="Both">
+                                            <StackPanel Orientation="Horizontal">
+                                                <StackPanel>
+                                                    <CheckBox Name="cbxX0" Content="X0" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.X0X17[0]}"/>
+                                                    <CheckBox Name="cbxX1" Content="X1" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.X0X17[1]}"/>
+                                                    <CheckBox Name="cbxX2" Content="X2" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X0X17[2]}"/>
+                                                    <CheckBox Name="cbxX3" Content="X3" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X0X17[3]}"/>
+                                                    <CheckBox Name="cbxX4" Content="X4" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X0X17[4]}"/>
+                                                    <CheckBox Name="cbxX5" Content="X5" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X0X17[5]}"/>
+                                                    <CheckBox Name="cbxX6" Content="X6" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X0X17[6]}"/>
+                                                    <CheckBox Name="cbxX7" Content="X7" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.X0X17[7]}"/>
+                                                </StackPanel>
+
+                                                <StackPanel Margin="40,0,0,0">
+                                                    <CheckBox Name="cbxX10" Content="X10" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.X0X17[8]}"/>
+                                                    <CheckBox Name="cbxX11" Content="X11" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.X0X17[9]}"/>
+                                                    <CheckBox Name="cbxX12" Content="X12" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X0X17[10]}"/>
+                                                    <CheckBox Name="cbxX13" Content="X13" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X0X17[11]}"/>
+                                                    <CheckBox Name="cbxX14" Content="X14" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X0X17[12]}"/>
+                                                    <CheckBox Name="cbxX15" Content="X15" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X0X17[13]}"/>
+                                                    <CheckBox Name="cbxX16" Content="X16" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X0X17[14]}"/>
+                                                    <CheckBox Name="cbxX17" Content="X17" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X0X17[15]}"/>
+                                                </StackPanel>
+
+                                                <StackPanel Margin="40,0,0,0">
+                                                    <CheckBox Name="cbxX20" Content="X20" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.X20X37[0]}"/>
+                                                    <CheckBox Name="cbxX21" Content="X21" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.X20X37[1]}"/>
+                                                    <CheckBox Name="cbxX22" Content="X22" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X20X37[2]}"/>
+                                                    <CheckBox Name="cbxX23" Content="X23" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X20X37[3]}"/>
+                                                    <CheckBox Name="cbxX24" Content="X24" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X20X37[4]}"/>
+                                                    <CheckBox Name="cbxX25" Content="X25" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X20X37[5]}"/>
+                                                    <CheckBox Name="cbxX26" Content="X26" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X20X37[6]}"/>
+                                                    <CheckBox Name="cbxX27" Content="X27" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.X20X37[7]}"/>
+                                                </StackPanel>
+
+                                                <StackPanel Margin="40,0,0,0">
+                                                    <CheckBox Name="cbxX30" Content="X30" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.X20X37[8]}"/>
+                                                    <CheckBox Name="cbxX31" Content="X31" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.X20X37[9]}"/>
+                                                    <CheckBox Name="cbxX32" Content="X32" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X20X37[10]}"/>
+                                                    <CheckBox Name="cbxX33" Content="X33" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X20X37[11]}"/>
+                                                    <CheckBox Name="cbxX34" Content="X34" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X20X37[12]}"/>
+                                                    <CheckBox Name="cbxX35" Content="X35" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X20X37[13]}"/>
+                                                    <CheckBox Name="cbxX36" Content="X36" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.X20X37[14]}"/>
+                                                    <CheckBox Name="cbxX37" Content="X37" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.X20X37[15]}"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Viewbox>
+
+                                    </GroupBox>
+                                </Grid>
+                                <Grid Grid.Column="1" Margin="2,2,2,2">
+                                    <GroupBox Header="Output Signal">
+                                        <Viewbox StretchDirection="Both">
+                                            <StackPanel Orientation="Horizontal">
+                                                <StackPanel>
+                                                    <CheckBox Name="cbxY0" Content="Y0" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.Y0Y17[0]}"/>
+                                                    <CheckBox Name="cbxY1" Content="Y1" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.Y0Y17[1]}"/>
+                                                    <CheckBox Name="cbxY2" Content="Y2" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.Y0Y17[2]}"/>
+                                                    <CheckBox Name="cbxY3" Content="Y3" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.Y0Y17[3]}"/>
+                                                    <CheckBox Name="cbxY4" Content="Y4" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.Y0Y17[4]}"/>
+                                                    <CheckBox Name="cbxY5" Content="Y5" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.Y0Y17[5]}"/>
+                                                    <CheckBox Name="cbxY6" Content="Y6" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.Y0Y17[6]}"/>
+                                                    <CheckBox Name="cbxY7" Content="Y7" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.Y0Y17[7]}"/>
+                                                </StackPanel>
+
+                                                <StackPanel Margin="40,0,0,0">
+                                                    <CheckBox Name="cbxY10" Content="Y10" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.Y0Y17[8]}"/>
+                                                    <CheckBox Name="cbxY11" Content="Y11" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.Y0Y17[9]}"/>
+                                                    <CheckBox Name="cbxY12" Content="Y12" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.Y0Y17[10]}"/>
+                                                    <CheckBox Name="cbxY13" Content="Y13" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.Y0Y17[11]}"/>
+                                                    <CheckBox Name="cbxY14" Content="Y14" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.Y0Y17[12]}"/>
+                                                    <CheckBox Name="cbxY15" Content="Y15" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.Y0Y17[13]}"/>
+                                                    <CheckBox Name="cbxY16" Content="Y16" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.Y0Y17[14]}"/>
+                                                    <CheckBox Name="cbxY17" Content="Y17" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.Y0Y17[15]}"/>
+                                                </StackPanel>
+
+                                                <StackPanel Margin="40,0,0,0">
+                                                    <CheckBox Name="cbxY20" Content="Y20" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.Y20Y37[0]}"/>
+                                                    <CheckBox Name="cbxY21" Content="Y21" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.Y20Y37[1]}"/>
+                                                    <CheckBox Name="cbxY22" Content="Y22" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.Y20Y37[2]}"/>
+                                                    <CheckBox Name="cbxY23" Content="Y23" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.Y20Y37[3]}"/>
+                                                    <CheckBox Name="cbxY24" Content="Y24" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.Y20Y37[4]}"/>
+                                                    <CheckBox Name="cbxY25" Content="Y25" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.Y20Y37[5]}"/>
+                                                    <CheckBox Name="cbxY26" Content="Y26" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.Y20Y37[6]}"/>
+                                                    <CheckBox Name="cbxY27" Content="Y27" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.Y20Y37[7]}"/>
+                                                </StackPanel>
+
+                                                <StackPanel Margin="40,0,0,0">
+                                                    <CheckBox Name="cbxY30" Content="Y30" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.Y20Y37[8]}"/>
+                                                    <CheckBox Name="cbxY31" Content="Y31" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.Y20Y37[9]}"/>
+                                                    <CheckBox Name="cbxY32" Content="Y32" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.Y20Y37[10]}"/>
+                                                    <CheckBox Name="cbxY33" Content="Y33" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.Y20Y37[11]}"/>
+                                                    <CheckBox Name="cbxY34" Content="Y34" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.Y20Y37[12]}"/>
+                                                    <CheckBox Name="cbxY35" Content="Y35" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.Y20Y37[13]}"/>
+                                                    <CheckBox Name="cbxY36" Content="Y36" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.Y20Y37[14]}"/>
+                                                    <CheckBox Name="cbxY37" Content="Y37" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.Y20Y37[15]}"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Viewbox>
+                                    </GroupBox>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <GroupBox Header="Control Flag">
+                                    <Viewbox>
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel>
+                                                <!--<CheckBox Name="D47" Content="Pause/Continuos motion" Margin="1,4,1,1"/>-->
+                                                <CheckBox Name="D196_0" Content="ABS multi axis" Margin="1,2,1,1" />
+                                                <CheckBox Name="M126" Content="ABS axis X1" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[9]}" IsEnabled="{Binding globals.RunInstrucTion[9]}" Click="M126_Click"/>
+                                                <CheckBox Name="M127" Content="ABS axis X2" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[10]}" IsEnabled="{Binding globals.RunInstrucTion[10]}" Click="M127_Click"/>
+                                                <CheckBox Name="M128" Content="ABS axis Y" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[11]}" IsEnabled="{Binding globals.RunInstrucTion[11]}" Click="M128_Click"/>
+                                                <CheckBox Name="M125" Content="ABS axis R" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[8]}" IsEnabled="{Binding globals.RunInstrucTion[8]}" Click="M125_Click"/>
+                                            </StackPanel>
+                                            <StackPanel Margin="20,0,0,0">
+                                                <CheckBox Name="M122" Content="JOG Increamental axis X1" Margin="1,4,1,1" IsChecked="{Binding globals.RunInstrucTion[1]}" IsEnabled="{Binding globals.RunInstrucTion[1]}"/>
+                                                <CheckBox Name="M123" Content="JOG Increamental axis X2" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[2]}" IsEnabled="{Binding globals.RunInstrucTion[2]}"/>
+                                                <CheckBox Name="M124" Content="JOG Increamental axis Y" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[3]}" IsEnabled="{Binding globals.RunInstrucTion[3]}"/>
+                                                <CheckBox Name="M121" Content="JOG Increamental axis R" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[0]}" IsEnabled="{Binding globals.RunInstrucTion[0]}"/>
+
+                                                <CheckBox Name="D10_1" Content="JOG Continuos axis X1" Margin="1,2,1,1"/>
+                                                <CheckBox Name="D11_1" Content="JOG Continuos axis X2" Margin="1,2,1,1"/>
+                                                <CheckBox Name="D12_1" Content="JOG Continuos axis Y" Margin="1,2,1,1"/>
+                                                <CheckBox Name="D9_1" Content="JOG Continuos axis R" Margin="1,2,1,1"/>
+                                            </StackPanel>
+                                            <StackPanel Margin="20,0,0,0">
+                                                <CheckBox Name="M110" Content="OPR axis X1" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[5]}" IsEnabled="{Binding globals.RunInstrucTion[5]}"/>
+                                                <CheckBox Name="M111" Content="OPR axis X2" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[6]}" IsEnabled="{Binding globals.RunInstrucTion[6]}"/>
+                                                <CheckBox Name="M112" Content="OPR axis Y" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[7]}" IsEnabled="{Binding globals.RunInstrucTion[7]}"/>
+                                                <CheckBox Name="M109" Content="OPR axis R" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[4]}" IsEnabled="{Binding globals.RunInstrucTion[4]}"/>
+
+                                                <CheckBox Name="D46_1" Content="OPR Finish Axis X1" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[1]}"/>
+                                                <CheckBox Name="D46_2" Content="OPR Finish Axis X2" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[2]}"/>
+                                                <CheckBox Name="D46_3" Content="OPR Finish Axis Y" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[3]}"/>
+                                                <CheckBox Name="D46_0" Content="OPR Finish Axis R" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[0]}"/>
+
+                                            </StackPanel>
+                                            <StackPanel Margin="20,0,0,0">
+                                                <CheckBox Name="D46_5" Content="Forward limit axis X1" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[5]}"/>
+                                                <CheckBox Name="D46_6" Content="Forward limit axis X2" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[6]}"/>
+                                                <CheckBox Name="D46_7" Content="Forward limit axis Y" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[7]}"/>
+                                                <CheckBox Name="D46_4" Content="Forward limit axis R" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[4]}"/>
+                                                <CheckBox Name="D46_13" Content="Reverse limit axis X1" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[13]}"/>
+                                                <CheckBox Name="D46_14" Content="Reverse limit axis X2" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[14]}"/>
+                                                <CheckBox Name="D46_15" Content="Reverse limit axis Y" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[15]}"/>
+                                                <CheckBox Name="D46_12" Content="Reverse limit axis R" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[12]}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Margin="20,0,0,0">
+                                                <CheckBox Name="D45_1" Content="Servo ready X1" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[1]}"/>
+                                                <CheckBox Name="D45_2" Content="Servo ready X2" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[2]}"/>
+                                                <CheckBox Name="D45_3" Content="Servo ready Y" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[3]}"/>
+                                                <CheckBox Name="D45_0" Content="Servo ready R" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[0]}"/>
+                                                <CheckBox Name="D46_9" Content="Pulse stop axis X1" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[9]}"/>
+                                                <CheckBox Name="D46_10" Content="Pulse stop axis X2" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[10]}"/>
+                                                <CheckBox Name="D46_11" Content="Pulse stop axis Y" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[11]}"/>
+                                                <CheckBox Name="D46_8" Content="Pulse stop axis R" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[8]}"/>
+                                            </StackPanel>
+
+                                        </StackPanel>
+                                    </Viewbox>
+
+                                </GroupBox>
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+
+                    <TabItem Header="Offset">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <DataGrid Name="dgvDataPoint" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" ItemsSource="{Binding DataPoints}" IsReadOnly="True" CanUserSortColumns="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="0.5*" />
+                                        <DataGridTextColumn Header="Coordinate X1 (um)" Binding="{Binding Coordinate_X1}"  Width="1*"/>
+                                        <DataGridTextColumn Header="Coordinate X2 (um)" Binding="{Binding Coordinate_X2}" Width="1*" />
+                                        <DataGridTextColumn Header="Coordinate Y (um)" Binding="{Binding Coordinate_Y}" Width="1*"/>
+                                        <DataGridTextColumn Header="Coordinate R (um)" Binding="{Binding Coordinate_R}" Width="1*"/>
+                                        <DataGridTextColumn Header="Speed X1 (cm/min)" Binding="{Binding Speed_X1}" Width="1*"/>
+                                        <DataGridTextColumn Header="Speed X2 (cm/min)" Binding="{Binding Speed_X2}" Width="1*"/>
+                                        <DataGridTextColumn Header="Speed Y (cm/min)" Binding="{Binding Speed_Y}" Width="1*"/>
+                                        <DataGridTextColumn Header="Speed R (cm/min)" Binding="{Binding Speed_R}" Width="1*"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <GroupBox Header="Offset">
+                                        <Viewbox>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="2*"/>
+                                                    <RowDefinition Height="1*"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid Grid.Row="0">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Label Content="Gab X1 (um): " Width="85" Height="30"/>
+                                                        <TextBox Name="txtOffsetX1" Width="60" Text="{Binding OffsetX1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30" Background="AliceBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                                        <Button Name="btnExcuteOffsetX1" Content="Excute" Width="50" Height="30" Margin="2,1,2,1" Click="btnExcuteOffsetX1_Click" IsEnabled="{Binding EnableModify}"/>
+
+                                                        <Label Content="Gab X2 (um): " Width="85" Height="30" Margin="30,0,0,0"/>
+                                                        <TextBox Name="txtOffsetX2" Text="{Binding OffsetX2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="60" Height="30" Background="AliceBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                                        <Button Name="btnExcuteOffsetX2" Content="Excute" Width="50" Height="30" Margin="2,1,2,1" Click="btnExcuteOffsetX2_Click" IsEnabled="{Binding EnableModify}"/>
+
+                                                        <Label Content="Gab Y (um): " Width="85" Height="30" Margin="30,0,0,0"/>
+                                                        <TextBox Name="txtOffsetY" Text="{Binding OffsetY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="60" Height="30" Background="AliceBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                                        <Button Name="btnExcuteOffsetY" Content="Excute" Width="50" Height="30" Margin="2,1,2,1" Click="btnExcuteOffsetY_Click" IsEnabled="{Binding EnableModify}"/>
+
+                                                        <Label Content="Gab R (um): " Width="85" Height="30" Margin="30,0,0,0"/>
+                                                        <TextBox Name="txtOffsetR" Text="{Binding OffsetR, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="60" Height="30" Background="AliceBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                                        <Button Name="btnExcuteOffsetR" Content="Excute" Width="50" Height="30" Margin="2,1,2,1" Click="btnExcuteOffsetR_Click" IsEnabled="{Binding EnableModify}"/>
+
+                                                    </StackPanel>
+                                                </Grid>
+                                                <Grid Grid.Row="1" Margin="0,5,0,0">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Label Content="Speed X1 (%): " Width="85" Height="30"/>
+                                                        <TextBox Name="txtPercentSpeedX1" Width="60" Text="{Binding PercentSpeedX1X2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30" Background="AliceBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                                        <Button Name="btnExcutePercentSpeedX1" Content="Excute" Width="50" Height="30" Margin="2,1,2,1" Click="btnExcutePercentSpeedX1_Click" IsEnabled="{Binding EnableModify}"/>
+
+                                                        <Label Content="Speed X2 (%): " Width="85" Height="30" Margin="30,0,0,0"/>
+                                                        <TextBox Name="txtPercentSpeedX2" Text="{Binding PercentSpeedX1X2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="60" Height="30" Background="AliceBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                                        <Button Name="btnExcutePercentSpeedX2" Content="Excute" Width="50" Height="30" Margin="2,1,2,1" Click="btnExcutePercentSpeedX2_Click" IsEnabled="{Binding EnableModify}"/>
+
+                                                        <Label Content="Speed Y (%): " Width="85" Height="30" Margin="30,0,0,0"/>
+                                                        <TextBox Name="txtPercentSpeedY" Text="{Binding PercentSpeedY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="60" Height="30" Background="AliceBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                                        <Button Name="btnExcutePercentSpeedY" Content="Excute" Width="50" Height="30" Margin="2,1,2,1" Click="btnExcutePercentSpeedY_Click" IsEnabled="{Binding EnableModify}"/>
+
+                                                        <Label Content="Speed R (%): " Width="85" Height="30" Margin="30,0,0,0"/>
+                                                        <TextBox Name="txtPercentSpeedR" Text="{Binding PercentSpeedR, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="60" Height="30" Background="AliceBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                                        <Button Name="btnExcutePercentSpeedR" Content="Excute" Width="50" Height="30" Margin="2,1,2,1" Click="btnExcutePercentSpeedR_Click" IsEnabled="{Binding EnableModify}"/>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Grid>
+
+                                        </Viewbox>
+                                    </GroupBox>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <GroupBox Header="Verify">
+                                        <Viewbox>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="Point: " Width="40" Height="30"/>
+                                                <TextBox Name="txtTargetPoint" Text="{Binding TargetPoint, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50" Height="30" Background="AliceBlue" 
+                                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center" TextChanged="txtTargetPoint_TextChanged"/>
+                                                <Button Name="btnBack" Content="Back" Width="30" Height="30" Margin="5,1,2,1" Click="btnBack_Click"/>
+                                                <Button Name="btnNext" Content="Next" Width="30" Height="30" Margin="2,1,2,1" Click="btnNext_Click"/>
+                                                <Button Name="btnGo" Content="Go" Width="50" Height="30" Margin="5,1,2,1" Click="btnGo_Click" IsEnabled="{Binding EnableModify}"/>
+                                                <Button Name="btnLoadRecentData" Content="Re Load" Width="50" Height="30" Margin="5,1,2,1" Click="btnLoadRecentData_Click"/>
+                                                <Button Name="btnSaveWiteDataPointToPLC" Content="Apply" Width="50" Height="30" Margin="5,1,2,1" Click="btnSaveWiteDataPointToPLC_Click" IsEnabled="{Binding EnableModify}"/>
+                                            </StackPanel>
+                                        </Viewbox>
+                                    </GroupBox>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+
+                </TabControl>
+            </Grid>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TabControl>
+                        <TabItem Header="Home Control">
+                            <Viewbox StretchDirection="Both">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0" Margin="2,0,2,0">
+                                        <StackPanel VerticalAlignment="Center">
+                                            <Button Name="PauseHome" Content="Pause Home" Margin="1,1,1,1" Height="57.92" Width="75" Background="DimGray" Foreground="White" Click="PauseHome_Click"/>
+                                            <Button Name="HomeAll" Content="Home All" Margin="1,1,1,1" Height="57.92" Width="75" Background="DimGray" Foreground="White" Click="HomeAll_Click"/>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Column="1" Margin="2,0,2,0">
+                                        <StackPanel VerticalAlignment="Center">
+                                            <Button x:Name="HomeX1X2" Content="Home X1-X2" Height="38" Width="75" Margin="1,1,1,1" Background="DimGray" Foreground="White" Click="HomeX1X2_Click"/>
+                                            <Button x:Name="HomeY" Content="Home Y" Height="38"  Width="75" Margin="1,1,1,1" Background="DimGray" Foreground="White" Click="HomeY_Click"/>
+                                            <Button x:Name="HomeR" Content="Home R" Height="38"  Width="75" Margin="1,1,1,1" Background="DimGray" Foreground="White" Click="HomeR_Click"/>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Column="2" Margin="2,0,2,0">
+                                        <StackPanel VerticalAlignment="Center">
+                                            <Label Name="StatusX1" Content="X1:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Width="30.02" Background="{Binding ColorStatus_X1}" Foreground="Black" />
+                                            <Label Name="StatusX2" Content="X2:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="{Binding ColorStatus_X2}" Foreground="Black"/>
+                                            <Label Name="StatusY" Content="Y:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="{Binding ColorStatus_Y}" Foreground="Black"/>
+                                            <Label Name="StatusR" Content="R:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="{Binding ColorStatus_R}" Foreground="Black"/>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Column="3">
+                                        <StackPanel VerticalAlignment="Center" Width="164">
+                                            <Label Name="CurrentPosX1" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Height="27.96" Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Content="{Binding globals.CurrentPosX1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                            <Label Name="CurrentPosX2" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96" Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Content="{Binding globals.CurrentPosX2, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                            <Label Name="CurrentPosY" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Content="{Binding globals.CurrentPosY, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                            <Label Name="CurrentPosR" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Content="{Binding globals.CurrentPosR, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+                                    </Grid>
+
+                                </Grid>
+                            </Viewbox>
+
+                        </TabItem>
+                        <TabItem Header="Extention">
+                            <Viewbox StretchDirection="Both">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="2">
+                                        <StackPanel VerticalAlignment="Center" Width="164">
+                                            <TextBox Name="txtLowLimitX1" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Height="27.96" Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
+                                            <TextBox Name="txtLowLimitX2" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96" Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
+                                            <TextBox Name="txtLowLimitY" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
+                                            <TextBox Name="txtLowLimitR" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Column="0" Margin="2,0,2,0">
+                                        <StackPanel VerticalAlignment="Center">
+                                            <Label Content="X1" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Width="30.02" Background="Yellow" Foreground="Black"/>
+                                            <Label Content="X2" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                            <Label Content="Y" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                            <Label Content="R" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Column="1" Margin="2,0,2,0">
+                                        <StackPanel VerticalAlignment="Center">
+                                            <Label Content="L:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Width="30.02" Background="Yellow" Foreground="Black"/>
+                                            <Label Content="L:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                            <Label Content="L:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                            <Label Content="L:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Column="3" Margin="20,0,2,0">
+                                        <StackPanel VerticalAlignment="Center">
+                                            <Label Content="H:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Width="30.02" Background="Yellow" Foreground="Black"/>
+                                            <Label Content="H:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                            <Label Content="H:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                            <Label Content="H:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Column="4">
+                                        <StackPanel VerticalAlignment="Center" Width="164">
+                                            <TextBox Name="txtHighLimitX1" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Height="27.96" Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
+                                            <TextBox Name="txtHighLimitX2" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96" Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
+                                            <TextBox Name="txtHighLimitY" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
+                                            <TextBox Name="txtHighLimitR" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+
+                            </Viewbox>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TabControl>
+                        <TabItem Header="Current state">
+                            <Viewbox>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0">
+                                        <!--<Viewbox StretchDirection="Both">-->
+                                        <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                                            <Label Content="Status machine:" Width="145" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                                            <Label Name="lblStatusMachine" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" 
+                                               Background="{Binding ColorStatusMachine}" Content="{Binding StStatusMachine}" BorderBrush="White" BorderThickness="3" 
+                                               Margin="2,2,2,2" FontWeight="Bold" Foreground="Black" Width="235" FontSize="20"/>
+                                        </StackPanel>
+                                        <!--</Viewbox>-->
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <!--<Viewbox>-->
+                                        <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                                            <Label Content="Run mode: " Width="145" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                                            <Label Name="lblRunMode" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" 
+                                               Background="{Binding ColorRunMode}" Content="{Binding StRunMode}" BorderBrush="White" BorderThickness="3" 
+                                               Margin="2,2,2,2" FontWeight="Bold" Foreground="Black"
+                                               Width="235" FontSize="20"/>
+                                        </StackPanel>
+                                        <!--</Viewbox>-->
+                                    </Grid>
+                                    <Grid Grid.Row="2">
+                                        <!--<Viewbox>-->
+                                        <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                                            <Label Content="Current step of progress: " VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                            <Label Name="lblCurrentStep" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" 
+                                               Content="{Binding StCurrentStep}" BorderBrush="White" BorderThickness="3" 
+                                               Margin="2,2,2,2" FontWeight="Bold" Foreground="Black"
+                                               Width="235" FontSize="15"/>
+                                        </StackPanel>
+                                        <!--</Viewbox>-->
+                                    </Grid>
+                                    <Grid Grid.Row="3">
+                                        <!--<Viewbox>-->
+                                        <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                                            <Label Content="Target Point: " Width="145" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                                            <Label Name="lblTargetPoint" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" 
+                                               Content="{Binding AutoTargetPoint}" BorderBrush="White" BorderThickness="3" 
+                                               Margin="2,2,2,2" FontWeight="Bold" Foreground="Black"
+                                               Width="235" FontSize="20"/>
+                                        </StackPanel>
+                                        <!--</Viewbox>-->
+                                    </Grid>
+                                    <Grid Grid.Row="4">
+                                        <!--<Viewbox>-->
+                                        <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                                            <Label Content="Cycle Time: " Width="145" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                                            <Label Name="lblCycleTime" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" 
+                                               Content="{Binding CycleTime}" BorderBrush="White" BorderThickness="3" 
+                                               Margin="2,2,2,2" FontWeight="Bold" Foreground="Black"
+                                               Width="235" FontSize="20"/>
+                                        </StackPanel>
+                                        <!--</Viewbox>-->
+                                    </Grid>
+
+                                </Grid>
+                            </Viewbox>
+
+                            <!--<StackPanel Orientation="Horizontal">
+                                    <Label Content="Total: " VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                    <Label Name="lblTotal" Content="PLC" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" Background="{Binding StatusConnect}" BorderBrush="White" BorderThickness="3" Margin="2,2,2,2" FontWeight="Bold" Foreground="White"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Pass: " VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                    <Label Name="lblPass" Content="PLC" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" Background="{Binding StatusConnect}" BorderBrush="White" BorderThickness="3" Margin="2,2,2,2" FontWeight="Bold" Foreground="White"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Fail: " VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                    <Label Name="lblFail" Content="PLC" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" Background="{Binding StatusConnect}" BorderBrush="White" BorderThickness="3" Margin="2,2,2,2" FontWeight="Bold" Foreground="White"/>
+                                </StackPanel>-->
+                        </TabItem>
+                        <TabItem Header="Progress">
+                            <ListView Name="lvwProgress" ItemsSource="{Binding SourceFunction }" SelectionChanged="lvwProgress_SelectionChanged">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Step" DisplayMemberBinding="{Binding ID}"/>
+                                        <GridViewColumn Header="Name " DisplayMemberBinding="{Binding Name}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <GroupBox Header="Control">
+                    <Viewbox StretchDirection="Both">
+                        <StackPanel>
+                            <Button Name="btnStartMachine" Content="START" Margin="2,2,2,2" FontSize="12" Width="100" Height="30" Background="LightGreen" FontWeight="Bold" Click="btnStartMachine_Click" IsEnabled="{Binding ModeRun}"/>
+                            <Button Name="btnStopMachine" Content="STOP" Margin="2,2,2,2" FontSize="12" Width="100" Height="30" Background="Red" FontWeight="Bold" Click="btnStopMachine_Click" IsEnabled="{Binding ModeRun}"/>
+                            <Button Name="btnResetMachine" Content="RESET" Margin="2,2,2,2" FontSize="12" Width="100" Height="30" Background="Yellow" FontWeight="Bold" Click="btnResetMachine_Click"/>
+                            <Button Name="btnManualModeNextStep" Content="NEXT STEP" Margin="2,2,2,2" FontSize="12" Width="100" Height="30" FontWeight="Bold" Click="btnManualModeNextStep_Click" IsEnabled="{Binding EnableModify}"/>
+                            <Button Name="btnSwitchMode" Content="AUTO/MANUAL" Margin="2,2,2,2" FontSize="12" Width="100" Height="30" Background="Aqua" FontWeight="Bold" Click="btnSwitchMode_Click"/>
+                            <Button Name="btnRecycle" Content="RECYCLE" Margin="2,2,2,2" FontSize="12" Width="100" Height="30" FontWeight="Bold" Click="btnRecycle_Click" Background="{Binding ColorRecycle}"/>
+                            <Button Name="btnPointToPointMode" Content="Human Control" Margin="2,2,2,2" FontSize="12" Width="100" Height="30" FontWeight="Bold" Click="btnPointToPointMode_Click"/>
+                            <Button Name="btnSelfCheck" Content="Self Check" Margin="2,2,2,2" FontSize="12" Width="100" Height="30" FontWeight="Bold" Click="btnSelfCheck_Click"/>
+
+                        </StackPanel>
+                    </Viewbox>
+                </GroupBox>
+
+            </Grid>
+            <Grid Grid.Column="1">
+                <TabControl>
+                    <TabItem Header="Jogging">
+                        <Viewbox StretchDirection="Both">
+                            <StackPanel Margin="5,5,5,5" IsEnabled="{Binding EnableModify}">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <StackPanel Background="Transparent">
+                                        <Button Name="btnSub_X1" Content="X1--" Margin="2,2,2,2" Width="60" Height="40" Background="DimGray" Foreground="White" 
+                                                Click="btnSub_X1_Click" 
+                                                PreviewMouseDown="btnSub_X1_PreviewMouseDown" 
+                                                PreviewMouseUp="btnSub_X1_PreviewMouseUp"/>
+                                        <Button Name="btnSub_R" Content="R--" Margin="2,2,2,2" Width="60" Height="40" Background="DimGray" Foreground="White" 
+                                                Click="btnSub_R_Click" 
+                                                PreviewMouseDown="btnSub_R_PreviewMouseDown" 
+                                                PreviewMouseUp="btnSub_R_PreviewMouseUp"/>
+                                        <Button Name="btnSub_X2" Content="X2--" Margin="2,2,2,2" Width="60" Height="40" Background="DimGray" Foreground="White"
+                                                Click="btnSub_X2_Click"
+                                                PreviewMouseDown="btnSub_X2_PreviewMouseDown" 
+                                                PreviewMouseUp="btnSub_X2_PreviewMouseUp" 
+                                                />
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <Button Name="btnAdd_Y" Content="Y++" Margin="2,2,2,2" Width="60" Height="40" Background="DimGray" Foreground="White"
+                                                Click="btnAdd_Y_Click" 
+                                                PreviewMouseDown="btnAdd_Y_PreviewMouseDown" 
+                                                PreviewMouseUp="btnAdd_Y_PreviewMouseUp"/>
+                                        <Button Name="btnPauseJog" Content="Pause" Margin="2,2,2,2" Width="60" Height="40" Background="DimGray" Foreground="White" 
+                                                Click="btnPauseJog_Click" 
+                                                PreviewMouseDown="btnPauseJog_PreviewMouseDown" 
+                                                PreviewMouseUp="btnPauseJog_PreviewMouseUp"/>
+                                        <Button Name="btnSub_Y" Content="Y--" Margin="2,2,2,2" Width="60" Height="40" Background="DimGray" Foreground="White" 
+                                                Click="btnSub_Y_Click" 
+                                                PreviewMouseDown="btnSub_Y_PreviewMouseDown" 
+                                                PreviewMouseUp="btnSub_Y_PreviewMouseUp"/>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <Button Name="btnAdd_X1" Content="X1++" Margin="2,2,2,2" Width="60" Height="40" Background="DimGray" Foreground="White" 
+                                                Click="btnAdd_X1_Click" 
+                                                PreviewMouseDown="btnAdd_X1_PreviewMouseDown" 
+                                                PreviewMouseUp="btnAdd_X1_PreviewMouseUp"/>
+                                        <Button Name="btnAdd_R" Content="R++" Margin="2,2,2,2" Width="60" Height="40" Background="DimGray" Foreground="White" 
+                                                Click="btnAdd_R_Click" 
+                                                PreviewMouseDown="btnAdd_R_PreviewMouseDown" 
+                                                PreviewMouseUp="btnAdd_R_PreviewMouseUp"/>
+                                        <Button Name="btnAdd_X2" Content="X2++" Margin="2,2,2,2" Width="60" Height="40" Background="DimGray" Foreground="White" 
+                                                Click="btnAdd_X2_Click" 
+                                                PreviewMouseDown="btnAdd_X2_PreviewMouseDown" 
+                                                PreviewMouseUp="btnAdd_X2_PreviewMouseUp"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                    <Button Name="btnChangeJogMode" Content="Mode" Margin="2,2,2,2" Width="40" Height="40" Background="DimGray" Foreground="White" Click="btnChangeJogMode_Click"/>
+                                    <Label Name="lblJogMode" BorderThickness="1" BorderBrush="Gray" Width="144" Margin="2,2,2,2" IsEnabled="False" FontSize="15" Foreground="Green" FontWeight="Bold" Content="{Binding _sjogmode}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Viewbox>
+
+                    </TabItem>
+
+                    <TabItem Header="Manual Device">
+                        <Viewbox StretchDirection="Both">
+                            <StackPanel IsEnabled="{Binding EnableModify}">
+                                <StackPanel Orientation="Horizontal" Margin="5,5,5,5" >
+                                    <GroupBox Header="Camera 1">
+                                        <StackPanel>
+                                            <Button Name="btnLighPowerCam1" Margin="2,2,2,2" Width="100" Height="30" Click="btnLighPowerCam1_Click" Content="{Binding TextLight1}" Background="{Binding ColorLight1 }"/>
+                                            <Button Name="btnFinishCaptureCam1" Content ="Finish Capture" HorizontalAlignment="Stretch" Margin="2,2,2,2" Width="100" Height="30" Click="btnFinishCaptureCam1_Click"/>
+                                            <Button Name="btnTriggerCam1" Content="Trigger" Margin="2,2,2,2" Width="100" Height="30" Click="btnTriggerCam1_Click"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                    <GroupBox Header="Camera 2">
+                                        <StackPanel>
+                                            <Button Name="btnLighPowerCam2" Margin="2,2,2,2" Width="100" Height="30" Click="btnLighPowerCam2_Click" Content="{Binding TextLight2}" Background="{Binding ColorLight2 }"/>
+                                            <Button Name="btnFinishCaptureCam2" Content="Finish Capture" Margin="2,2,2,2" Width="100" Height="30" Click="btnFinishCaptureCam2_Click"/>
+                                            <Button Name="btnTriggerCam2" Content="Trigger" Margin="2,2,2,2" Width="100" Height="30" Click="btnTriggerCam2_Click"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                    <GroupBox Header="Camera 3">
+                                        <StackPanel>
+                                            <Button Name="btnLighPowerCam3" Margin="2,2,2,2" Width="100" Height="30" Click="btnLighPowerCam3_Click" Content="{Binding TextLight3}" Background="{Binding ColorLight3}"/>
+                                            <Button Name="btnFinishCaptureCam3" Content="Finish Capture" Margin="2,2,2,2" Width="100" Height="30" Click="btnFinishCaptureCam3_Click"/>
+                                            <Button Name="btnTriggerCam3" Content="Trigger" Margin="2,2,2,2" Width="100" Height="30" Click="btnTriggerCam3_Click"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5,5,5,5">
+                                    <GroupBox Header="Vision Program">
+                                        <StackPanel>
+                                            <Button Name="btnVisionPrReady" Content="Ready" Margin="2,2,2,2" Width="100" Height="30" Click="btnVisionPrReady_Click" Background="{Binding ColorVisionReady}"/>
+                                            <Button Name="btnVisionPrBusy" Content="Busy" Margin="2,2,2,2" Width="100" Height="30" Click="btnVisionPrBusy_Click" Background="{Binding ColorCylinder1Up}"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                    <GroupBox Header="Cylinder 1">
+                                        <StackPanel>
+                                            <Button Name="btnCylinder1Up" Content="Up" Margin="2,2,2,2" Width="100" Height="30" Click="btnCylinder1Up_Click" Background="{Binding ColorCylinder1Up}"/>
+                                            <Button Name="btnCylinder1Down" Content="Down" Margin="2,2,2,2" Width="100" Height="30" Click="btnCylinder1Down_Click" Background="{Binding ColorCylinder1Down}"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                    <GroupBox Header="Cylinder 2">
+                                        <StackPanel>
+                                            <Button Name="btnCylinder2Up" Content="Up" Margin="2,2,2,2" Width="100" Height="30" Click="btnCylinder2Up_Click" Background="{Binding ColorCylinder2Up}"/>
+                                            <Button Name="btnCylinder2Down" Content="Down" Margin="2,2,2,2" Width="100" Height="30" Click="btnCylinder2Down_Click" Background="{Binding ColorCylinder2Down}"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                </StackPanel>
+                            </StackPanel>
+
+                        </Viewbox>
+                    </TabItem>
+
+                    <TabItem Header="Servo Setup">
+                        <Viewbox StretchDirection="Both" HorizontalAlignment="Left">
+                            <DockPanel>
+                                <StackPanel DockPanel.Dock="Left"  IsEnabled="{Binding EnableModify}">
+
+                                    <GroupBox Header="Servo X1 ON/OFF ">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel>
+                                                <Button Name="btnServoOn_X1" Content="ON" Margin="2,2,2,2" Width="40" Click="btnServoOn_X1_Click"/>
+                                                <Button Name="btnServoOff_X1" Content="OFF" Margin="2,2,2,2" Width="40" Click="btnServoOff_X1_Click"/>
+                                            </StackPanel>
+                                            <Label Name="lblStatusServo_X1" Width="70" Margin="2,2,2,2" BorderBrush="Gray" BorderThickness="1" 
+                                                   Background="{Binding ColorServo_X1 }" Content="{Binding StServo_X1}" FontSize="15" 
+                                                   VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                        </StackPanel>
+
+                                    </GroupBox>
+                                    <GroupBox Header="Servo X2 ON/OFF ">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel>
+                                                <Button Name="btnServoOn_X2" Content="ON" Margin="2,2,2,2" Width="40" Click="btnServoOn_X2_Click"/>
+                                                <Button Name="btnServoOff_X2" Content="OFF" Margin="2,2,2,2" Width="40" Click="btnServoOff_X2_Click"/>
+                                            </StackPanel>
+                                            <Label Name="lblStatusServo_X2" Width="70" Margin="2,2,2,2" BorderBrush="Gray" BorderThickness="1"
+                                                   Background="{Binding ColorServo_X2 }" Content="{Binding StServo_X2 }" FontSize="15" 
+                                                   VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                        </StackPanel>
+
+                                    </GroupBox>
+                                    <GroupBox Header="Servo Y ON/OFF ">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel>
+                                                <Button Name="btnServoOn_Y" Content="ON" Margin="2,2,2,2" Width="40" Click="btnServoOn_Y_Click"/>
+                                                <Button Name="btnServoOff_Y" Content="OFF" Margin="2,2,2,2" Width="40" Click="btnServoOff_Y_Click"/>
+                                            </StackPanel>
+                                            <Label Name="lblStatusServo_Y" Width="70" Margin="2,2,2,2" BorderBrush="Gray" BorderThickness="1" 
+                                                   Background="{Binding ColorServo_Y }" Content="{Binding StServo_Y}" FontSize="15" 
+                                                   VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                    <GroupBox Header="Servo R ON/OFF ">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel>
+                                                <Button Name="btnServoOn_R" Content="ON" Margin="2,2,2,2" Width="40" Click="btnServoOn_R_Click"/>
+                                                <Button Name="btnServoOff_R" Content="OFF" Margin="2,2,2,2" Width="40" Click="btnServoOff_R_Click"/>
+                                            </StackPanel>
+                                            <Label Name="lblStatusServo_R" Width="70" Margin="2,2,2,2" BorderBrush="Gray" BorderThickness="1" 
+                                                   Background="{Binding ColorServo_R }" Content="{Binding StServo_R}" FontSize="15" 
+                                                   VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                </StackPanel>
+                            </DockPanel>
+                        </Viewbox>
+                    </TabItem>
+                    <TabItem Header="File">
+                        <Grid>
+                            <!--<Viewbox StretchDirection="Both">-->
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                    <Label Content="Current File: " Width="75" Height="30" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="2,2,2,2" HorizontalAlignment="Left"/>
+                                    <Label Name="lblCurrentFileGcode" Width="280" Height="30" VerticalContentAlignment="Center" HorizontalAlignment="Center" FontSize="12" Margin="2,2,2,2" BorderBrush="Black" BorderThickness="1"/>
+                                    <Button Name="btnOpenFileGocode" Content="Browser" Width="50" Height="30" Margin="2,2,2,2" HorizontalAlignment="Right"/>
+                                </StackPanel>
+                                <StackPanel  HorizontalAlignment="Left" Margin="1,10,1,1">
+                                    <Button Name="btnWriteGcodeToPLC" Content="Write Gcode to PLC" Width="120" Height="30" Margin="2,2,2,2" Click="btnWriteGcodeToPLC_Click" IsEnabled="{Binding EnableModify}"/>
+                                    <Button Name="btnWriteModelToPLC" Content="Write Model to PLC" Width="120" Height="30" Margin="2,2,2,2" Click="btnWriteModelToPLC_Click" IsEnabled="{Binding EnableModify}"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <!--</Viewbox>-->
+
+                        </Grid>
+                        <!--<StackPanel>
+                            <Viewbox StretchDirection="Both">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Current File: " Width="75" Height="30" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="2,2,2,2"/>
+                                    <Label Name="lblCurrentFileGcode" Width="200" Height="30" VerticalContentAlignment="Center" HorizontalAlignment="Center" FontSize="12" Margin="2,2,2,2" BorderBrush="Black" BorderThickness="0.5"/>
+                                    <Button Name="btnOpenFileGocode" Content="Browser" Width="50" Height="30" Margin="2,2,2,2"/>
+                                </StackPanel>
+                            </Viewbox>
+                            <Viewbox StretchDirection="Both">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="1,10,1,1">
+                                    <Button Name="btnWriteGcodeToPLC" Content="Write Gcode to PLC" Width="120" Height="30" Margin="2,2,2,2"/>
+                                    <Button Name="btnWriteModelToPLC" Content="Write Model to PLC" Width="120" Height="30" Margin="2,2,2,2"/>
+                                </StackPanel>
+                            </Viewbox>
+                        </StackPanel>-->
+                    </TabItem>
+                </TabControl>
+            </Grid>
+
+            <Grid Grid.Column="2" Margin="5,0,5,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="9*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" >
+                    <DataGrid Name="dgvParameter" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" ItemsSource="{Binding Parameters, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CellEditEnding="dgvParameter_CellEditEnding" SelectionUnit="Cell" CanUserSortColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Axis" Binding="{Binding Name}" Width="1*" IsReadOnly="True" FontWeight="Bold"/>
+                            <DataGridTextColumn Header="Home Speed" Binding="{Binding HomeSpeed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="1*"/>
+                            <DataGridTextColumn Header="Creep Speed" Binding="{Binding CreepSpeed, Mode=TwoWay}" Width="1*" />
+                            <DataGridTextColumn Header="Jog continuos speed" Binding="{Binding JogContinuosSpeed, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}" Width="1*"/>
+                            <DataGridTextColumn Header="Jog step speed" Binding="{Binding JogIncreSpeed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="1*"/>
+                            <DataGridTextColumn Header="Jog step size" Binding="{Binding JogIncreSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="1*"/>
+                            <DataGridTextColumn Header="Start Point" Binding="{Binding StratPoint, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="1*"/>
+                            <DataGridTextColumn Header="Start Point Speed" Binding="{Binding StartPointSpeed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="1*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+                <Grid Grid.Row="1" Margin="0,2,2,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Name="btnReadParam" Content="Read Parameter" Margin="0,0,0,0" Width="100" Click="btnReadParam_Click"/>
+                        <Button Name="btnWriteParam" Content="Write Parameter" Margin="5,0,0,0" Width="100" Click="btnWriteParam_Click"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</UserControl>

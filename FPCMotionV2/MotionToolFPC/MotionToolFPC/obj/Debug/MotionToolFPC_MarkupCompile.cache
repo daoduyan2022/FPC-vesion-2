@@ -1,0 +1,20 @@
+﻿MotionToolFPC
+
+
+library
+C#
+.cs
+D:\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\
+MotionToolFPC
+none
+false
+DEBUG;TRACE
+
+41250269436
+
+10-2116896641
+16-1429666176
+MotionTool.xaml;SelfCheckRecord.xaml;WaittingConnectPLC.xaml;WaittingWindow.xaml;
+
+False
+

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotionToolFPC", "MotionToolFPC\MotionToolFPC.csproj", "{FA269B76-7BF5-49F1-B91F-E06E1B51F9F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FPC", "FPC\FPC.csproj", "{DFFDB4EF-E24E-4BFE-81FA-B1FE79CEBB40}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA269B76-7BF5-49F1-B91F-E06E1B51F9F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA269B76-7BF5-49F1-B91F-E06E1B51F9F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA269B76-7BF5-49F1-B91F-E06E1B51F9F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA269B76-7BF5-49F1-B91F-E06E1B51F9F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFFDB4EF-E24E-4BFE-81FA-B1FE79CEBB40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFFDB4EF-E24E-4BFE-81FA-B1FE79CEBB40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFFDB4EF-E24E-4BFE-81FA-B1FE79CEBB40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFFDB4EF-E24E-4BFE-81FA-B1FE79CEBB40}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D8B95147-E14A-4E4E-B34B-AAF4B5606C0B}
+	EndGlobalSection
+EndGlobal
