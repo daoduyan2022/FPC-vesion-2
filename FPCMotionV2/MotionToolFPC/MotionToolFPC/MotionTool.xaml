@@ -144,28 +144,28 @@
                                         <StackPanel Orientation="Horizontal">
                                             <StackPanel>
                                                 <!--<CheckBox Name="D47" Content="Pause/Continuos motion" Margin="1,4,1,1"/>-->
-                                                <CheckBox Name="D196_0" Content="ABS multi axis" Margin="1,2,1,1" />
-                                                <CheckBox Name="M126" Content="ABS axis X1" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[9]}" IsEnabled="{Binding globals.RunInstrucTion[9]}" Click="M126_Click"/>
-                                                <CheckBox Name="M127" Content="ABS axis X2" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[10]}" IsEnabled="{Binding globals.RunInstrucTion[10]}" Click="M127_Click"/>
-                                                <CheckBox Name="M128" Content="ABS axis Y" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[11]}" IsEnabled="{Binding globals.RunInstrucTion[11]}" Click="M128_Click"/>
-                                                <CheckBox Name="M125" Content="ABS axis R" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[8]}" IsEnabled="{Binding globals.RunInstrucTion[8]}" Click="M125_Click"/>
+                                                <CheckBox Name="M184" Content="ABS multi axis" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[12]}" IsEnabled="{Binding globals.RunInstrucTion[12]}" Click="M184_Click"/>
+                                                <CheckBox Name="M181" Content="ABS axis X1" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[9]}" IsEnabled="{Binding globals.RunInstrucTion[9]}" Click="M181_Click"/>
+                                                <CheckBox Name="M182" Content="ABS axis X2" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[10]}" IsEnabled="{Binding globals.RunInstrucTion[10]}" Click="M182_Click"/>
+                                                <CheckBox Name="M183" Content="ABS axis Y" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[11]}" IsEnabled="{Binding globals.RunInstrucTion[11]}" Click="M183_Click"/>
+                                                <CheckBox Name="M180" Content="ABS axis R" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[8]}" IsEnabled="{Binding globals.RunInstrucTion[8]}" Click="M180_Click"/>
                                             </StackPanel>
                                             <StackPanel Margin="20,0,0,0">
-                                                <CheckBox Name="M122" Content="JOG Increamental axis X1" Margin="1,4,1,1" IsChecked="{Binding globals.RunInstrucTion[1]}" IsEnabled="{Binding globals.RunInstrucTion[1]}"/>
-                                                <CheckBox Name="M123" Content="JOG Increamental axis X2" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[2]}" IsEnabled="{Binding globals.RunInstrucTion[2]}"/>
-                                                <CheckBox Name="M124" Content="JOG Increamental axis Y" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[3]}" IsEnabled="{Binding globals.RunInstrucTion[3]}"/>
-                                                <CheckBox Name="M121" Content="JOG Increamental axis R" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[0]}" IsEnabled="{Binding globals.RunInstrucTion[0]}"/>
+                                                <CheckBox Name="M186" Content="JOG Increamental axis X1" Margin="1,4,1,1" IsChecked="{Binding globals.RunInstrucTion[1]}" IsEnabled="{Binding globals.RunInstrucTion[1]}" Click="M181_Click"/>
+                                                <CheckBox Name="M187" Content="JOG Increamental axis X2" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[2]}" IsEnabled="{Binding globals.RunInstrucTion[2]}" Click="M182_Click"/>
+                                                <CheckBox Name="M188" Content="JOG Increamental axis Y" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[3]}" IsEnabled="{Binding globals.RunInstrucTion[3]}" Click="M183_Click"/>
+                                                <CheckBox Name="M185" Content="JOG Increamental axis R" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[0]}" IsEnabled="{Binding globals.RunInstrucTion[0]}" Click="M180_Click"/>
 
-                                                <CheckBox Name="D10_1" Content="JOG Continuos axis X1" Margin="1,2,1,1"/>
-                                                <CheckBox Name="D11_1" Content="JOG Continuos axis X2" Margin="1,2,1,1"/>
-                                                <CheckBox Name="D12_1" Content="JOG Continuos axis Y" Margin="1,2,1,1"/>
-                                                <CheckBox Name="D9_1" Content="JOG Continuos axis R" Margin="1,2,1,1"/>
+                                                <CheckBox Name="D10_1" Content="JOG Continuos axis X1" Margin="1,2,1,1" IsEnabled="False"/>
+                                                <CheckBox Name="D11_1" Content="JOG Continuos axis X2" Margin="1,2,1,1" IsEnabled="False"/>
+                                                <CheckBox Name="D12_1" Content="JOG Continuos axis Y" Margin="1,2,1,1" IsEnabled="False"/>
+                                                <CheckBox Name="D9_1" Content="JOG Continuos axis R" Margin="1,2,1,1" IsEnabled="False"/>
                                             </StackPanel>
                                             <StackPanel Margin="20,0,0,0">
-                                                <CheckBox Name="M110" Content="OPR axis X1" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[5]}" IsEnabled="{Binding globals.RunInstrucTion[5]}"/>
-                                                <CheckBox Name="M111" Content="OPR axis X2" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[6]}" IsEnabled="{Binding globals.RunInstrucTion[6]}"/>
-                                                <CheckBox Name="M112" Content="OPR axis Y" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[7]}" IsEnabled="{Binding globals.RunInstrucTion[7]}"/>
-                                                <CheckBox Name="M109" Content="OPR axis R" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[4]}" IsEnabled="{Binding globals.RunInstrucTion[4]}"/>
+                                                <CheckBox Name="M110" Content="OPR axis X1" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[5]}" IsEnabled="{Binding globals.RunInstrucTion[5]}" Click="M181_Click"/>
+                                                <CheckBox Name="M111" Content="OPR axis X2" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[6]}" IsEnabled="{Binding globals.RunInstrucTion[6]}" Click="M182_Click"/>
+                                                <CheckBox Name="M112" Content="OPR axis Y" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[7]}" IsEnabled="{Binding globals.RunInstrucTion[7]}" Click="M183_Click"/>
+                                                <CheckBox Name="M109" Content="OPR axis R" Margin="1,2,1,1" IsChecked="{Binding globals.RunInstrucTion[4]}" IsEnabled="{Binding globals.RunInstrucTion[4]}" Click="M180_Click"/>
 
                                                 <CheckBox Name="D46_1" Content="OPR Finish Axis X1" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[1]}"/>
                                                 <CheckBox Name="D46_2" Content="OPR Finish Axis X2" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[2]}"/>
@@ -185,10 +185,10 @@
                                             </StackPanel>
 
                                             <StackPanel Margin="20,0,0,0">
-                                                <CheckBox Name="D45_1" Content="Servo ready X1" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[1]}"/>
-                                                <CheckBox Name="D45_2" Content="Servo ready X2" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[2]}"/>
-                                                <CheckBox Name="D45_3" Content="Servo ready Y" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[3]}"/>
-                                                <CheckBox Name="D45_0" Content="Servo ready R" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[0]}"/>
+                                                <CheckBox Name="D45_1" Content="Servo ready X1" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.ServoReadys[1]}"/>
+                                                <CheckBox Name="D45_2" Content="Servo ready X2" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.ServoReadys[2]}"/>
+                                                <CheckBox Name="D45_3" Content="Servo ready Y" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.ServoReadys[3]}"/>
+                                                <CheckBox Name="D45_0" Content="Servo ready R" Margin="1,4,1,1" IsEnabled="False" IsChecked="{Binding globals.ServoReadys[0]}"/>
                                                 <CheckBox Name="D46_9" Content="Pulse stop axis X1" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[9]}"/>
                                                 <CheckBox Name="D46_10" Content="Pulse stop axis X2" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[10]}"/>
                                                 <CheckBox Name="D46_11" Content="Pulse stop axis Y" Margin="1,2,1,1" IsEnabled="False" IsChecked="{Binding globals.OprAndLimit[11]}"/>
@@ -301,7 +301,9 @@
                             </Grid>
                         </Grid>
                     </TabItem>
-
+                    <TabItem Header="Setup Model">
+                        
+                    </TabItem>
                 </TabControl>
             </Grid>
             <Grid Grid.Column="0">
@@ -321,13 +323,14 @@
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid Grid.Column="0" Margin="2,0,2,0">
-                                        <StackPanel VerticalAlignment="Center">
+
+                                        <StackPanel VerticalAlignment="Center" IsEnabled="{Binding Emergence}">
                                             <Button Name="PauseHome" Content="Pause Home" Margin="1,1,1,1" Height="57.92" Width="75" Background="DimGray" Foreground="White" Click="PauseHome_Click"/>
                                             <Button Name="HomeAll" Content="Home All" Margin="1,1,1,1" Height="57.92" Width="75" Background="DimGray" Foreground="White" Click="HomeAll_Click"/>
                                         </StackPanel>
                                     </Grid>
                                     <Grid Grid.Column="1" Margin="2,0,2,0">
-                                        <StackPanel VerticalAlignment="Center">
+                                        <StackPanel VerticalAlignment="Center" IsEnabled="{Binding Emergence}">
                                             <Button x:Name="HomeX1X2" Content="Home X1-X2" Height="38" Width="75" Margin="1,1,1,1" Background="DimGray" Foreground="White" Click="HomeX1X2_Click"/>
                                             <Button x:Name="HomeY" Content="Home Y" Height="38"  Width="75" Margin="1,1,1,1" Background="DimGray" Foreground="White" Click="HomeY_Click"/>
                                             <Button x:Name="HomeR" Content="Home R" Height="38"  Width="75" Margin="1,1,1,1" Background="DimGray" Foreground="White" Click="HomeR_Click"/>
@@ -524,7 +527,7 @@
                             <Button Name="btnSwitchMode" Content="AUTO/MANUAL" Margin="2,2,2,2" FontSize="12" Width="100" Height="30" Background="Aqua" FontWeight="Bold" Click="btnSwitchMode_Click"/>
                             <Button Name="btnRecycle" Content="RECYCLE" Margin="2,2,2,2" FontSize="12" Width="100" Height="30" FontWeight="Bold" Click="btnRecycle_Click" Background="{Binding ColorRecycle}"/>
                             <Button Name="btnPointToPointMode" Content="Human Control" Margin="2,2,2,2" FontSize="12" Width="100" Height="30" FontWeight="Bold" Click="btnPointToPointMode_Click"/>
-                            <Button Name="btnSelfCheck" Content="Self Check" Margin="2,2,2,2" FontSize="12" Width="100" Height="30" FontWeight="Bold" Click="btnSelfCheck_Click"/>
+                            <Button Name="btnSelfCheck" Content="Self Check" Margin="2,2,2,2" FontSize="12" Width="100" Height="30" FontWeight="Bold" Click="btnSelfCheck_Click" IsEnabled="{Binding EnableSelfCheck}"/>
 
                         </StackPanel>
                     </Viewbox>
@@ -700,14 +703,17 @@
                         <Grid>
                             <!--<Viewbox StretchDirection="Both">-->
                             <StackPanel>
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                    <Label Content="Current File: " Width="75" Height="30" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="2,2,2,2" HorizontalAlignment="Left"/>
-                                    <Label Name="lblCurrentFileGcode" Width="280" Height="30" VerticalContentAlignment="Center" HorizontalAlignment="Center" FontSize="12" Margin="2,2,2,2" BorderBrush="Black" BorderThickness="1"/>
-                                    <Button Name="btnOpenFileGocode" Content="Browser" Width="50" Height="30" Margin="2,2,2,2" HorizontalAlignment="Right"/>
-                                </StackPanel>
+                                <Viewbox>
+                                    <StackPanel Orientation="Horizontal" Margin="2,10,10,2">
+                                        <Label Content="Current File: " Width="75" Height="30" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="2,2,2,2" HorizontalAlignment="Left"/>
+                                        <Label Name="lblCurrentFileGcode" Width="250" Height="30" VerticalContentAlignment="Center" HorizontalAlignment="Center" FontSize="12" Margin="2,2,2,2" BorderBrush="Black" BorderThickness="1"/>
+                                        <Button Name="btnOpenFileGocode" Content="Browser" Width="50" Height="30" Margin="2,2,2,2" HorizontalAlignment="Right"/>
+                                        <Button Name="btnWriteGcodeToPLC" Content="Write Gcode to PLC" Width="120" Height="30" Margin="2,2,2,2" Click="btnWriteGcodeToPLC_Click" IsEnabled="{Binding EnableModify}"/>
+                                        <Button Name="btnWriteModelToPLC" Content="Write Model to PLC" Width="120" Height="30" Margin="2,2,2,2" Click="btnWriteModelToPLC_Click" IsEnabled="{Binding EnableModify}"/>
+                                    </StackPanel>
+                                </Viewbox>
                                 <StackPanel  HorizontalAlignment="Left" Margin="1,10,1,1">
-                                    <Button Name="btnWriteGcodeToPLC" Content="Write Gcode to PLC" Width="120" Height="30" Margin="2,2,2,2" Click="btnWriteGcodeToPLC_Click" IsEnabled="{Binding EnableModify}"/>
-                                    <Button Name="btnWriteModelToPLC" Content="Write Model to PLC" Width="120" Height="30" Margin="2,2,2,2" Click="btnWriteModelToPLC_Click" IsEnabled="{Binding EnableModify}"/>
+                                    
                                 </StackPanel>
                             </StackPanel>
                             <!--</Viewbox>-->

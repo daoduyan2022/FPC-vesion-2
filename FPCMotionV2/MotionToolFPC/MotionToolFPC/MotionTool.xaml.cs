@@ -53,6 +53,8 @@ namespace MotionToolFPC
         public JogMode _jogmode { get; set; } = JogMode.Incremental; // JOG mode
         public bool ModeRun { get; set; } = false; // Enable operation in AutoMode
         public bool EnableModify { get; set; } = false; // Enable modify: JOG, Parameter, DataPoint in Manual mode
+        public bool EnableSelfCheck { get; set; } = false; // 
+        public bool Emergence { get; set; } = false; // Emergence
         public string TextLight1 { get; set; } = " Light OFF";
         public string TextLight2 { get; set; } = " Light OFF";
         public string TextLight3 { get; set; } = " Light OFF";
@@ -505,16 +507,7 @@ namespace MotionToolFPC
                 ColorStatus_Y = Brushes.Yellow;
             }
 
-            if (globals.D0D499[205] == 0)
-            {
-                StStatusMachine = "Pause";
-                ColorStatusMachine = Brushes.Yellow;
-            }
-            else
-            {
-                StStatusMachine = "Running";
-                ColorStatusMachine = Brushes.Green;
-            }
+            
 
             if (globals.D0D499[203] == 1)
             {
@@ -555,6 +548,29 @@ namespace MotionToolFPC
                 ColorRecycle = Brushes.Gray;
             }
 
+            if (globals.D0D499[205] == 0 && !globals.X20X37[0])
+            {
+                StStatusMachine = "Pause";
+                ColorStatusMachine = Brushes.Yellow;
+                EnableSelfCheck = false;
+                Emergence = true;
+
+            }
+            if (globals.D0D499[205] == 1 && !globals.X20X37[0])
+            {
+                StStatusMachine = "Running";
+                ColorStatusMachine = Brushes.Green;
+                EnableSelfCheck = false;
+                Emergence = true;
+            }
+            if (globals.X20X37[0])
+            {
+                StStatusMachine = "Emergence";
+                ColorStatusMachine = Brushes.Red;
+                EnableModify = false;
+                EnableSelfCheck = false;
+                Emergence = false;
+            }
 
             AutoTargetPoint = (globals.D0D499[45] + 2) / 2 - 1;
             TimerUpdateUI.Enabled = true;
@@ -1528,25 +1544,6 @@ namespace MotionToolFPC
             }
         }
 
-        private void M127_Click(object sender, RoutedEventArgs e)
-        {
-            //Check D49.A
-
-
-        }
-
-        private void M128_Click(object sender, RoutedEventArgs e)
-        {
-            //Check D49.B
-
-        }
-
-        private void M125_Click(object sender, RoutedEventArgs e)
-        {
-            //Check D49.8
-
-        }
-
         private void btnSelfCheck_Click(object sender, RoutedEventArgs e)
         {
             if(globals.OprAndLimit[0] && globals.OprAndLimit[1] && globals.OprAndLimit[2] && globals.OprAndLimit[3])
@@ -1561,6 +1558,36 @@ namespace MotionToolFPC
 
         }
 
+        private void M181_Click(object sender, RoutedEventArgs e)
+        {
+            PLC.dataSends.Add(new dataSend(new int[] { 1 }, 181));
+            PLC.IsRead = Mode.Write;
+        }
 
+        private void M182_Click(object sender, RoutedEventArgs e)
+        {
+            PLC.dataSends.Add(new dataSend(new int[] { 1 }, 182));
+            PLC.IsRead = Mode.Write;
+        }
+
+        private void M183_Click(object sender, RoutedEventArgs e)
+        {
+            PLC.dataSends.Add(new dataSend(new int[] { 1 }, 183));
+            PLC.IsRead = Mode.Write;
+        }
+
+        private void M180_Click(object sender, RoutedEventArgs e)
+        {
+            PLC.dataSends.Add(new dataSend(new int[] { 1 }, 180));
+            PLC.IsRead = Mode.Write;
+        }
+
+        private void M184_Click(object sender, RoutedEventArgs e)
+        {
+            PLC.dataSends.Add(new dataSend(new int[] { 1 }, 184));
+            PLC.IsRead = Mode.Write;
+        }
+
+        
     }
 }

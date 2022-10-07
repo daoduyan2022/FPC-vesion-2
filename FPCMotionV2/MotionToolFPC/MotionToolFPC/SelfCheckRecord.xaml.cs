@@ -213,7 +213,7 @@ namespace MotionToolFPC
 
                 }
             }
-            if (Step == 4 && !flag5_0)
+            if (Step == 4)
             {
                 if (!flag5_0)
                 {

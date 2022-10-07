@@ -14,10 +14,10 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="1">
-            <ProgressBar Name="pgbSelfCheck" Minimum="0" Maximum="100" Margin="20,5,20,5" Value="{Binding ValueProgress }"/>
+            <ProgressBar Name="pgbSelfCheck" Minimum="0" Maximum="100" Margin="20,5,20,5" Value="{Binding ValueProgress}"/>
         </Grid>
         <Grid Grid.Row="0">
-            <Label Content="Self check recording:" FontSize="20" FontWeight="Bold"/>
+            <Label Content="Self check recording:" FontSize="20" FontWeight="Bold" Background="DarkGray"/>
         </Grid>
         <Grid Grid.Row="2">
             <Label Name="lblRecordSelfTest" FontSize="15" Grid.ColumnSpan="2" Content="{Binding contentRecord}"/>
