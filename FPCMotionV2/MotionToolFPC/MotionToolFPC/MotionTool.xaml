@@ -322,8 +322,9 @@
                                           DragOver="TreeView_DragOver" 
                                           Drop="tvwCommand_Drop"
                                           MouseDown="tvwCommand_MouseDown"
+                                          MouseMove="tvwCommand_MouseMove"
                                           >
-                                    <TreeViewItem Header="Run Point">
+                                    <TreeViewItem Header="Run Point" AllowDrop="True" >
                                         <TreeViewItem Header="X1:"/>
                                         <TreeViewItem Header="Speed X1:"/>
                                         <TreeViewItem Header="X2:"/>
@@ -331,11 +332,11 @@
                                         <TreeViewItem Header="Y:"/>
                                         <TreeViewItem Header="Speed Y:"/>
                                     </TreeViewItem>
-                                    <TreeViewItem Header="Rotate">
+                                    <TreeViewItem Header="Rotate" AllowDrop="True" >
                                         <TreeViewItem Header="R:"/>
                                         <TreeViewItem Header="Speed R:"/>
                                     </TreeViewItem>
-                                    <TreeViewItem Header="Dwell">
+                                    <TreeViewItem Header="Dwell" AllowDrop="True" >
                                         <TreeViewItem Header="Time:"/>
                                     </TreeViewItem>
                                 </TreeView>

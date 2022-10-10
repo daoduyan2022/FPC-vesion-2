@@ -1599,20 +1599,54 @@ namespace MotionToolFPC
 
         private void TreeView_DragOver(object sender, DragEventArgs e)
         {
-            
-        }
+            try
+            {
 
-        
+                Point currentPosition = e.GetPosition(tvwCommand);
+
+
+                if ((Math.Abs(currentPosition.X - _lastMouseDown.X) > 10.0) ||
+                    (Math.Abs(currentPosition.Y - _lastMouseDown.Y) > 10.0))
+                {
+                    // Verify that this is a valid drop and then store the drop target
+                    TreeViewItem item = GetNearestContainer(e.OriginalSource as UIElement);
+                    if (CheckDropTarget(draggedItem, item))
+                    {
+                        e.Effects = DragDropEffects.Move;
+                    }
+                    else
+                    {
+                        e.Effects = DragDropEffects.None;
+                    }
+                }
+                e.Handled = true;
+            }
+            catch (Exception)
+            {
+            }
+        }
 
         private void tvwCommand_Drop(object sender, DragEventArgs e)
         {
-            
+            try
+            {
+                e.Effects = DragDropEffects.None;
+                e.Handled = true;
+
+                // Verify that this is a valid drop and then store the drop target
+                TreeViewItem TargetItem = GetNearestContainer(e.OriginalSource as UIElement);
+                if (TargetItem != null && draggedItem != null)
+                {
+                    _target = TargetItem;
+                    e.Effects = DragDropEffects.Move;
+
+                }
+            }
+            catch (Exception)
+            {
+            }
         }
 
-        private void tvwCommand_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
 
         private void tvwCommand_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -1624,16 +1658,81 @@ namespace MotionToolFPC
 
         private void tvwCommand_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed)
+            try
             {
-                Point currentPosition = e.GetPosition(tvwCommand);
-                draggedItem = (TreeViewItem)tvwCommand.SelectedItem;
-                if (draggedItem != null)
+                if (e.LeftButton == MouseButtonState.Pressed)
                 {
-                    DragDropEffects finalDropEffect = DragDrop.DoDragDrop(tvwCommand, tvwCommand.SelectedValue,
+                    Point currentPosition = e.GetPosition(tvwCommand);
+
+
+                    if ((Math.Abs(currentPosition.X - _lastMouseDown.X) > 10.0) ||
+                        (Math.Abs(currentPosition.Y - _lastMouseDown.Y) > 10.0))
+                    {
+                        draggedItem = (TreeViewItem)tvwCommand.SelectedItem;
+                        if (draggedItem != null)
+                        {
+                            DragDropEffects finalDropEffect = DragDrop.DoDragDrop(tvwCommand, tvwCommand.SelectedValue,
                                 DragDropEffects.Move);
+                            //Checking target is not null and item is dragging(moving)
+                            if ((finalDropEffect == DragDropEffects.Move) && (_target != null))
+                            {
+                                // A Move drop was accepted
+                                if (!draggedItem.Header.ToString().Equals(_target.Header.ToString()))
+                                {
+                                    TreeViewItem newItem = new TreeViewItem();
+                                    newItem.Header = draggedItem.Header;
+                                    
+                                    foreach (TreeViewItem item in draggedItem.Items)
+                                    {
+                                        TreeViewItem Item1 = new TreeViewItem();
+                                        Item1.Header = item.Header;
+                                        newItem.Items.Add(Item1);
+                                    }
+
+                                    int index = tvwCommand.Items.IndexOf(_target);
+                                    tvwCommand.Items.Insert(index, newItem);
+
+                                    _target = null;
+                                    draggedItem = null;
+                                }
+
+                            }
+                        }
+                    }
                 }
             }
+            catch (Exception)
+            {
+            }
+        }
+
+        private TreeViewItem GetNearestContainer(UIElement element)
+        {
+            // Walk up the element tree to the nearest tree view item.
+            TreeViewItem container = element as TreeViewItem;
+            while ((container == null) && (element != null))
+            {
+                element = VisualTreeHelper.GetParent(element) as UIElement;
+                container = element as TreeViewItem;
+            }
+            return container;
+        }
+
+        private void tvwCommand_MouseMove_1(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private bool CheckDropTarget(TreeViewItem _sourceItem, TreeViewItem _targetItem)
+        {
+            //Check whether the target item is meeting your condition
+            bool _isEqual = false;
+            if (!_sourceItem.Header.ToString().Equals(_targetItem.Header.ToString()))
+            {
+                _isEqual = true;
+            }
+            return _isEqual;
+
         }
     }
 }
