@@ -16,5 +16,5 @@ DEBUG;TRACE
 16-981341540
 MotionTool.xaml;SelfCheckRecord.xaml;WaittingConnectPLC.xaml;WaittingWindow.xaml;
 
-False
+True
 

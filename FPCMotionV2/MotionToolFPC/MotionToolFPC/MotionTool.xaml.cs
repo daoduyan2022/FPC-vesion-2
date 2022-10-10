@@ -1588,6 +1588,52 @@ namespace MotionToolFPC
             PLC.IsRead = Mode.Write;
         }
 
+
+        Point _lastMouseDown;
+        TreeViewItem draggedItem, _target;
+
+        private void TreeView_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effects = e.AllowedEffects;
+        }
+
+        private void TreeView_DragOver(object sender, DragEventArgs e)
+        {
+            
+        }
+
         
+
+        private void tvwCommand_Drop(object sender, DragEventArgs e)
+        {
+            
+        }
+
+        private void tvwCommand_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void tvwCommand_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                _lastMouseDown = e.GetPosition(tvwCommand);
+            }
+        }
+
+        private void tvwCommand_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                Point currentPosition = e.GetPosition(tvwCommand);
+                draggedItem = (TreeViewItem)tvwCommand.SelectedItem;
+                if (draggedItem != null)
+                {
+                    DragDropEffects finalDropEffect = DragDrop.DoDragDrop(tvwCommand, tvwCommand.SelectedValue,
+                                DragDropEffects.Move);
+                }
+            }
+        }
     }
 }

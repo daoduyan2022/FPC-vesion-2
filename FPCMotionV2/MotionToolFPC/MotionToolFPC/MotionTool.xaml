@@ -22,7 +22,7 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="2" Margin="10,0,0,0">
-                <TabControl>
+                <TabControl Margin="-5,0,5,0">
                     <TabItem Header="Machine Diagnostics">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -203,7 +203,15 @@
                         </Grid>
                     </TabItem>
 
-                    <TabItem Header="Offset">
+                    <TabItem Header="Offset" RenderTransformOrigin="0.5,0.5">
+                        <TabItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-0.368"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TabItem.RenderTransform>
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5*"/>
@@ -302,7 +310,42 @@
                         </Grid>
                     </TabItem>
                     <TabItem Header="Setup Model">
-                        
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Row="0">
+                                <TreeView Name="tvwCommand" HorizontalAlignment="Left" AllowDrop="True" 
+                                          DragEnter="TreeView_DragEnter" 
+                                          DragOver="TreeView_DragOver" 
+                                          Drop="tvwCommand_Drop"
+                                          MouseDown="tvwCommand_MouseDown"
+                                          >
+                                    <TreeViewItem Header="Run Point">
+                                        <TreeViewItem Header="X1:"/>
+                                        <TreeViewItem Header="Speed X1:"/>
+                                        <TreeViewItem Header="X2:"/>
+                                        <TreeViewItem Header="Speed X2:"/>
+                                        <TreeViewItem Header="Y:"/>
+                                        <TreeViewItem Header="Speed Y:"/>
+                                    </TreeViewItem>
+                                    <TreeViewItem Header="Rotate">
+                                        <TreeViewItem Header="R:"/>
+                                        <TreeViewItem Header="Speed R:"/>
+                                    </TreeViewItem>
+                                    <TreeViewItem Header="Dwell">
+                                        <TreeViewItem Header="Time:"/>
+                                    </TreeViewItem>
+                                </TreeView>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TreeView Name="tvwProgram" AllowDrop="True">
+                                    
+                                </TreeView>
+                            </Grid>
+                        </Grid>
                     </TabItem>
                 </TabControl>
             </Grid>
@@ -416,72 +459,53 @@
                 <Grid Grid.Row="1">
                     <TabControl>
                         <TabItem Header="Current state">
-                            <Viewbox>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid Grid.Row="0">
-                                        <!--<Viewbox StretchDirection="Both">-->
-                                        <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
-                                            <Label Content="Status machine:" Width="145" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
-                                            <Label Name="lblStatusMachine" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" 
-                                               Background="{Binding ColorStatusMachine}" Content="{Binding StStatusMachine}" BorderBrush="White" BorderThickness="3" 
-                                               Margin="2,2,2,2" FontWeight="Bold" Foreground="Black" Width="235" FontSize="20"/>
-                                        </StackPanel>
-                                        <!--</Viewbox>-->
-                                    </Grid>
-                                    <Grid Grid.Row="1">
-                                        <!--<Viewbox>-->
-                                        <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
-                                            <Label Content="Run mode: " Width="145" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
-                                            <Label Name="lblRunMode" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" 
-                                               Background="{Binding ColorRunMode}" Content="{Binding StRunMode}" BorderBrush="White" BorderThickness="3" 
-                                               Margin="2,2,2,2" FontWeight="Bold" Foreground="Black"
-                                               Width="235" FontSize="20"/>
-                                        </StackPanel>
-                                        <!--</Viewbox>-->
-                                    </Grid>
-                                    <Grid Grid.Row="2">
-                                        <!--<Viewbox>-->
-                                        <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
-                                            <Label Content="Current step of progress: " VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                                            <Label Name="lblCurrentStep" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" 
-                                               Content="{Binding StCurrentStep}" BorderBrush="White" BorderThickness="3" 
-                                               Margin="2,2,2,2" FontWeight="Bold" Foreground="Black"
-                                               Width="235" FontSize="15"/>
-                                        </StackPanel>
-                                        <!--</Viewbox>-->
-                                    </Grid>
-                                    <Grid Grid.Row="3">
-                                        <!--<Viewbox>-->
-                                        <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
-                                            <Label Content="Target Point: " Width="145" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
-                                            <Label Name="lblTargetPoint" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" 
-                                               Content="{Binding AutoTargetPoint}" BorderBrush="White" BorderThickness="3" 
-                                               Margin="2,2,2,2" FontWeight="Bold" Foreground="Black"
-                                               Width="235" FontSize="20"/>
-                                        </StackPanel>
-                                        <!--</Viewbox>-->
-                                    </Grid>
-                                    <Grid Grid.Row="4">
-                                        <!--<Viewbox>-->
-                                        <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
-                                            <Label Content="Cycle Time: " Width="145" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
-                                            <Label Name="lblCycleTime" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" 
-                                               Content="{Binding CycleTime}" BorderBrush="White" BorderThickness="3" 
-                                               Margin="2,2,2,2" FontWeight="Bold" Foreground="Black"
-                                               Width="235" FontSize="20"/>
-                                        </StackPanel>
-                                        <!--</Viewbox>-->
-                                    </Grid>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1.5*"/>
+                                </Grid.ColumnDefinitions>
 
-                                </Grid>
-                            </Viewbox>
+                                <Label Content="Status machine:" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.Row="0" Grid.Column="0"/>
+                                <Label Name="lblStatusMachine" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" 
+                                    Background="{Binding ColorStatusMachine}" Content="{Binding StStatusMachine}" BorderBrush="White" BorderThickness="3" 
+                                    Margin="10,5,10,5" FontWeight="Bold" Foreground="Black" FontSize="20" Grid.Row="0" Grid.Column="1"/>
+
+                                <Label Content="Run mode: " VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.Row="1" Grid.Column="0"/>
+
+                                <Label Name="lblRunMode" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" 
+                                        Background="{Binding ColorRunMode}" Content="{Binding StRunMode}" BorderBrush="White" BorderThickness="3" 
+                                        Margin="10,5,10,5" FontWeight="Bold" Foreground="Black"
+                                        FontSize="20" Grid.Row="1" Grid.Column="1"/>
+
+                                <Label Content="Current step of progress: " VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.Row="2" Grid.Column="0"/>
+
+                                <Label Name="lblCurrentStep" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" 
+                                            Content="{Binding StCurrentStep}" BorderBrush="White" BorderThickness="3" 
+                                            Margin="10,5,10,5" FontWeight="Bold" Foreground="Black" Grid.Row="2" Grid.Column="1"/>
+
+                                <Label Content="Target Point: " VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.Row="3" Grid.Column="0"/>
+
+                                <Label Name="lblTargetPoint" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" 
+                                               Content="{Binding AutoTargetPoint}" BorderBrush="White" BorderThickness="3" 
+                                               Margin="10,5,10,5" FontWeight="Bold" Foreground="Black"
+                                               FontSize="20" Grid.Row="3" Grid.Column="1"/>
+
+                                <Label Content="Cycle Time: " VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.Row="4" Grid.Column="0"/>
+
+                                <Label Name="lblCycleTime" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" 
+                                               Content="{Binding CycleTime}" BorderBrush="White" BorderThickness="3" 
+                                               Margin="10,5,10,5" FontWeight="Bold" Foreground="Black"
+                                               FontSize="20" Grid.Row="4" Grid.Column="1"/>
+
+                            </Grid>
+                            <!--</Viewbox>-->
 
                             <!--<StackPanel Orientation="Horizontal">
                                     <Label Content="Total: " VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
@@ -713,7 +737,7 @@
                                     </StackPanel>
                                 </Viewbox>
                                 <StackPanel  HorizontalAlignment="Left" Margin="1,10,1,1">
-                                    
+
                                 </StackPanel>
                             </StackPanel>
                             <!--</Viewbox>-->
