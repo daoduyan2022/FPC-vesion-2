@@ -7,6 +7,15 @@
              mc:Ignorable="d" 
              Background="DarkGray"
              d:DesignHeight="800" d:DesignWidth="1200">
+    <UserControl.Resources>
+        <ContextMenu x:Key="contextMenu">
+            <MenuItem Header="Delete" Click="MenuItem_Click"/>
+        </ContextMenu>
+        
+        <ContextMenu x:Key="contextMenuSourceTree">
+            <MenuItem Header="Add to program" Click="CtnAddTreeItem"/>
+        </ContextMenu>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="6*"/>
@@ -316,34 +325,96 @@
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <Grid Grid.Row="0">
-                                <TreeView Name="tvwCommand" HorizontalAlignment="Left" AllowDrop="True" 
+                            <Grid Grid.Column="1">
+                                
+                                <TreeView Name="tvwCommand" HorizontalAlignment="Left" AllowDrop="True" FontSize="15"
                                           DragEnter="TreeView_DragEnter" 
                                           DragOver="TreeView_DragOver" 
                                           Drop="tvwCommand_Drop"
                                           MouseDown="tvwCommand_MouseDown"
                                           MouseMove="tvwCommand_MouseMove"
+                                          KeyDown="tvwCommand_KeyDown"
+                                          MouseRightButtonDown="tvwCommand_MouseRightButtonDown"
+                                          PreviewMouseUp="tvwCommand_PreviewMouseUp"
+                                          MouseDoubleClick="tvwCommand_MouseDoubleClick"
                                           >
                                     <TreeViewItem Header="Run Point" AllowDrop="True" >
-                                        <TreeViewItem Header="X1:"/>
-                                        <TreeViewItem Header="Speed X1:"/>
-                                        <TreeViewItem Header="X2:"/>
-                                        <TreeViewItem Header="Speed X2:"/>
-                                        <TreeViewItem Header="Y:"/>
-                                        <TreeViewItem Header="Speed Y:"/>
+                                        <TreeViewItem Header="X1(um):0"/>
+                                        <TreeViewItem Header="Speed X1(cm/m):0"/>
+                                        <TreeViewItem Header="X2(um):0"/>
+                                        <TreeViewItem Header="Speed X2(cm/m):0"/>
+                                        <TreeViewItem Header="Y(um):0"/>
+                                        <TreeViewItem Header="Speed Y(cm/m):0"/>
                                     </TreeViewItem>
                                     <TreeViewItem Header="Rotate" AllowDrop="True" >
-                                        <TreeViewItem Header="R:"/>
-                                        <TreeViewItem Header="Speed R:"/>
+                                        <TreeViewItem Header="R(um):0"/>
+                                        <TreeViewItem Header="Speed(cm/m) R:0"/>
                                     </TreeViewItem>
                                     <TreeViewItem Header="Dwell" AllowDrop="True" >
-                                        <TreeViewItem Header="Time:"/>
+                                        <TreeViewItem Header="Time(ms):0"/>
                                     </TreeViewItem>
                                 </TreeView>
+                                
                             </Grid>
-                            <Grid Grid.Column="1">
-                                <TreeView Name="tvwProgram" AllowDrop="True">
-                                    
+                            <Grid Grid.Column="0">
+                                    <TreeView Name="tvwSource" HorizontalAlignment="Left" AllowDrop="True" FontSize="15" Margin="2,2,2,2"
+                                          DragEnter="tvwSource_DragEnter" 
+                                          DragOver="tvwSource_DragOver" 
+                                          Drop="tvwSource_Drop"
+                                          MouseDown="tvwSource_MouseDown"
+                                          MouseMove="tvwSource_MouseMove"
+                                          MouseRightButtonDown="tvwSource_MouseRightButtonDown"
+                                          >
+                                        <TreeViewItem Header="Run Point" AllowDrop="True" >
+                                            <TreeViewItem Header="X1:"/>
+                                            <TreeViewItem Header="Speed X1:"/>
+                                            <TreeViewItem Header="X2:"/>
+                                            <TreeViewItem Header="Speed X2:"/>
+                                            <TreeViewItem Header="Y:"/>
+                                            <TreeViewItem Header="Speed Y:"/>
+                                        </TreeViewItem>
+                                        <TreeViewItem Header="Rotate" AllowDrop="True" >
+                                            <TreeViewItem Header="R:"/>
+                                            <TreeViewItem Header="Speed R:"/>
+                                        </TreeViewItem>
+                                        <TreeViewItem Header="Dwell" AllowDrop="True" >
+                                            <TreeViewItem Header="Time:"/>
+                                        </TreeViewItem>
+                                        <TreeViewItem Header="Trigger Camera 1" AllowDrop="True"/>
+                                        <TreeViewItem Header="Trigger Camera 2" AllowDrop="True"/>
+                                        <TreeViewItem Header="Trigger Camera 3" AllowDrop="True"/>
+                                        <TreeViewItem Header="On Light Camera 1" AllowDrop="True"/>
+                                        <TreeViewItem Header="On Light Camera 2" AllowDrop="True"/>
+                                        <TreeViewItem Header="On Light Camera 3" AllowDrop="True"/>
+                                        
+                                        <TreeViewItem Header="Off Light Camera 1" AllowDrop="True"/>
+                                        <TreeViewItem Header="Off Light Camera 2" AllowDrop="True"/>
+                                        <TreeViewItem Header="Off Light Camera 3" AllowDrop="True"/>
+                                        
+                                        <TreeViewItem Header="Wait Camera 1 Done" AllowDrop="True"/>
+                                        <TreeViewItem Header="Wait Camera 2 Done" AllowDrop="True"/>
+                                        <TreeViewItem Header="Wait Camera 3 Done" AllowDrop="True"/>
+                                        <TreeViewItem Header="Wait Vision Program Ready" AllowDrop="True"/>
+                                        
+                                        <TreeViewItem Header="Up Cylinder 1" AllowDrop="True"/>
+                                        <TreeViewItem Header="Up Cylinder 2" AllowDrop="True"/>
+                                        <TreeViewItem Header="Up Cylinder 1 and 2" AllowDrop="True"/>
+                                        <TreeViewItem Header="Down Cylinder 1" AllowDrop="True"/>
+                                        <TreeViewItem Header="Down Cylinder 2" AllowDrop="True"/>
+                                        <TreeViewItem Header="Down Cylinder 1 and 2" AllowDrop="True"/>
+                                        
+                                        <TreeViewItem Header="Check servo X1 ready" AllowDrop="True"/>
+                                        <TreeViewItem Header="Check servo X2 ready" AllowDrop="True"/>
+                                        <TreeViewItem Header="Check servo Y ready" AllowDrop="True"/>
+                                        <TreeViewItem Header="Check servo R ready" AllowDrop="True"/>
+                                        
+                                        <TreeViewItem Header="Check sensor up cylinder 1" AllowDrop="True"/>
+                                        <TreeViewItem Header="Check sensor down cylinder 1" AllowDrop="True"/>
+                                        <TreeViewItem Header="Check sensor up cylinder 2" AllowDrop="True"/>
+                                        <TreeViewItem Header="Check sensor down cylinder 2" AllowDrop="True"/>
+                                        
+                                        <TreeViewItem Header="Finish Progress" AllowDrop="True"/>
+                                        <TreeViewItem Header="Complete Capture" AllowDrop="True"/>
                                 </TreeView>
                             </Grid>
                         </Grid>

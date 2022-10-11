@@ -57,15 +57,24 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RInfor.xaml.cs">
+      <DependentUpon>RInfor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SelfCheckRecord.xaml.cs">
       <DependentUpon>SelfCheckRecord.xaml</DependentUpon>
     </Compile>
     <Compile Include="Structs.cs" />
+    <Compile Include="TimerInfor.xaml.cs">
+      <DependentUpon>TimerInfor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WaittingConnectPLC.xaml.cs">
       <DependentUpon>WaittingConnectPLC.xaml</DependentUpon>
     </Compile>
     <Compile Include="WaittingWindow.xaml.cs">
       <DependentUpon>WaittingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XYInfor.xaml.cs">
+      <DependentUpon>XYInfor.xaml</DependentUpon>
     </Compile>
     <Page Include="MotionTool.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -77,7 +86,15 @@
       <DependentUpon>MotionTool.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="RInfor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SelfCheckRecord.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TimerInfor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -86,6 +103,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WaittingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XYInfor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

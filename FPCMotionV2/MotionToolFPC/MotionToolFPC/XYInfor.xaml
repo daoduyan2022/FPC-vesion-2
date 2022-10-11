@@ -1,0 +1,36 @@
+﻿<Window x:Class="MotionToolFPC.XYInfor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MotionToolFPC"
+        mc:Ignorable="d"
+        Title="X1_X2_Y" Height="150" Width="300" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Axis" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="0"/>
+        <Label Content="X1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="1"/>
+        <Label Content="X2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="2"/>
+        <Label Content="Y" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="3"/>
+        
+        <Label Content="Coordinate" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1" Grid.Row="0"/>
+        <TextBox Name="tbxCoordinateX1" Text="{Binding globals.enterCoordX1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1" Grid.Row="1" BorderThickness="1" BorderBrush="Gray" Margin="2,2,2,2"/>
+        <TextBox Name="tbxCoordinateX2" Text="{Binding globals.enterCoordX2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1" Grid.Row="2" BorderThickness="1" BorderBrush="Gray" Margin="2,2,2,2"/>
+        <TextBox Name="tbxCoordinateY" Text="{Binding globals.enterCoordY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1" Grid.Row="3" BorderThickness="1" BorderBrush="Gray" Margin="2,2,2,2"/>
+
+        <Label Content="Speed" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="2" Grid.Row="0"/>
+        <TextBox Name="tbxSpeedX1" Text="{Binding globals.speedX1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="2" Grid.Row="1" BorderThickness="1" BorderBrush="Gray" Margin="2,2,2,2"/>
+        <TextBox Name="tbxSpeedX2" Text="{Binding globals.speedX2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="2" Grid.Row="2" BorderThickness="1" BorderBrush="Gray" Margin="2,2,2,2"/>
+        <TextBox Name="tbxSpeedY" Text="{Binding globals.speedY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="2" Grid.Row="3" BorderThickness="1" BorderBrush="Gray" Margin="2,2,2,2"/>
+    </Grid>
+</Window>

@@ -4,17 +4,17 @@
 library
 C#
 .cs
-D:\TSB\FPC new version\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\
 MotionToolFPC
 none
 false
 DEBUG;TRACE
 
-4-1060656342
+71876213691
 
-11-673778283
-16-981341540
-MotionTool.xaml;SelfCheckRecord.xaml;WaittingConnectPLC.xaml;WaittingWindow.xaml;
+14-1932780082
+16606219878
+MotionTool.xaml;RInfor.xaml;SelfCheckRecord.xaml;TimerInfor.xaml;WaittingConnectPLC.xaml;WaittingWindow.xaml;XYInfor.xaml;
 
 True
 

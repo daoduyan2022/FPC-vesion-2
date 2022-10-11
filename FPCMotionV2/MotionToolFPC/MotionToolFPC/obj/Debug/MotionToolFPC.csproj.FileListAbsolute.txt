@@ -119,3 +119,31 @@ D:\TSB_Project\FPC_10102022\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC
 D:\TSB_Project\FPC_10102022\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.CopyComplete
 D:\TSB_Project\FPC_10102022\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.dll
 D:\TSB_Project\FPC_10102022\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.pdb
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\MotionToolFPC.dll
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\MotionToolFPC.pdb
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\EasyModbus.dll
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\bin\Debug\EasyModbus.xml
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionTool.g.cs
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\SelfCheckRecord.g.cs
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\WaittingConnectPLC.g.cs
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\WaittingWindow.g.cs
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC_MarkupCompile.cache
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC_MarkupCompile.lref
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionTool.baml
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\SelfCheckRecord.baml
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\WaittingConnectPLC.baml
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\WaittingWindow.baml
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.g.resources
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.Properties.Resources.resources
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.GenerateResource.cache
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.CoreCompileInputs.cache
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.CopyComplete
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.dll
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.pdb
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\MotionToolFPC.csproj.AssemblyReference.cache
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\RInfor.g.cs
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\TimerInfor.g.cs
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\XYInfor.g.cs
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\RInfor.baml
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\TimerInfor.baml
+D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\MotionToolFPC\obj\Debug\XYInfor.baml

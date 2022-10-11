@@ -1591,6 +1591,9 @@ namespace MotionToolFPC
 
         Point _lastMouseDown;
         TreeViewItem draggedItem, _target;
+        TreeView Source;
+        bool CopyOrCut = false;
+        bool DragFromSource = false;
 
         private void TreeView_DragEnter(object sender, DragEventArgs e)
         {
@@ -1655,6 +1658,10 @@ namespace MotionToolFPC
                 _lastMouseDown = e.GetPosition(tvwCommand);
             }
         }
+        private void tvwCommand_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            DragFromSource = false;
+        }
 
         private void tvwCommand_MouseMove(object sender, MouseEventArgs e)
         {
@@ -1662,47 +1669,69 @@ namespace MotionToolFPC
             {
                 if (e.LeftButton == MouseButtonState.Pressed)
                 {
+                    if(e.LeftButton == MouseButtonState.Pressed)
+                    {
+                        CopyOrCut = false;
+                    }
+                    if (e.RightButton == MouseButtonState.Pressed)
+                    {
+                        CopyOrCut = true;
+                    }
                     Point currentPosition = e.GetPosition(tvwCommand);
-
+                    if (DragFromSource)
+                    {
+                        Source = tvwSource;
+                    }
+                    else
+                    {
+                        Source = tvwCommand;
+                        draggedItem = (TreeViewItem)tvwCommand.SelectedItem;
+                    }
 
                     if ((Math.Abs(currentPosition.X - _lastMouseDown.X) > 10.0) ||
                         (Math.Abs(currentPosition.Y - _lastMouseDown.Y) > 10.0))
                     {
-                        draggedItem = (TreeViewItem)tvwCommand.SelectedItem;
-                        if (draggedItem != null)
+                        if (draggedItem != null && (draggedItem.Parent == tvwCommand || draggedItem.Parent == tvwSource))
                         {
-                            DragDropEffects finalDropEffect = DragDrop.DoDragDrop(tvwCommand, tvwCommand.SelectedValue,
+                            DragDropEffects finalDropEffect = DragDrop.DoDragDrop(Source, Source.SelectedValue,
                                 DragDropEffects.Move);
                             //Checking target is not null and item is dragging(moving)
                             if ((finalDropEffect == DragDropEffects.Move) && (_target != null))
                             {
                                 // A Move drop was accepted
-                                if (!draggedItem.Header.ToString().Equals(_target.Header.ToString()))
+                                //if (!draggedItem.Header.ToString().Equals(_target.Header.ToString()))
+                                if (true)
                                 {
-                                    TreeViewItem newItem = new TreeViewItem();
-                                    newItem.Header = draggedItem.Header;
-                                    
-                                    foreach (TreeViewItem item in draggedItem.Items)
+                                    if (DragFromSource)
                                     {
-                                        TreeViewItem Item1 = new TreeViewItem();
-                                        Item1.Header = item.Header;
-                                        newItem.Items.Add(Item1);
+                                        CoppyItem(draggedItem, _target);
                                     }
+                                    else
+                                    {
+                                        MessageBoxResult result = MessageBox.Show("Do you want to remove old command ?", "Yes or No", MessageBoxButton.YesNo);
 
-                                    int index = tvwCommand.Items.IndexOf(_target);
-                                    tvwCommand.Items.Insert(index, newItem);
-
+                                        if (result == MessageBoxResult.Yes || DragFromSource)
+                                        {
+                                            CutItem(draggedItem, _target);
+                                        }
+                                        else
+                                        {
+                                            CoppyItem(draggedItem, _target);
+                                        }
+                                    }
                                     _target = null;
                                     draggedItem = null;
+                                    DragFromSource = false;
                                 }
-
                             }
                         }
                     }
+
                 }
             }
             catch (Exception)
             {
+                DragFromSource = false;
             }
         }
 
@@ -1718,21 +1747,274 @@ namespace MotionToolFPC
             return container;
         }
 
-        private void tvwCommand_MouseMove_1(object sender, MouseEventArgs e)
-        {
-
-        }
-
         private bool CheckDropTarget(TreeViewItem _sourceItem, TreeViewItem _targetItem)
         {
             //Check whether the target item is meeting your condition
             bool _isEqual = false;
-            if (!_sourceItem.Header.ToString().Equals(_targetItem.Header.ToString()))
+            if(_sourceItem != null && _targetItem != null)
             {
-                _isEqual = true;
+                //if (!_sourceItem.Header.ToString().Equals(_targetItem.Header.ToString()))
+                if (true)
+                {
+                    _isEqual = true;
+                }
             }
             return _isEqual;
+        }
+
+        
+
+        private void tvwSource_DragEnter(object sender, DragEventArgs e)
+        {
 
         }
+
+        private void tvwSource_DragOver(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void tvwSource_Drop(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void tvwSource_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void tvwSource_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(e.LeftButton == MouseButtonState.Pressed)
+            {
+                draggedItem = (TreeViewItem)tvwSource.SelectedItem;
+                DragFromSource = true;
+            }
+        }
+
+        private void tvwCommand_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Delete)
+            {
+                tvwCommand.Items.Remove(tvwCommand.SelectedItem);
+            }
+        }
+
+        private void tvwSource_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ContextMenu cm = this.FindResource("contextMenuSourceTree") as ContextMenu;
+            //cm.PlacementTarget = sender as Button;
+            cm.IsOpen = true;
+        }
+
+        private void btnDeFuntion_Click(object sender, RoutedEventArgs e)
+        {
+            if (tvwCommand.SelectedItem != null)
+            {
+                tvwCommand.Items.Remove(tvwCommand.SelectedItem);
+            }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (tvwCommand.SelectedItem != null)
+            {
+                tvwCommand.Items.Remove(tvwCommand.SelectedItem);
+            }
+        }
+        private void CtnAddTreeItem(object sender, RoutedEventArgs e)
+        {
+            if (tvwSource.SelectedItem != null)
+            {
+
+                AddItemFromSource();
+            }
+        }
+
+        private void tvwCommand_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ContextMenu cm = this.FindResource("contextMenu") as ContextMenu;
+            //cm.PlacementTarget = sender as Button;
+            cm.IsOpen = true;
+        }
+
+        
+
+        private void CutItem(TreeViewItem sourceItem, TreeViewItem targetItem)
+        {
+            TreeViewItem newItem = new TreeViewItem();
+            newItem.Header = draggedItem.Header;
+
+            foreach (TreeViewItem item in sourceItem.Items)
+            {
+                TreeViewItem Item1 = new TreeViewItem();
+                Item1.Header = item.Header;
+                newItem.Items.Add(Item1);
+            }
+
+            int index = tvwCommand.Items.IndexOf(targetItem);
+            tvwCommand.Items.Insert(index, newItem);
+            tvwCommand.Items.Remove(sourceItem);
+        }
+
+        private void CoppyItem(TreeViewItem sourceItem, TreeViewItem targetItem)
+        {
+            TreeViewItem newItem = new TreeViewItem();
+            newItem.Header = draggedItem.Header;
+
+            foreach (TreeViewItem item in sourceItem.Items)
+            {
+                TreeViewItem Item1 = new TreeViewItem();
+                Item1.Header = item.Header;
+                newItem.Items.Add(Item1);
+            }
+
+            int index = tvwCommand.Items.IndexOf(targetItem);
+            tvwCommand.Items.Insert(index, newItem);
+        }
+
+        private void tvwCommand_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            TreeViewItem cmd = (TreeViewItem)tvwCommand.SelectedItem;
+            string header = (string)cmd.Header;
+            if(header == CommandString[0])
+            {
+                GetInforCmdXY(cmd);
+                XYInfor xyform = new XYInfor();
+                xyform.ShowDialog();
+            }
+            
+            if(header == CommandString[1])
+            {
+                GetInforCmdR(cmd);
+                RInfor xyform = new RInfor();
+                xyform.ShowDialog();
+            }
+            
+            if(header == CommandString[2])
+            {
+                GetInforDwell(cmd);
+                TimerInfor xyform = new TimerInfor();
+                xyform.ShowDialog();
+                TakeInforCmdDwell(cmd);
+            }
+        }
+
+        private void AddItemFromSource()
+        {
+            TreeViewItem addItem = (TreeViewItem)tvwSource.SelectedItem;
+            TreeViewItem newItem = new TreeViewItem();
+            newItem.Header = addItem.Header;
+
+            foreach (TreeViewItem item in addItem.Items)
+            {
+                TreeViewItem Item1 = new TreeViewItem();
+                Item1.Header = item.Header;
+                newItem.Items.Add(Item1);
+            }
+
+            tvwCommand.Items.Add(newItem);
+        }
+
+        private void GetInforCmdXY(TreeViewItem cmd)
+        {
+            TreeViewItem x1 = (TreeViewItem)cmd.Items[0];
+            TreeViewItem x2 = (TreeViewItem)cmd.Items[1];
+            TreeViewItem y = (TreeViewItem)cmd.Items[2];
+            TreeViewItem spx1 = (TreeViewItem)cmd.Items[3];
+            TreeViewItem spx2 = (TreeViewItem)cmd.Items[4];
+            TreeViewItem spy = (TreeViewItem)cmd.Items[5];
+
+            string value_x1 = x1.Header.ToString().Split(':')[1];
+            string value_x2 = x2.Header.ToString().Split(':')[1];
+            string value_y = y.Header.ToString().Split(':')[1];
+            string value_spx1 = spx1.Header.ToString().Split(':')[1];
+            string value_spx2 = spx2.Header.ToString().Split(':')[1];
+            string value_spy = spy.Header.ToString().Split(':')[1];
+
+            globals.enterCoordX1 = Convert.ToInt32(value_x1);
+            globals.enterCoordX2 = Convert.ToInt32(value_x2);
+            globals.enterCoordY = Convert.ToInt32(value_y);
+            globals.speedX1 = Convert.ToInt32(value_spx1);
+            globals.speedX2 = Convert.ToInt32(value_spx2);
+            globals.speedY = Convert.ToInt32(value_spy);
+        }
+
+        private void TakeInforCmdXY(TreeViewItem cmd)
+        {
+
+        }
+
+        private void GetInforCmdR(TreeViewItem cmd)
+        {
+            TreeViewItem r = (TreeViewItem)cmd.Items[0];
+            TreeViewItem spr = (TreeViewItem)cmd.Items[1];
+
+            string value_r = r.Header.ToString().Split(':')[1];
+            string value_spr = spr.Header.ToString().Split(':')[1];
+
+            globals.enterCoordR = Convert.ToInt32(value_r);
+            globals.speedR = Convert.ToInt32(value_spr);
+        }
+
+        private void GetInforDwell(TreeViewItem cmd)
+        {
+            TreeViewItem time = (TreeViewItem)cmd.Items[0];
+            string value_time = time.Header.ToString().Split(':')[1];
+            globals.TimeDwell = Convert.ToInt32(value_time);
+        }
+        private void TakeInforCmdDwell(TreeViewItem cmd)
+        {
+            TreeViewItem time = (TreeViewItem)cmd.Items[0];
+            time.HeaderStringFormat = "Time(ms):" + globals.TimeDwell.ToString();
+        }
+
+        public string[] CommandString = new string[]
+        {
+            "Run Point",
+            "Rotate",
+            "Dwell",
+
+            "Trigger Camera 1",
+            "Trigger Camera 2",
+            "Trigger Camera 3",
+
+            "On Light Camera 1",
+            "On Light Camera 2",
+            "On Light Camera 3",
+
+            "Off Light Camera 1",
+            "Off Light Camera 2",
+            "Off Light Camera 3",
+
+            "Wait Camera 1 Done",
+            "Wait Camera 2 Done",
+            "Wait Camera 3 Done",
+
+            "Wait Vision Program Ready",
+
+            "Up Cylinder 1",
+            "Up Cylinder 2",
+            "Up Cylinder 1 and 2",
+
+            "Down Cylinder 1",
+            "Down Cylinder 2",
+            "Down Cylinder 1 and 2",
+
+            "Check servo X1 ready",
+            "Check servo X2 ready",
+            "Check servo Y ready",
+            "Check servo R ready",
+
+            "Check sensor up cylinder 1",
+            "Check sensor down cylinder 1",
+            
+            "Check sensor up cylinder 2",
+            "Check sensor down cylinder 2",
+
+            "Finish Progress",
+            "Complete Capture"
+        };
     }
 }

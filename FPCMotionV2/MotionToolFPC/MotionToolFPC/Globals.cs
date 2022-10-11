@@ -12,9 +12,9 @@ namespace MotionToolFPC
 {
     public class Globals
     {
-        public string PathConfig = @"D:\TSB_Project\FPC_10102022\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\Config\config.txt";
-        public string PathModel = @"D:\TSB_Project\FPC_10102022\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\Config\model2108.txt";
-        public string PathFunction = @"D:\TSB_Project\FPC_10102022\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\Config\Function.txt";
+        public string PathConfig = @"D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\Config\config.txt";
+        public string PathModel = @"D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\Config\model2108.txt";
+        public string PathFunction = @"D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\Config\Function.txt";
         private static Globals globals = null;
         public static Globals GetInstance()
         {
@@ -98,6 +98,16 @@ namespace MotionToolFPC
         public int OffsetX1 { get; set; } = 0;
         public int OffsetX2 { get; set; } = 0;
         public int OffsetY { get; set; } = 0;
+
+        public int enterCoordX1 { get; set; }
+        public int enterCoordX2 { get; set; }
+        public int enterCoordY { get; set; }
+        public int enterCoordR { get; set; }
+        public int speedX1 { get; set; }
+        public int speedX2 { get; set; }
+        public int speedY { get; set; }
+        public int speedR { get; set; }
+        public int TimeDwell { get; set; }
 
         public int[] IntToRegister(List<int> values)
         {
