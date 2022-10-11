@@ -1708,13 +1708,13 @@ namespace MotionToolFPC
                                     }
                                     else
                                     {
-                                        MessageBoxResult result = MessageBox.Show("Do you want to remove old command ?", "Yes or No", MessageBoxButton.YesNo);
+                                        MessageBoxResult result = MessageBox.Show("Do you want to remove old command ?", "Yes or No", MessageBoxButton.YesNoCancel);
 
-                                        if (result == MessageBoxResult.Yes || DragFromSource)
+                                        if (result == MessageBoxResult.Yes)
                                         {
                                             CutItem(draggedItem, _target);
                                         }
-                                        else
+                                        else if(result == MessageBoxResult.No)
                                         {
                                             CoppyItem(draggedItem, _target);
                                         }
@@ -1877,28 +1877,35 @@ namespace MotionToolFPC
         private void tvwCommand_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             TreeViewItem cmd = (TreeViewItem)tvwCommand.SelectedItem;
-            string header = (string)cmd.Header;
-            if(header == CommandString[0])
+            if(cmd != null)
             {
-                GetInforCmdXY(cmd);
-                XYInfor xyform = new XYInfor();
-                xyform.ShowDialog();
+                string header = (string)cmd.Header;
+                if (header == CommandString[0])
+                {
+                    GetInforCmdXY(cmd);
+                    XYInfor xyform = new XYInfor();
+                    xyform.ShowDialog();
+                    TakeInforCmdXY();
+                }
+
+                if (header == CommandString[1])
+                {
+                    GetInforCmdR(cmd);
+                    RInfor Rform = new RInfor();
+                    Rform.ShowDialog();
+                    TakeInforCmdR();
+
+                }
+
+                if (header == CommandString[2])
+                {
+                    GetInforDwell(cmd);
+                    TimerInfor Tform = new TimerInfor();
+                    Tform.ShowDialog();
+                    TakeInforCmdDwell();
+                }
             }
             
-            if(header == CommandString[1])
-            {
-                GetInforCmdR(cmd);
-                RInfor xyform = new RInfor();
-                xyform.ShowDialog();
-            }
-            
-            if(header == CommandString[2])
-            {
-                GetInforDwell(cmd);
-                TimerInfor xyform = new TimerInfor();
-                xyform.ShowDialog();
-                TakeInforCmdDwell(cmd);
-            }
         }
 
         private void AddItemFromSource()
@@ -1920,10 +1927,10 @@ namespace MotionToolFPC
         private void GetInforCmdXY(TreeViewItem cmd)
         {
             TreeViewItem x1 = (TreeViewItem)cmd.Items[0];
-            TreeViewItem x2 = (TreeViewItem)cmd.Items[1];
-            TreeViewItem y = (TreeViewItem)cmd.Items[2];
-            TreeViewItem spx1 = (TreeViewItem)cmd.Items[3];
-            TreeViewItem spx2 = (TreeViewItem)cmd.Items[4];
+            TreeViewItem x2 = (TreeViewItem)cmd.Items[2];
+            TreeViewItem y = (TreeViewItem)cmd.Items[4];
+            TreeViewItem spx1 = (TreeViewItem)cmd.Items[1];
+            TreeViewItem spx2 = (TreeViewItem)cmd.Items[3];
             TreeViewItem spy = (TreeViewItem)cmd.Items[5];
 
             string value_x1 = x1.Header.ToString().Split(':')[1];
@@ -1941,9 +1948,34 @@ namespace MotionToolFPC
             globals.speedY = Convert.ToInt32(value_spy);
         }
 
-        private void TakeInforCmdXY(TreeViewItem cmd)
+        private void TakeInforCmdXY()
         {
+            TreeViewItem RunPoint = new TreeViewItem();
+            TreeViewItem RunPoint_X1 = new TreeViewItem();
+            TreeViewItem RunPoint_SpX1 = new TreeViewItem();
+            TreeViewItem RunPoint_X2 = new TreeViewItem();
+            TreeViewItem RunPoint_SpX2 = new TreeViewItem();
+            TreeViewItem RunPoint_Y = new TreeViewItem();
+            TreeViewItem RunPoint_SpY = new TreeViewItem();
 
+            RunPoint.Header = "Run Point";
+            RunPoint_X1.Header = "X1(um):  " + globals.enterCoordX1.ToString();
+            RunPoint_SpX1.Header = "X1(cm/m):  " + globals.speedX1.ToString();
+            RunPoint_X2.Header = "X2(um):  " + globals.enterCoordX2.ToString();
+            RunPoint_SpX2.Header = "X2(cm/m):  " + globals.speedX2.ToString();
+            RunPoint_Y.Header = "Y(um):  " + globals.enterCoordY.ToString();
+            RunPoint_SpY.Header = "Y(cm/m):  " + globals.speedY.ToString();
+
+            RunPoint.Items.Add(RunPoint_X1);
+            RunPoint.Items.Add(RunPoint_SpX1);
+            RunPoint.Items.Add(RunPoint_X2);
+            RunPoint.Items.Add(RunPoint_SpX2);
+            RunPoint.Items.Add(RunPoint_Y);
+            RunPoint.Items.Add(RunPoint_SpY);
+
+            int index = tvwCommand.Items.IndexOf(tvwCommand.SelectedItem);
+            tvwCommand.Items.Remove(tvwCommand.SelectedItem);
+            tvwCommand.Items.Insert(index, RunPoint);
         }
 
         private void GetInforCmdR(TreeViewItem cmd)
@@ -1957,6 +1989,26 @@ namespace MotionToolFPC
             globals.enterCoordR = Convert.ToInt32(value_r);
             globals.speedR = Convert.ToInt32(value_spr);
         }
+        private void TakeInforCmdR()
+        {
+            TreeViewItem Rotate = new TreeViewItem();
+            TreeViewItem Rotate_R = new TreeViewItem();
+            TreeViewItem Rotate_SpR = new TreeViewItem();
+
+            Rotate.Header = "Rotate";
+            Rotate_R.Header = "R(um):  " + globals.enterCoordR.ToString();
+            Rotate_SpR.Header = "R(mdeg/m):  " + globals.speedR.ToString();
+
+            Rotate.Items.Add(Rotate_R);
+            Rotate.Items.Add(Rotate_SpR);
+
+            int index = tvwCommand.Items.IndexOf(tvwCommand.SelectedItem);
+            tvwCommand.Items.Remove(tvwCommand.SelectedItem);
+            tvwCommand.Items.Insert(index, Rotate);
+
+        }
+
+
 
         private void GetInforDwell(TreeViewItem cmd)
         {
@@ -1964,10 +2016,19 @@ namespace MotionToolFPC
             string value_time = time.Header.ToString().Split(':')[1];
             globals.TimeDwell = Convert.ToInt32(value_time);
         }
-        private void TakeInforCmdDwell(TreeViewItem cmd)
+        private void TakeInforCmdDwell()
         {
-            TreeViewItem time = (TreeViewItem)cmd.Items[0];
-            time.HeaderStringFormat = "Time(ms):" + globals.TimeDwell.ToString();
+            TreeViewItem Dwell = new TreeViewItem();
+            TreeViewItem Dwell_Time = new TreeViewItem();
+
+            Dwell.Header = "Dwell";
+            Dwell_Time.Header = "Time(ms):  " + globals.TimeDwell.ToString();
+
+            Dwell.Items.Add(Dwell_Time);
+
+            int index = tvwCommand.Items.IndexOf(tvwCommand.SelectedItem);
+            tvwCommand.Items.Remove(tvwCommand.SelectedItem);
+            tvwCommand.Items.Insert(index, Dwell);
         }
 
         public string[] CommandString = new string[]

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,6 +63,23 @@ namespace MotionToolFPC
             ID = id;
             Name = name;
         }
+    }
+
+    public class Command
+    {
+        public Command()
+        {
+            this.Agr = new ObservableCollection<Infor>();
+        }
+        public string Name { get; set; }
+
+        public ObservableCollection<Infor> Agr { get; set; }
+    }
+    public class Infor
+    {
+        public string ArgName { get; set; }
+
+        public int Value { get; set; }
     }
     public enum JogMode
     {

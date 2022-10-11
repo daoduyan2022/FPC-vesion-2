@@ -33,5 +33,10 @@ namespace MotionToolFPC
             this.DataContext = this;
             this.OnPropertyChanged();
         }
+
+        private void btnExcept_Click(object sender, RoutedEventArgs e)
+        {
+            OnPropertyChanged();
+        }
     }
 }

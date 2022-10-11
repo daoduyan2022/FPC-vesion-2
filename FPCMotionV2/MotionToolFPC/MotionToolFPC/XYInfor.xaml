@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MotionToolFPC"
         mc:Ignorable="d"
-        Title="X1_X2_Y" Height="150" Width="300" ResizeMode="NoResize">
+        Title="X1_X2_Y" Height="150" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -32,5 +32,6 @@
         <TextBox Name="tbxSpeedX1" Text="{Binding globals.speedX1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="2" Grid.Row="1" BorderThickness="1" BorderBrush="Gray" Margin="2,2,2,2"/>
         <TextBox Name="tbxSpeedX2" Text="{Binding globals.speedX2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="2" Grid.Row="2" BorderThickness="1" BorderBrush="Gray" Margin="2,2,2,2"/>
         <TextBox Name="tbxSpeedY" Text="{Binding globals.speedY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="2" Grid.Row="3" BorderThickness="1" BorderBrush="Gray" Margin="2,2,2,2"/>
+        <!--<Button Name="btnExcept" Content="Except" Grid.Column="2" Grid.Row="4" Width="40" Height="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnExcept_Click"/>-->
     </Grid>
 </Window>

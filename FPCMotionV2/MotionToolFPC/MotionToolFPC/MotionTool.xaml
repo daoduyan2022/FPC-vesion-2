@@ -15,6 +15,7 @@
         <ContextMenu x:Key="contextMenuSourceTree">
             <MenuItem Header="Add to program" Click="CtnAddTreeItem"/>
         </ContextMenu>
+
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -338,21 +339,7 @@
                                           PreviewMouseUp="tvwCommand_PreviewMouseUp"
                                           MouseDoubleClick="tvwCommand_MouseDoubleClick"
                                           >
-                                    <TreeViewItem Header="Run Point" AllowDrop="True" >
-                                        <TreeViewItem Header="X1(um):0"/>
-                                        <TreeViewItem Header="Speed X1(cm/m):0"/>
-                                        <TreeViewItem Header="X2(um):0"/>
-                                        <TreeViewItem Header="Speed X2(cm/m):0"/>
-                                        <TreeViewItem Header="Y(um):0"/>
-                                        <TreeViewItem Header="Speed Y(cm/m):0"/>
-                                    </TreeViewItem>
-                                    <TreeViewItem Header="Rotate" AllowDrop="True" >
-                                        <TreeViewItem Header="R(um):0"/>
-                                        <TreeViewItem Header="Speed(cm/m) R:0"/>
-                                    </TreeViewItem>
-                                    <TreeViewItem Header="Dwell" AllowDrop="True" >
-                                        <TreeViewItem Header="Time(ms):0"/>
-                                    </TreeViewItem>
+                                    
                                 </TreeView>
                                 
                             </Grid>
@@ -366,19 +353,19 @@
                                           MouseRightButtonDown="tvwSource_MouseRightButtonDown"
                                           >
                                         <TreeViewItem Header="Run Point" AllowDrop="True" >
-                                            <TreeViewItem Header="X1:"/>
-                                            <TreeViewItem Header="Speed X1:"/>
-                                            <TreeViewItem Header="X2:"/>
-                                            <TreeViewItem Header="Speed X2:"/>
-                                            <TreeViewItem Header="Y:"/>
-                                            <TreeViewItem Header="Speed Y:"/>
+                                            <TreeViewItem Header="X1:0"/>
+                                            <TreeViewItem Header="Speed X1:0"/>
+                                            <TreeViewItem Header="X2:0"/>
+                                            <TreeViewItem Header="Speed X2:0"/>
+                                            <TreeViewItem Header="Y:0"/>
+                                            <TreeViewItem Header="Speed Y:0"/>
                                         </TreeViewItem>
                                         <TreeViewItem Header="Rotate" AllowDrop="True" >
-                                            <TreeViewItem Header="R:"/>
-                                            <TreeViewItem Header="Speed R:"/>
+                                            <TreeViewItem Header="R:0"/>
+                                            <TreeViewItem Header="Speed R:0"/>
                                         </TreeViewItem>
                                         <TreeViewItem Header="Dwell" AllowDrop="True" >
-                                            <TreeViewItem Header="Time:"/>
+                                            <TreeViewItem Header="Time:0"/>
                                         </TreeViewItem>
                                         <TreeViewItem Header="Trigger Camera 1" AllowDrop="True"/>
                                         <TreeViewItem Header="Trigger Camera 2" AllowDrop="True"/>
