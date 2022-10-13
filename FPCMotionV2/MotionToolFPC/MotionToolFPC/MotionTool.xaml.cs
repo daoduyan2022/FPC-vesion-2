@@ -18,6 +18,8 @@ using System.ComponentModel;
 using System.Timers;
 using System.Threading;
 using System.Diagnostics;
+using Microsoft.Win32;
+using System.IO;
 
 namespace MotionToolFPC
 {
@@ -1880,7 +1882,7 @@ namespace MotionToolFPC
             if(cmd != null)
             {
                 string header = (string)cmd.Header;
-                if (header == CommandString[0])
+                if (header == "Run Point")
                 {
                     GetInforCmdXY(cmd);
                     XYInfor xyform = new XYInfor();
@@ -1888,7 +1890,7 @@ namespace MotionToolFPC
                     TakeInforCmdXY();
                 }
 
-                if (header == CommandString[1])
+                if (header == "Rotate")
                 {
                     GetInforCmdR(cmd);
                     RInfor Rform = new RInfor();
@@ -1897,7 +1899,7 @@ namespace MotionToolFPC
 
                 }
 
-                if (header == CommandString[2])
+                if (header == "Dwell")
                 {
                     GetInforDwell(cmd);
                     TimerInfor Tform = new TimerInfor();
@@ -1907,6 +1909,46 @@ namespace MotionToolFPC
             }
             
         }
+
+        // Button Control Treeview program
+        private void btnSaveAs_Click(object sender, RoutedEventArgs e)
+        {
+            string fileName = "";
+            OpenFileDialog openFolder = new OpenFileDialog();
+            if (openFolder.ShowDialog() == true)
+            {
+                fileName = openFolder.FileName;
+            }
+            string[] strFc = CompilerFC().Select(i => i.ToString()).ToArray();
+            if(fileName.Length > 0)
+            {
+                File.WriteAllLines(fileName, strFc);
+            }
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDeleteAll_Click(object sender, RoutedEventArgs e)
+        {
+            tvwCommand.Items.Clear();
+        }
+
+        private void btnLoadCurrenModel_Click(object sender, RoutedEventArgs e)
+        {
+            EncoderModel();
+        }
+
+        private void btnComplie_Click(object sender, RoutedEventArgs e)
+        {
+            var y = CompilerFC();
+        }
+        //
+
+
+        // Decode treeview
 
         private void AddItemFromSource()
         {
@@ -2008,8 +2050,6 @@ namespace MotionToolFPC
 
         }
 
-
-
         private void GetInforDwell(TreeViewItem cmd)
         {
             TreeViewItem time = (TreeViewItem)cmd.Items[0];
@@ -2031,51 +2071,185 @@ namespace MotionToolFPC
             tvwCommand.Items.Insert(index, Dwell);
         }
 
-        public string[] CommandString = new string[]
+        private int[] CompilerFC()
         {
-            "Run Point",
-            "Rotate",
-            "Dwell",
-
-            "Trigger Camera 1",
-            "Trigger Camera 2",
-            "Trigger Camera 3",
-
-            "On Light Camera 1",
-            "On Light Camera 2",
-            "On Light Camera 3",
-
-            "Off Light Camera 1",
-            "Off Light Camera 2",
-            "Off Light Camera 3",
-
-            "Wait Camera 1 Done",
-            "Wait Camera 2 Done",
-            "Wait Camera 3 Done",
-
-            "Wait Vision Program Ready",
-
-            "Up Cylinder 1",
-            "Up Cylinder 2",
-            "Up Cylinder 1 and 2",
-
-            "Down Cylinder 1",
-            "Down Cylinder 2",
-            "Down Cylinder 1 and 2",
-
-            "Check servo X1 ready",
-            "Check servo X2 ready",
-            "Check servo Y ready",
-            "Check servo R ready",
-
-            "Check sensor up cylinder 1",
-            "Check sensor down cylinder 1",
+            // Return int[] Funtion
+            int[] CompiledFC = new int[] { };
+            foreach(TreeViewItem cmd in tvwCommand.Items)
+            {
+                string name = (string)cmd.Header;
+                int value = CommandString[name];
+                CompiledFC = CompiledFC.Append(value).ToArray();
+            }
+            return CompiledFC;
+        }
+        private void DecomplierFC()
+        {
             
-            "Check sensor up cylinder 2",
-            "Check sensor down cylinder 2",
+        }
 
-            "Finish Progress",
-            "Complete Capture"
+
+
+        //Encode treeview
+
+        private void EncoderModel()
+        {
+            string[] EncodeFC = new string[] { };
+            int indexRunPoint = 0;
+            int indexRotate = 0;
+            int indexDwell = 0;
+
+            //foreach(int code in globals.Function)
+            //{
+            //    var myKey = CommandString.FirstOrDefault(x => x.Value == code).Key;
+            //    EncodeFC = EncodeFC.Append(myKey).ToArray();
+            //}
+            tvwCommand.Items.Clear();
+            foreach (int code in globals.Function)
+            {
+                var myKey = CommandString.FirstOrDefault(x => x.Value == code).Key;
+                if(code == 901)
+                {
+                    tvwCommand.Items.Add(EncodeRunPoint(indexRunPoint));
+                    indexRunPoint++;
+                }
+                else if(code == 4)
+                {
+                    tvwCommand.Items.Add(EncodeRotate(indexRotate));
+                    indexDwell++;
+
+                }
+                else if(code == 19041)
+                {
+                    tvwCommand.Items.Add(EncodeDwell(indexDwell));
+                    indexRotate++;
+
+                }
+                else
+                {
+                    TreeViewItem newItem = new TreeViewItem();
+                    newItem.Header = myKey;
+                    tvwCommand.Items.Add(newItem);
+                }
+
+            }
+
+            
+        }
+        private TreeViewItem EncodeRunPoint(int indexOfRunPoint)
+        {
+            TreeViewItem RunPoint = new TreeViewItem();
+            TreeViewItem RunPoint_X1 = new TreeViewItem();
+            TreeViewItem RunPoint_SpX1 = new TreeViewItem();
+            TreeViewItem RunPoint_X2 = new TreeViewItem();
+            TreeViewItem RunPoint_SpX2 = new TreeViewItem();
+            TreeViewItem RunPoint_Y = new TreeViewItem();
+            TreeViewItem RunPoint_SpY = new TreeViewItem();
+
+            RunPoint.Header = "Run Point";
+            RunPoint_X1.Header = "X1(um):  " + globals.DataPointX1[indexOfRunPoint].ToString();
+            RunPoint_SpX1.Header = "X1(cm/m):  " + globals.DataSpeedX1[indexOfRunPoint].ToString();
+            RunPoint_X2.Header = "X2(um):  " + globals.DataPointX2[indexOfRunPoint].ToString();
+            RunPoint_SpX2.Header = "X2(cm/m):  " + globals.DataSpeedX2[indexOfRunPoint].ToString();
+            RunPoint_Y.Header = "Y(um):  " + globals.DataPointY[indexOfRunPoint].ToString();
+            RunPoint_SpY.Header = "Y(cm/m):  " + globals.DataSpeedY[indexOfRunPoint].ToString();
+
+            RunPoint.Items.Add(RunPoint_X1);
+            RunPoint.Items.Add(RunPoint_SpX1);
+            RunPoint.Items.Add(RunPoint_X2);
+            RunPoint.Items.Add(RunPoint_SpX2);
+            RunPoint.Items.Add(RunPoint_Y);
+            RunPoint.Items.Add(RunPoint_SpY);
+
+            return RunPoint;
+
+        }
+
+        private TreeViewItem EncodeRotate(int indexOfRotate)
+        {
+            TreeViewItem Rotate = new TreeViewItem();
+            TreeViewItem Rotate_R = new TreeViewItem();
+            TreeViewItem Rotate_SpR = new TreeViewItem();
+
+            Rotate.Header = "Rotate";
+            Rotate_R.Header = "R(um):  " + globals.DataPointR[indexOfRotate].ToString();
+            Rotate_SpR.Header = "R(mdeg/m):  " + globals.DataSpeedR[indexOfRotate].ToString();
+
+            Rotate.Items.Add(Rotate_R);
+            Rotate.Items.Add(Rotate_SpR);
+
+            return Rotate;
+        }
+
+        private TreeViewItem EncodeDwell(int indexOfDwell)
+        {
+            TreeViewItem Dwell = new TreeViewItem();
+            TreeViewItem Dwell_Time = new TreeViewItem();
+
+            Dwell.Header = "Dwell";
+            Dwell_Time.Header = "Time(ms):  " + globals.TimeDelay[indexOfDwell].ToString();
+
+            Dwell.Items.Add(Dwell_Time);
+
+            return Dwell;
+        }
+
+
+
+
+        public Dictionary<string, int> CommandString = new Dictionary<string, int>
+        {
+            {"Run Point", 901 },
+            { "Rotate", 19401 },
+            { "Dwell", 4 },
+
+            { "Trigger Camera 1", 501 },
+            { "Trigger Camera 2", 502 },
+            { "Trigger Camera 3", 503 },
+            { "Trigger Camera 1S", 504 },
+            { "Trigger Camera 2S", 505 },
+
+            { "On Light Camera 1", 19061},
+            { "On Light Camera 2", 19051},
+            { "On Light Camera 3", 19041},
+
+            { "Off Light Camera 1", 19060},
+            { "Off Light Camera 2",19050},
+            { "Off Light Camera 3",19040},
+
+            {"Wait Camera 1 Done",511},
+            {"Wait Camera 2 Done",513},
+            {"Wait Camera 3 Done",515},
+            
+            {"Wait Camera 1 Ready",512},
+            {"Wait Camera 2 Ready",514},
+            {"Wait Camera 3 Ready",516},
+
+            { "Wait Vision Program Ready", 500 },
+
+            {"Up Cylinder 1", 19071},
+            {"Up Cylinder 2", 19201},
+            {"Up Cylinder 1 and 2",19069},
+
+            {"Down Cylinder 1", 19070},
+            {"Down Cylinder 2", 19200},
+            {"Down Cylinder 1 and 2", 19096},
+
+            {"Check servo X1 ready", 19011},
+            {"Check servo X2 ready", 19012},
+            {"Check servo Y ready", 19013},
+            {"Check servo R ready",19010},
+
+            {"Check sensor up cylinder 1", 18835},
+            {"Check sensor down cylinder 1", 18834},
+
+            {"Check sensor up cylinder 2", 18836},
+            {"Check sensor down cylinder 2", 18837},
+
+            {"Finish Progress", 1030},
+            {"Complete Capture",506},
+
+            {"Press Next Step",531}
         };
     }
 }

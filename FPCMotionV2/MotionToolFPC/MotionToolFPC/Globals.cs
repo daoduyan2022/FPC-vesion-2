@@ -12,9 +12,9 @@ namespace MotionToolFPC
 {
     public class Globals
     {
-        public string PathConfig = @"D:\TSB_Project\FPCMotionV3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\Config\config.txt";
-        public string PathModel = @"D:\TSB_Project\FPCMotionV3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\Config\model2108.txt";
-        public string PathFunction = @"D:\TSB_Project\FPCMotionV3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\Config\Function.txt";
+        public string PathConfig = @"D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\Config\config.txt";
+        public string PathModel = @"D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\Config\model2108.txt";
+        public string PathFunction = @"D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\Config\Function.txt";
         private static Globals globals = null;
         public static Globals GetInstance()
         {

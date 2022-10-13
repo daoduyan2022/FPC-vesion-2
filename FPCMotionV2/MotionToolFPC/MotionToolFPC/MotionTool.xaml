@@ -327,8 +327,25 @@
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="1">
-                                
-                                <TreeView Name="tvwCommand" HorizontalAlignment="Left" AllowDrop="True" FontSize="15"
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="9*"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button x:Name="btnLoadCurrenModel" Content="Load" Click="btnLoadCurrenModel_Click" Margin="5,5,5,5" Grid.Column="0"/>
+                                    <Button x:Name="btnComplie" Content="Complie" Click="btnComplie_Click" Margin="5,5,5,5" Grid.Column="1"/>
+                                    <Button x:Name="btnDeleteAll" Content="Delete All" Click="btnDeleteAll_Click" Margin="5,5,5,5" Grid.Column="2"/>
+                                    <Button x:Name="btnSave" Content="Save" Click="btnSave_Click" Margin="5,5,5,5" Grid.Column="3"/>
+                                    <Button x:Name="btnSaveAs" Content="Save As" Click="btnSaveAs_Click" Margin="5,5,5,5" Grid.Column="4"/>
+                                </Grid>
+                                <TreeView Name="tvwCommand" HorizontalAlignment="Stretch" AllowDrop="True" FontSize="15" Margin="2,5,2,5" Grid.Row="1"
                                           DragEnter="TreeView_DragEnter" 
                                           DragOver="TreeView_DragOver" 
                                           Drop="tvwCommand_Drop"
@@ -344,7 +361,7 @@
                                 
                             </Grid>
                             <Grid Grid.Column="0">
-                                    <TreeView Name="tvwSource" HorizontalAlignment="Left" AllowDrop="True" FontSize="15" Margin="2,2,2,2"
+                                    <TreeView Name="tvwSource" HorizontalAlignment="Stretch" AllowDrop="True" FontSize="15" Margin="2,2,2,2"
                                           DragEnter="tvwSource_DragEnter" 
                                           DragOver="tvwSource_DragOver" 
                                           Drop="tvwSource_Drop"
@@ -370,9 +387,13 @@
                                         <TreeViewItem Header="Trigger Camera 1" AllowDrop="True"/>
                                         <TreeViewItem Header="Trigger Camera 2" AllowDrop="True"/>
                                         <TreeViewItem Header="Trigger Camera 3" AllowDrop="True"/>
+                                        <TreeViewItem Header="Trigger Camera 1S" AllowDrop="True"/>
+                                        <TreeViewItem Header="Trigger Camera 2S" AllowDrop="True"/>
+                                        
                                         <TreeViewItem Header="On Light Camera 1" AllowDrop="True"/>
                                         <TreeViewItem Header="On Light Camera 2" AllowDrop="True"/>
                                         <TreeViewItem Header="On Light Camera 3" AllowDrop="True"/>
+                                        
                                         
                                         <TreeViewItem Header="Off Light Camera 1" AllowDrop="True"/>
                                         <TreeViewItem Header="Off Light Camera 2" AllowDrop="True"/>
@@ -381,9 +402,13 @@
                                         <TreeViewItem Header="Wait Camera 1 Done" AllowDrop="True"/>
                                         <TreeViewItem Header="Wait Camera 2 Done" AllowDrop="True"/>
                                         <TreeViewItem Header="Wait Camera 3 Done" AllowDrop="True"/>
-                                        <TreeViewItem Header="Wait Vision Program Ready" AllowDrop="True"/>
                                         
-                                        <TreeViewItem Header="Up Cylinder 1" AllowDrop="True"/>
+                                        <TreeViewItem Header="Wait Vision Program Ready" AllowDrop="True"/>
+                                        <TreeViewItem Header="Wait Camera 1 Ready" AllowDrop="True"/>
+                                        <TreeViewItem Header="Wait Camera 2 Ready" AllowDrop="True"/>
+                                        <TreeViewItem Header="Wait Camera 3 Ready" AllowDrop="True"/>
+
+                                    <TreeViewItem Header="Up Cylinder 1" AllowDrop="True"/>
                                         <TreeViewItem Header="Up Cylinder 2" AllowDrop="True"/>
                                         <TreeViewItem Header="Up Cylinder 1 and 2" AllowDrop="True"/>
                                         <TreeViewItem Header="Down Cylinder 1" AllowDrop="True"/>
