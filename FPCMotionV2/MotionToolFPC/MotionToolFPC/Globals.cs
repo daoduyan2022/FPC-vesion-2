@@ -98,7 +98,8 @@ namespace MotionToolFPC
         public int OffsetX1 { get; set; } = 0;
         public int OffsetX2 { get; set; } = 0;
         public int OffsetY { get; set; } = 0;
-
+        
+        //Use for encode and decode treeview program
         public int enterCoordX1 { get; set; }
         public int enterCoordX2 { get; set; }
         public int enterCoordY { get; set; }
@@ -108,6 +109,20 @@ namespace MotionToolFPC
         public int speedY { get; set; }
         public int speedR { get; set; }
         public int TimeDwell { get; set; }
+
+        public int[] DataPointX1_Temp { get; set; } = new int[] { };
+        public int[] DataPointX2_Temp { get; set; } = new int[] { };
+        public int[] DataPointY_Temp { get; set; } = new int[] { };
+        public int[] DataPointR_Temp { get; set; } = new int[] { };
+
+        public int[] DataSpeedX1_Temp { get; set; } = new int[] { };
+        public int[] DataSpeedX2_Temp { get; set; } = new int[] { };
+        public int[] DataSpeedY_Temp { get; set; } = new int[] { };
+        public int[] DataSpeedR_Temp { get; set; } = new int[] { };
+
+        public int[] TimeDelay_Temp { get; set; } = new int[] { };
+        public int[] Function_Temp { get; set; } = new int[] { };
+        //
 
         public int[] IntToRegister(List<int> values)
         {
@@ -172,6 +187,12 @@ namespace MotionToolFPC
                 }
                 catch { }
             }
+        }
+
+        public void SaveFileFunction()
+        {
+            string[] func = Function.Select(i => i.ToString()).ToArray();
+            File.WriteAllLines(PathFunction, func);
         }
 
         public void SaveFileConfig()

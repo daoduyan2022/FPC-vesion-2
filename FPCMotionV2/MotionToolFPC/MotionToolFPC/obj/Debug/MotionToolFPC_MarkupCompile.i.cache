@@ -16,5 +16,5 @@ DEBUG;TRACE
 16606219878
 MotionTool.xaml;RInfor.xaml;SelfCheckRecord.xaml;TimerInfor.xaml;WaittingConnectPLC.xaml;WaittingWindow.xaml;XYInfor.xaml;
 
-True
+False
 

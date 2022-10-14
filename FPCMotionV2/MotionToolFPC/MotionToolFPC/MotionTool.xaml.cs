@@ -1659,6 +1659,7 @@ namespace MotionToolFPC
             {
                 _lastMouseDown = e.GetPosition(tvwCommand);
             }
+            (tvwCommand.SelectedItem as TreeViewItem).IsSelected = false;
         }
         private void tvwCommand_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
@@ -1847,6 +1848,7 @@ namespace MotionToolFPC
         {
             TreeViewItem newItem = new TreeViewItem();
             newItem.Header = draggedItem.Header;
+            newItem.Background = Brushes.Yellow;
 
             foreach (TreeViewItem item in sourceItem.Items)
             {
@@ -1864,6 +1866,7 @@ namespace MotionToolFPC
         {
             TreeViewItem newItem = new TreeViewItem();
             newItem.Header = draggedItem.Header;
+            newItem.Background = Brushes.Yellow;
 
             foreach (TreeViewItem item in sourceItem.Items)
             {
@@ -1928,6 +1931,32 @@ namespace MotionToolFPC
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            if( MessageBox.Show("Do you wan to write porgram and data to controller ?", "Confirm download", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+            {
+                
+                
+                //Assign Temp for main
+                globals.DataPointX1 = globals.DataPointX1_Temp;
+                globals.DataPointX2 = globals.DataPointX2_Temp;
+                globals.DataPointY = globals.DataPointY_Temp;
+                globals.DataPointR = globals.DataPointR_Temp;
+                globals.DataSpeedX1_Temp = globals.DataSpeedX1_Temp;
+                globals.DataSpeedX2_Temp = globals.DataSpeedX2_Temp;
+                globals.DataSpeedY_Temp = globals.DataSpeedY_Temp;
+                globals.DataSpeedR_Temp = globals.DataSpeedR_Temp;
+                globals.TimeDelay_Temp = globals.TimeDelay;
+
+                // Save to File text
+                globals.SaveFileModel();
+                globals.SaveFileFunction();
+
+                globals.Function = globals.Function;
+
+                //Write Function and Data table Co_Sp to PLC
+
+                this.btnWriteGcodeToPLC_Click(null, null);
+                this.btnWriteModelToPLC_Click(null, null);
+            }
 
         }
 
@@ -1943,18 +1972,124 @@ namespace MotionToolFPC
 
         private void btnComplie_Click(object sender, RoutedEventArgs e)
         {
-            var y = CompilerFC();
+            globals.Function_Temp = CompilerFC();
+            DecodeModel();
+            ResultCompile();
+            OnPropertyChanged();
         }
         //
 
+        public string resultCompile { get; set; }
+        // =================================================================Decode treeview===============================================================================
+        public void ResultCompile()
+        {
+            resultCompile = "";
+            resultCompile += "Result Complie: \r\n";
+            resultCompile += "Function: \r\n";
+            foreach(int value in globals.Function_Temp)
+            {
+                resultCompile += (value.ToString() + "\r\n");
+            }
 
-        // Decode treeview
+            resultCompile += "Coordinate <-> Speed X1: \r\n";
+
+            for(int i =0; i< globals.DataPointX1_Temp.Length; i++)
+            {
+                resultCompile += ((i + 1).ToString() + ": " + globals.DataPointX1_Temp[i].ToString() + " <-> "+ globals.DataSpeedX1_Temp[i].ToString() +  "\r\n");
+            }
+
+            resultCompile += "Coordinate <-> Speed X2: \r\n";
+
+            for(int i =0; i< globals.DataPointX2_Temp.Length; i++)
+            {
+                resultCompile += ((i+1).ToString() + ": " + globals.DataPointX2_Temp[i].ToString() + " <-> "+ globals.DataSpeedX2_Temp[i].ToString() +  "\r\n");
+            }
+
+            resultCompile += "Coordinate <-> Speed Y: \r\n";
+
+            for(int i =0; i< globals.DataPointY_Temp.Length; i++)
+            {
+                resultCompile += ((i + 1).ToString() + ": " + globals.DataPointY_Temp[i].ToString() + " <-> "+ globals.DataSpeedY_Temp[i].ToString() +  "\r\n");
+            }
+
+            resultCompile += "Coordinate <-> Speed R: \r\n";
+            for (int i = 0; i < globals.DataPointR_Temp.Length; i++)
+            {
+                resultCompile += ((i + 1).ToString() + ": " + globals.DataPointR_Temp[i].ToString() + " <-> " + globals.DataSpeedR_Temp[i].ToString() + "\r\n");
+            }
+
+            resultCompile += "Time Dwell: \r\n";
+
+            for (int i = 0; i < globals.TimeDelay_Temp.Length; i++)
+            {
+                resultCompile += ((i + 1).ToString() + ": " + globals.TimeDelay_Temp[i].ToString() + "\r\n");
+            }
+            resultCompile += "Successfully Compile = 1; Error = 0";
+
+        }
+        private void DecodeModel()
+        {
+            //Clear all Temp memmory before decode
+            globals.DataPointX1_Temp = new int[] { }; 
+            globals.DataPointX2_Temp = new int[] { }; 
+            globals.DataPointY_Temp = new int[] { }; 
+            globals.DataPointR_Temp = new int[] { }; 
+            globals.DataSpeedX1_Temp = new int[] { }; 
+            globals.DataSpeedX2_Temp = new int[] { }; 
+            globals.DataSpeedY_Temp = new int[] { }; 
+            globals.DataSpeedR_Temp = new int[] { }; 
+            globals.TimeDelay_Temp = new int[] { }; 
+
+            // Decode from tree view to Data table
+            foreach (TreeViewItem item in tvwCommand.Items)
+            {
+                item.Background = Brushes.White;
+                if(item.Header.ToString() == "Run Point")
+                {
+                    GetInforCmdXY(item);
+                    globals.DataPointX1_Temp = globals.DataPointX1_Temp.Append(globals.enterCoordX1).ToArray();
+                    globals.DataPointX2_Temp = globals.DataPointX2_Temp.Append(globals.enterCoordX2).ToArray();
+                    globals.DataPointY_Temp = globals.DataPointY_Temp.Append(globals.enterCoordY).ToArray();
+
+                    globals.DataSpeedX1_Temp = globals.DataSpeedX1_Temp.Append(globals.speedX1).ToArray();
+                    globals.DataSpeedX2_Temp = globals.DataSpeedX2_Temp.Append(globals.speedX2).ToArray();
+                    globals.DataSpeedY_Temp = globals.DataSpeedY_Temp.Append(globals.speedY).ToArray();
+                }
+                if(item.Header.ToString() == "Rotate")
+                {
+                    GetInforCmdR(item);
+                    globals.DataPointR_Temp = globals.DataPointR_Temp.Append(globals.enterCoordR).ToArray();
+                    globals.DataSpeedR_Temp = globals.DataSpeedR_Temp.Append(globals.speedR).ToArray();
+                }
+                if(item.Header.ToString() == "Dwell")
+                {
+                    GetInforDwell(item);
+                    globals.TimeDelay_Temp = globals.TimeDelay_Temp.Append(globals.TimeDwell).ToArray();
+                }
+            }
+        }
+
+        private int[] CompilerFC()
+        {
+            // Decode Funtion of PLC
+            // Return int[] Funtion
+            int[] CompiledFC = new int[] { };
+            foreach (TreeViewItem cmd in tvwCommand.Items)
+            {
+                string name = (string)cmd.Header;
+                int value = CommandString[name];
+                CompiledFC = CompiledFC.Append(value).ToArray();
+            }
+            return CompiledFC;
+        }
 
         private void AddItemFromSource()
         {
+            // Add data from source treeview
             TreeViewItem addItem = (TreeViewItem)tvwSource.SelectedItem;
             TreeViewItem newItem = new TreeViewItem();
             newItem.Header = addItem.Header;
+            newItem.Background = Brushes.Yellow;
 
             foreach (TreeViewItem item in addItem.Items)
             {
@@ -1968,6 +2103,7 @@ namespace MotionToolFPC
 
         private void GetInforCmdXY(TreeViewItem cmd)
         {
+            // Get data form current treeviewitem command of Run Point 
             TreeViewItem x1 = (TreeViewItem)cmd.Items[0];
             TreeViewItem x2 = (TreeViewItem)cmd.Items[2];
             TreeViewItem y = (TreeViewItem)cmd.Items[4];
@@ -1992,6 +2128,7 @@ namespace MotionToolFPC
 
         private void TakeInforCmdXY()
         {
+            // Set data from user enter for RunPoint command
             TreeViewItem RunPoint = new TreeViewItem();
             TreeViewItem RunPoint_X1 = new TreeViewItem();
             TreeViewItem RunPoint_SpX1 = new TreeViewItem();
@@ -2014,6 +2151,7 @@ namespace MotionToolFPC
             RunPoint.Items.Add(RunPoint_SpX2);
             RunPoint.Items.Add(RunPoint_Y);
             RunPoint.Items.Add(RunPoint_SpY);
+            RunPoint.Background = Brushes.Yellow;
 
             int index = tvwCommand.Items.IndexOf(tvwCommand.SelectedItem);
             tvwCommand.Items.Remove(tvwCommand.SelectedItem);
@@ -2022,6 +2160,8 @@ namespace MotionToolFPC
 
         private void GetInforCmdR(TreeViewItem cmd)
         {
+            // Get data form current treeviewitem command of Rotate
+
             TreeViewItem r = (TreeViewItem)cmd.Items[0];
             TreeViewItem spr = (TreeViewItem)cmd.Items[1];
 
@@ -2033,6 +2173,8 @@ namespace MotionToolFPC
         }
         private void TakeInforCmdR()
         {
+            // Set data from user enter for Rotate command
+
             TreeViewItem Rotate = new TreeViewItem();
             TreeViewItem Rotate_R = new TreeViewItem();
             TreeViewItem Rotate_SpR = new TreeViewItem();
@@ -2043,6 +2185,7 @@ namespace MotionToolFPC
 
             Rotate.Items.Add(Rotate_R);
             Rotate.Items.Add(Rotate_SpR);
+            Rotate.Background = Brushes.Yellow;
 
             int index = tvwCommand.Items.IndexOf(tvwCommand.SelectedItem);
             tvwCommand.Items.Remove(tvwCommand.SelectedItem);
@@ -2052,12 +2195,16 @@ namespace MotionToolFPC
 
         private void GetInforDwell(TreeViewItem cmd)
         {
+            // Get data form current treeviewitem command of Dwell
+
             TreeViewItem time = (TreeViewItem)cmd.Items[0];
             string value_time = time.Header.ToString().Split(':')[1];
             globals.TimeDwell = Convert.ToInt32(value_time);
         }
         private void TakeInforCmdDwell()
         {
+            // Set data from user enter for Dwell command
+
             TreeViewItem Dwell = new TreeViewItem();
             TreeViewItem Dwell_Time = new TreeViewItem();
 
@@ -2065,70 +2212,51 @@ namespace MotionToolFPC
             Dwell_Time.Header = "Time(ms):  " + globals.TimeDwell.ToString();
 
             Dwell.Items.Add(Dwell_Time);
+            Dwell.Background = Brushes.Yellow;
 
             int index = tvwCommand.Items.IndexOf(tvwCommand.SelectedItem);
             tvwCommand.Items.Remove(tvwCommand.SelectedItem);
             tvwCommand.Items.Insert(index, Dwell);
         }
 
-        private int[] CompilerFC()
-        {
-            // Return int[] Funtion
-            int[] CompiledFC = new int[] { };
-            foreach(TreeViewItem cmd in tvwCommand.Items)
-            {
-                string name = (string)cmd.Header;
-                int value = CommandString[name];
-                CompiledFC = CompiledFC.Append(value).ToArray();
-            }
-            return CompiledFC;
-        }
-        private void DecomplierFC()
-        {
-            
-        }
+     //======================================================================Decode Treeview=====================================================   
 
 
-
-        //Encode treeview
-
+        //====================================================================Encode treeview===========================================================
         private void EncoderModel()
         {
             string[] EncodeFC = new string[] { };
             int indexRunPoint = 0;
             int indexRotate = 0;
             int indexDwell = 0;
-
-            //foreach(int code in globals.Function)
-            //{
-            //    var myKey = CommandString.FirstOrDefault(x => x.Value == code).Key;
-            //    EncodeFC = EncodeFC.Append(myKey).ToArray();
-            //}
+            
             tvwCommand.Items.Clear();
             foreach (int code in globals.Function)
             {
                 var myKey = CommandString.FirstOrDefault(x => x.Value == code).Key;
-                if(code == 901)
+                if(code == 901) // Run Point
                 {
                     tvwCommand.Items.Add(EncodeRunPoint(indexRunPoint));
                     indexRunPoint++;
                 }
-                else if(code == 4)
+                
+                else if(code == 19401) // Rotate
                 {
                     tvwCommand.Items.Add(EncodeRotate(indexRotate));
-                    indexDwell++;
-
-                }
-                else if(code == 19041)
-                {
-                    tvwCommand.Items.Add(EncodeDwell(indexDwell));
                     indexRotate++;
 
                 }
-                else
+                else if (code == 4)// Dwell
+                {
+                    tvwCommand.Items.Add(EncodeDwell(indexDwell));
+                    indexDwell++;
+
+                }
+                else // Other Command
                 {
                     TreeViewItem newItem = new TreeViewItem();
                     newItem.Header = myKey;
+                    newItem.Background = Brushes.White;
                     tvwCommand.Items.Add(newItem);
                 }
 
@@ -2161,6 +2289,7 @@ namespace MotionToolFPC
             RunPoint.Items.Add(RunPoint_Y);
             RunPoint.Items.Add(RunPoint_SpY);
 
+            RunPoint.Background = Brushes.White;
             return RunPoint;
 
         }
@@ -2177,6 +2306,8 @@ namespace MotionToolFPC
 
             Rotate.Items.Add(Rotate_R);
             Rotate.Items.Add(Rotate_SpR);
+            Rotate.Background = Brushes.White;
+
 
             return Rotate;
         }
@@ -2190,13 +2321,16 @@ namespace MotionToolFPC
             Dwell_Time.Header = "Time(ms):  " + globals.TimeDelay[indexOfDwell].ToString();
 
             Dwell.Items.Add(Dwell_Time);
+            Dwell.Background = Brushes.White;
 
             return Dwell;
         }
 
+        private void tvwCommand_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+        }
 
-
-
+        // Source Command
         public Dictionary<string, int> CommandString = new Dictionary<string, int>
         {
             {"Run Point", 901 },
@@ -2251,5 +2385,7 @@ namespace MotionToolFPC
 
             {"Press Next Step",531}
         };
+        //====================================================================Encode treeview===========================================================
+
     }
 }
