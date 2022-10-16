@@ -1659,7 +1659,10 @@ namespace MotionToolFPC
             {
                 _lastMouseDown = e.GetPosition(tvwCommand);
             }
-            (tvwCommand.SelectedItem as TreeViewItem).IsSelected = false;
+            //if(tvwCommand.SelectedItem != null)
+            //{
+            //    (tvwCommand.SelectedItem as TreeViewItem).IsSelected = false;
+            //}
         }
         private void tvwCommand_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
@@ -1986,9 +1989,10 @@ namespace MotionToolFPC
             resultCompile = "";
             resultCompile += "Result Complie: \r\n";
             resultCompile += "Function: \r\n";
-            foreach(int value in globals.Function_Temp)
+
+            for (int i = 0 ; i < globals.Function_Temp.Length; i++)
             {
-                resultCompile += (value.ToString() + "\r\n");
+                resultCompile += ("Step " + (i+1).ToString() +": " + "[" + globals.Function_Temp[i].ToString() + "] <=> " + StepName[globals.Function_Temp[i]] + "\r\n");
             }
 
             resultCompile += "Coordinate <-> Speed X1: \r\n";
@@ -2047,6 +2051,7 @@ namespace MotionToolFPC
                 if(item.Header.ToString() == "Run Point")
                 {
                     GetInforCmdXY(item);
+
                     globals.DataPointX1_Temp = globals.DataPointX1_Temp.Append(globals.enterCoordX1).ToArray();
                     globals.DataPointX2_Temp = globals.DataPointX2_Temp.Append(globals.enterCoordX2).ToArray();
                     globals.DataPointY_Temp = globals.DataPointY_Temp.Append(globals.enterCoordY).ToArray();
@@ -2219,7 +2224,7 @@ namespace MotionToolFPC
             tvwCommand.Items.Insert(index, Dwell);
         }
 
-     //======================================================================Decode Treeview=====================================================   
+     //======================================================================Decode Treeview============================================================   
 
 
         //====================================================================Encode treeview===========================================================

@@ -460,108 +460,171 @@
             </Grid>
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <TabControl>
                         <TabItem Header="Home Control">
-                            <Viewbox StretchDirection="Both">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid Grid.Column="0" Margin="2,0,2,0">
-
-                                        <StackPanel VerticalAlignment="Center" IsEnabled="{Binding Emergence}">
-                                            <Button Name="PauseHome" Content="Pause Home" Margin="1,1,1,1" Height="57.92" Width="75" Background="DimGray" Foreground="White" Click="PauseHome_Click"/>
-                                            <Button Name="HomeAll" Content="Home All" Margin="1,1,1,1" Height="57.92" Width="75" Background="DimGray" Foreground="White" Click="HomeAll_Click"/>
-                                        </StackPanel>
-                                    </Grid>
-                                    <Grid Grid.Column="1" Margin="2,0,2,0">
-                                        <StackPanel VerticalAlignment="Center" IsEnabled="{Binding Emergence}">
-                                            <Button x:Name="HomeX1X2" Content="Home X1-X2" Height="38" Width="75" Margin="1,1,1,1" Background="DimGray" Foreground="White" Click="HomeX1X2_Click"/>
-                                            <Button x:Name="HomeY" Content="Home Y" Height="38"  Width="75" Margin="1,1,1,1" Background="DimGray" Foreground="White" Click="HomeY_Click"/>
-                                            <Button x:Name="HomeR" Content="Home R" Height="38"  Width="75" Margin="1,1,1,1" Background="DimGray" Foreground="White" Click="HomeR_Click"/>
-                                        </StackPanel>
-                                    </Grid>
-                                    <Grid Grid.Column="2" Margin="2,0,2,0">
-                                        <StackPanel VerticalAlignment="Center">
-                                            <Label Name="StatusX1" Content="X1:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Width="30.02" Background="{Binding ColorStatus_X1}" Foreground="Black" />
-                                            <Label Name="StatusX2" Content="X2:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="{Binding ColorStatus_X2}" Foreground="Black"/>
-                                            <Label Name="StatusY" Content="Y:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="{Binding ColorStatus_Y}" Foreground="Black"/>
-                                            <Label Name="StatusR" Content="R:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="{Binding ColorStatus_R}" Foreground="Black"/>
-                                        </StackPanel>
-                                    </Grid>
-                                    <Grid Grid.Column="3">
-                                        <StackPanel VerticalAlignment="Center" Width="164">
-                                            <Label Name="CurrentPosX1" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Height="27.96" Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Content="{Binding globals.CurrentPosX1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
-                                            <Label Name="CurrentPosX2" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96" Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Content="{Binding globals.CurrentPosX2, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
-                                            <Label Name="CurrentPosY" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Content="{Binding globals.CurrentPosY, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
-                                            <Label Name="CurrentPosR" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Content="{Binding globals.CurrentPosR, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
-                                        </StackPanel>
-                                    </Grid>
-
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" IsEnabled="{Binding Emergence}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Button Name="PauseHome" Content="Pause Home" Margin="1,1,1,1" Background="DimGray" Foreground="White" 
+                                            Click="PauseHome_Click" Grid.Row="0"/>
+                                    <Button Name="HomeAll" Content="Home All" Margin="1,1,1,1" Background="DimGray" Foreground="White" 
+                                            Click="HomeAll_Click" Grid.Row="1"/>
                                 </Grid>
-                            </Viewbox>
-
+                                <Grid Grid.Column="1" IsEnabled="{Binding Emergence}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Button x:Name="HomeX1X2" Content="Home X1-X2" Margin="1,1,1,1" Background="DimGray" Foreground="White" 
+                                            Click="HomeX1X2_Click" Grid.Row="0"/>
+                                    <Button x:Name="HomeY" Content="Home Y" Margin="1,1,1,1" Background="DimGray" Foreground="White" 
+                                            Click="HomeY_Click" Grid.Row="1"/>
+                                    <Button x:Name="HomeR" Content="Home R" Margin="1,1,1,1" Background="DimGray" Foreground="White" 
+                                            Click="HomeR_Click" Grid.Row="2"/>
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Name="StatusX1" Content="X1" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" 
+                                            FontWeight="Bold" Background="{Binding ColorStatus_X1}" Foreground="Black"
+                                            Grid.Row="0"/>
+                                    <Label Name="StatusX2" Content="X2" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" 
+                                            FontWeight="Bold" Background="{Binding ColorStatus_X2}" Foreground="Black"
+                                            Grid.Row="1"/>
+                                    <Label Name="StatusY" Content="Y" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" 
+                                            FontWeight="Bold" Background="{Binding ColorStatus_Y}" Foreground="Black"
+                                            Grid.Row="2"/>
+                                    <Label Name="StatusR" Content="R" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" 
+                                            FontWeight="Bold" Background="{Binding ColorStatus_R}" Foreground="Black"
+                                            Grid.Row="3"/>
+                                </Grid>
+                                <Grid Grid.Column="3">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Name="CurrentPosX1" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" 
+                                                Content="{Binding globals.CurrentPosX1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0"/>
+                                    <Label Name="CurrentPosX2" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" 
+                                                Content="{Binding globals.CurrentPosX2, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"/>
+                                    <Label Name="CurrentPosY" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" 
+                                                Content="{Binding globals.CurrentPosY, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2"/>
+                                    <Label Name="CurrentPosR" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" 
+                                                Content="{Binding globals.CurrentPosR, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3"/>
+                                </Grid>
+                            </Grid>
                         </TabItem>
                         <TabItem Header="Extention">
-                            <Viewbox StretchDirection="Both">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="3*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Grid Grid.Column="2">
-                                        <StackPanel VerticalAlignment="Center" Width="164">
-                                            <TextBox Name="txtLowLimitX1" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Height="27.96" Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
-                                            <TextBox Name="txtLowLimitX2" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96" Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
-                                            <TextBox Name="txtLowLimitY" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
-                                            <TextBox Name="txtLowLimitR" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
-                                        </StackPanel>
-                                    </Grid>
-                                    <Grid Grid.Column="0" Margin="2,0,2,0">
-                                        <StackPanel VerticalAlignment="Center">
-                                            <Label Content="X1" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Width="30.02" Background="Yellow" Foreground="Black"/>
-                                            <Label Content="X2" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
-                                            <Label Content="Y" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
-                                            <Label Content="R" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
-                                        </StackPanel>
-                                    </Grid>
-                                    <Grid Grid.Column="1" Margin="2,0,2,0">
-                                        <StackPanel VerticalAlignment="Center">
-                                            <Label Content="L:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Width="30.02" Background="Yellow" Foreground="Black"/>
-                                            <Label Content="L:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
-                                            <Label Content="L:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
-                                            <Label Content="L:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
-                                        </StackPanel>
-                                    </Grid>
-                                    <Grid Grid.Column="3" Margin="20,0,2,0">
-                                        <StackPanel VerticalAlignment="Center">
-                                            <Label Content="H:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Width="30.02" Background="Yellow" Foreground="Black"/>
-                                            <Label Content="H:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
-                                            <Label Content="H:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
-                                            <Label Content="H:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" FontWeight="Bold" Background="Yellow" Foreground="Black"/>
-                                        </StackPanel>
-                                    </Grid>
-                                    <Grid Grid.Column="4">
-                                        <StackPanel VerticalAlignment="Center" Width="164">
-                                            <TextBox Name="txtHighLimitX1" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Height="27.96" Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
-                                            <TextBox Name="txtHighLimitX2" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96" Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
-                                            <TextBox Name="txtHighLimitY" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
-                                            <TextBox Name="txtHighLimitR" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" Height="27.96"  Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"/>
-                                        </StackPanel>
-                                    </Grid>
+                                <Grid Grid.Column="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                        <Label Content="X1-L:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" 
+                                               FontWeight="Bold" Background="Yellow" Foreground="Black"
+                                               Grid.Row="0"/>
+                                        <Label Content="X2-L:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" 
+                                               FontWeight="Bold" Background="Yellow" Foreground="Black"
+                                               Grid.Row="1"/>
+                                        <Label Content="Y-L:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" 
+                                               FontWeight="Bold" Background="Yellow" Foreground="Black"
+                                               Grid.Row="2"/>
+                                        <Label Content="R-L:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" 
+                                               FontWeight="Bold" Background="Yellow" Foreground="Black"
+                                               Grid.Row="3"/>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                        <TextBox Name="txtLowLimitX1" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" 
+                                                 Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"
+                                                 Grid.Row="0"/>
+                                        <TextBox Name="txtLowLimitX2" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center" 
+                                                 Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"
+                                                 Grid.Row="1"/>
+                                        <TextBox Name="txtLowLimitY" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center"  
+                                                 Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"
+                                                 Grid.Row="2"/>
+                                        <TextBox Name="txtLowLimitR" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center"  
+                                                 Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"
+                                                 Grid.Row="3"/>
                                 </Grid>
 
-                            </Viewbox>
+                                <Grid Grid.Column="3">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Content="X1-H:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" 
+                                                FontWeight="Bold" Background="Yellow" Foreground="Black"
+                                                Grid.Row="0"/>
+                                    <Label Content="X2-H:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" 
+                                                FontWeight="Bold" Background="Yellow" Foreground="Black"
+                                                Grid.Row="1"/>
+                                    <Label Content="Y-H:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" 
+                                                FontWeight="Bold" Background="Yellow" Foreground="Black"
+                                                Grid.Row="2"/>
+                                    <Label Content="R-H:" BorderBrush="Gray" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" Margin="1,1,1,1" 
+                                                FontWeight="Bold" Background="Yellow" Foreground="Black"
+                                                Grid.Row="3"/>
+                                </Grid>
+                                <Grid Grid.Column="4">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                        <TextBox Name="txtHighLimitX1" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center" HorizontalContentAlignment ="Center" 
+                                                 Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"
+                                                 Grid.Row="0"/>
+                                        <TextBox Name="txtHighLimitX2" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center"
+                                                 Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"
+                                                 Grid.Row="1"/>
+                                        <TextBox Name="txtHighLimitY" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center"  
+                                                 Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"
+                                                 Grid.Row="2"/>
+                                        <TextBox Name="txtHighLimitR" BorderBrush="Gray" BorderThickness="1" FontSize="17" VerticalContentAlignment="Center"  HorizontalContentAlignment ="Center"
+                                                 Background="Black" Foreground="GreenYellow" Margin="1,1,1,1" FontFamily="Bahnschrift Condensed" Text="00000 um"
+                                                 Grid.Row="3"/>
+                                </Grid>
+                                </Grid>
                         </TabItem>
                     </TabControl>
                 </Grid>
@@ -834,39 +897,33 @@
                     </TabItem>
                     <TabItem Header="File">
                         <Grid>
-                            <!--<Viewbox StretchDirection="Both">-->
-                            <StackPanel>
-                                <Viewbox>
-                                    <StackPanel Orientation="Horizontal" Margin="2,10,10,2">
-                                        <Label Content="Current File: " Width="75" Height="30" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="2,2,2,2" HorizontalAlignment="Left"/>
-                                        <Label Name="lblCurrentFileGcode" Width="250" Height="30" VerticalContentAlignment="Center" HorizontalAlignment="Center" FontSize="12" Margin="2,2,2,2" BorderBrush="Black" BorderThickness="1"/>
-                                        <Button Name="btnOpenFileGocode" Content="Browser" Width="50" Height="30" Margin="2,2,2,2" HorizontalAlignment="Right"/>
-                                        <Button Name="btnWriteGcodeToPLC" Content="Write Gcode to PLC" Width="120" Height="30" Margin="2,2,2,2" Click="btnWriteGcodeToPLC_Click" IsEnabled="{Binding EnableModify}"/>
-                                        <Button Name="btnWriteModelToPLC" Content="Write Model to PLC" Width="120" Height="30" Margin="2,2,2,2" Click="btnWriteModelToPLC_Click" IsEnabled="{Binding EnableModify}"/>
-                                    </StackPanel>
-                                </Viewbox>
-                                <StackPanel  HorizontalAlignment="Left" Margin="1,10,1,1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="3*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.5*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Current File: " VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="2,2,2,2" HorizontalAlignment="Left"/>
+                                <Label Grid.Column="1" Name="lblCurrentFileGcode" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" FontSize="12" Margin="2,2,2,2" BorderBrush="Black" BorderThickness="1"/>
+                                <Button Grid.Column="2" Name="btnOpenFileGocode" Content="Browser" Margin="2,2,2,2" HorizontalAlignment="Stretch"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Name="btnWriteGcodeToPLC" Content="Write Gcode to PLC" Margin="2,2,2,2" Click="btnWriteGcodeToPLC_Click" IsEnabled="{Binding EnableModify}"/>
+                                <Button Grid.Column="1" Name="btnWriteModelToPLC" Content="Write Model to PLC" Margin="2,2,2,2" Click="btnWriteModelToPLC_Click" IsEnabled="{Binding EnableModify}"/>
+                            </Grid>
 
-                                </StackPanel>
-                            </StackPanel>
-                            <!--</Viewbox>-->
-
+                            
                         </Grid>
-                        <!--<StackPanel>
-                            <Viewbox StretchDirection="Both">
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Content="Current File: " Width="75" Height="30" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="2,2,2,2"/>
-                                    <Label Name="lblCurrentFileGcode" Width="200" Height="30" VerticalContentAlignment="Center" HorizontalAlignment="Center" FontSize="12" Margin="2,2,2,2" BorderBrush="Black" BorderThickness="0.5"/>
-                                    <Button Name="btnOpenFileGocode" Content="Browser" Width="50" Height="30" Margin="2,2,2,2"/>
-                                </StackPanel>
-                            </Viewbox>
-                            <Viewbox StretchDirection="Both">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="1,10,1,1">
-                                    <Button Name="btnWriteGcodeToPLC" Content="Write Gcode to PLC" Width="120" Height="30" Margin="2,2,2,2"/>
-                                    <Button Name="btnWriteModelToPLC" Content="Write Model to PLC" Width="120" Height="30" Margin="2,2,2,2"/>
-                                </StackPanel>
-                            </Viewbox>
-                        </StackPanel>-->
                     </TabItem>
                 </TabControl>
             </Grid>

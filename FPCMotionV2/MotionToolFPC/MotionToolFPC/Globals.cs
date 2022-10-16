@@ -12,9 +12,10 @@ namespace MotionToolFPC
 {
     public class Globals
     {
-        public string PathConfig = @"D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\Config\config.txt";
-        public string PathModel = @"D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\Config\model2108.txt";
-        public string PathFunction = @"D:\TSB\FPC new version\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\Config\Function.txt";
+        public string PathName = Environment.CurrentDirectory;
+        public string PathConfig;
+        public string PathModel;
+        public string PathFunction;
         private static Globals globals = null;
         public static Globals GetInstance()
         {
@@ -23,6 +24,13 @@ namespace MotionToolFPC
                 globals = new Globals();
             }
             return globals;
+        }
+
+        public Globals()
+        {
+            PathConfig = PathName + "\\Config\\config.txt";
+            PathModel = PathName + "\\Config\\model2108.txt";
+            PathFunction = PathName + "\\Config\\Function.txt";
         }
         public int[] D0D499 { get; set; } = new int[500];
         public int[] D500D999 { get; set; } = new int[500];
