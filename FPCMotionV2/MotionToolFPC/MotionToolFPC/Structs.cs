@@ -69,12 +69,18 @@ namespace MotionToolFPC
     {
         public int ID { get; set; }
         public int X1 { get; set; }
+        public int X2 { get; set; }
         public int Y { get; set; }
-        public PositionGenFormCad(int id, int x1, int y)
+        public int X_FPC { get; set; }
+        public int Y_FPC { get; set; }
+        public PositionGenFormCad(int id, int x1, int x2, int y, int x_fpc, int y_fpc)
         {
             ID = id;
             X1 = x1;
+            X2 = x2;
             Y = y;
+            X_FPC = x_fpc;
+            Y_FPC = y_fpc;
         }
     }
     public enum JogMode

@@ -502,20 +502,30 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="1*"/>
                                         <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="0.25*"/>
+                                        <ColumnDefinition Width="0.2*"/>
                                         <ColumnDefinition Width="1*"/>
                                         <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="0.75*"/>
+                                        <ColumnDefinition Width="0.2*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
                                     </Grid.ColumnDefinitions>
                                         <Label Grid.Column="0" Grid.Row="0" Content="Mark X1 (um): " HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                                            HorizontalAlignment="Right" />
                                         <TextBox Grid.Column="1" Grid.Row="0" Name="txtMarkPosX1" Margin="5,5,5,5" Text="{Binding globals.MarkPosX1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                              Background="AliceBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                                        <Label Grid.Column="3" Grid.Row="0" Content="Mark Y (um): " HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                        
+                                        <Label Grid.Column="6" Grid.Row="0" Content="Mark Y (um): " HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                                            HorizontalAlignment="Right"/>
-                                        <TextBox Grid.Column="4" Grid.Row="0" Name="txtMarkPosY" Margin="5,5,5,5" Text="{Binding globals.MarkPosY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        <TextBox Grid.Column="7" Grid.Row="0" Name="txtMarkPosY" Margin="5,5,5,5" Text="{Binding globals.MarkPosY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                              Background="AliceBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                                        <Button Grid.Column="5" Name="btnGenPCBtoMotion" Content="Caculate" Margin="5,5,5,5" Click="btnGenPCBtoMotion_Click"/>
+                                        
+                                        <Label Grid.Column="3" Grid.Row="0" Content="Mark X2 (um): " HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                           HorizontalAlignment="Right"/>
+                                        <TextBox Grid.Column="4" Grid.Row="0" Name="txtMarkPosX2" Margin="5,5,5,5" Text="{Binding globals.MarkPosX2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                             Background="AliceBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                        
+                                        <Button Grid.Column="8" Name="btnGenPCBtoMotion" Content="Caculate" Margin="5,5,5,5" Click="btnGenPCBtoMotion_Click"/>
                                         <Label Grid.Column="0" Grid.Row="1" Content="Distance Mark X1 (um): " HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                                            HorizontalAlignment="Right"/>
                                         <TextBox Grid.Column="1" Grid.Row="1" Name="txtDis_Org_Mark_X1" Margin="5,5,5,5" Text="{Binding globals.Distance_Mark_Org_X1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -531,7 +541,10 @@
                                               ItemsSource="{Binding X1Y_GenfromCad}">
                                         <DataGrid.Columns>
                                             <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="1*" />
-                                            <DataGridTextColumn Header="X (um)" Binding="{Binding X1}"  Width="3*"/>
+                                            <DataGridTextColumn Header="X-FPC (um)" Binding="{Binding X_FPC}"  Width="3*"/>
+                                            <DataGridTextColumn Header="Y-FPC (um)" Binding="{Binding Y_FPC}"  Width="3*"/>
+                                            <DataGridTextColumn Header="X1 (um)" Binding="{Binding X1}"  Width="3*"/>
+                                            <DataGridTextColumn Header="X2 (um)" Binding="{Binding X2}"  Width="3*"/>
                                             <DataGridTextColumn Header="Y (um)" Binding="{Binding Y}" Width="3*" />
                                         </DataGrid.Columns>
                                     </DataGrid>

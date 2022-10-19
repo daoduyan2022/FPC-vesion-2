@@ -263,3 +263,26 @@ D:\TSB\FPC new version\FPC-vesion-2-171022\FPCMotionV2\MotionToolFPC\FPC\obj\Deb
 D:\TSB\FPC new version\FPC-vesion-2-171022\FPCMotionV2\MotionToolFPC\FPC\obj\Debug\FPC.csproj.CopyComplete
 D:\TSB\FPC new version\FPC-vesion-2-171022\FPCMotionV2\MotionToolFPC\FPC\obj\Debug\FPC.exe
 D:\TSB\FPC new version\FPC-vesion-2-171022\FPCMotionV2\MotionToolFPC\FPC\obj\Debug\FPC.pdb
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\FPC.exe.config
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\FPC.exe
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\FPC.pdb
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\MotionToolFPC.dll
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\Protocol.dll
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\EasyModbus.dll
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\SimpleTCP.dll
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\MotionToolFPC.pdb
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\bin\Debug\EasyModbus.xml
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\obj\Debug\FPC.csproj.AssemblyReference.cache
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\obj\Debug\FPC.csproj.SuggestedBindingRedirects.cache
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\obj\Debug\MainWindow.g.cs
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\obj\Debug\App.g.cs
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\obj\Debug\FPC_MarkupCompile.cache
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\obj\Debug\FPC_MarkupCompile.lref
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\obj\Debug\MainWindow.baml
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\obj\Debug\FPC.g.resources
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\obj\Debug\FPC.Properties.Resources.resources
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\obj\Debug\FPC.csproj.GenerateResource.cache
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\obj\Debug\FPC.csproj.CoreCompileInputs.cache
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\obj\Debug\FPC.csproj.CopyComplete
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\obj\Debug\FPC.exe
+D:\TSB_Project\FPCMotionVer3\FPC-vesion-2\FPCMotionV2\MotionToolFPC\FPC\obj\Debug\FPC.pdb

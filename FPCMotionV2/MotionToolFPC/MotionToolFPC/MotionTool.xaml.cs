@@ -2375,15 +2375,15 @@ namespace MotionToolFPC
             globals.ORG_FPC_X2 = globals.MarkPosX2 - globals.Distance_Mark_Org_X;
             globals.ORG_FPC_Y = globals.MarkPosY - globals.Distance_Mark_Org_Y;
 
-            int org_x1 = globals.MarkPosX1 - globals.Distance_Mark_Org_X;
-            int org_y = globals.MarkPosY - globals.Distance_Mark_Org_Y;
-
             X1Y_GenfromCad = new ObservableCollection<PositionGenFormCad>();
             for( int i =0; i<globals.X_Cad.Length; i++)
             {
-                int x1gen = org_x1 + globals.X_Cad[i];
-                int ygen = org_y + globals.Y_Cad[i];
-                X1Y_GenfromCad.Add(new PositionGenFormCad(i + 1, x1gen, ygen));
+                int x1gen = globals.ORG_FPC_X1 + globals.X_Cad[i];
+                int x2gen = globals.ORG_FPC_X2 + globals.X_Cad[i];
+                int ygen = globals.ORG_FPC_Y + globals.Y_Cad[i];
+                int x_cad = globals.X_Cad[i];
+                int y_cad = globals.Y_Cad[i];
+                X1Y_GenfromCad.Add(new PositionGenFormCad(i + 1, x1gen, x2gen ,ygen, x_cad, y_cad));
             }
 
             OnPropertyChanged();
