@@ -16,6 +16,7 @@ namespace MotionToolFPC
         public string PathConfig;
         public string PathModel;
         public string PathFunction;
+        public string PathCadInfor;
         private static Globals globals = null;
         public static Globals GetInstance()
         {
@@ -31,6 +32,10 @@ namespace MotionToolFPC
             PathConfig = PathName + "\\Config\\config.txt";
             PathModel = PathName + "\\Config\\model2108.txt";
             PathFunction = PathName + "\\Config\\Function.txt";
+            PathCadInfor = PathName + "\\Config\\CadInfor.txt";
+            ORG_FPC_X1 = MarkPosX1 - Distance_Mark_Org_X;
+            ORG_FPC_X2 = MarkPosX2 - Distance_Mark_Org_X;
+            ORG_FPC_Y = MarkPosY - Distance_Mark_Org_Y;
         }
         public int[] D0D499 { get; set; } = new int[500];
         public int[] D500D999 { get; set; } = new int[500];
@@ -51,6 +56,10 @@ namespace MotionToolFPC
         {
             get { return ModbusClient.ConvertRegistersToInt(new int[] { this.D0D499[20], this.D0D499[21] }, ModbusClient.RegisterOrder.LowHigh); }
         }
+
+        public int CurrentPosX1_FPC { get; set; }
+        public int CurrentPosX2_FPC { get; set; }
+        public int CurrentPosY_FPC { get; set; }
 
         public bool[] X0X17
         {
@@ -106,6 +115,21 @@ namespace MotionToolFPC
         public int OffsetX1 { get; set; } = 0;
         public int OffsetX2 { get; set; } = 0;
         public int OffsetY { get; set; } = 0;
+        public int MarkPosX1 { get; set; } = 152600;
+        public int MarkPosX2 { get; set; } = 27100;
+        public int MarkPosY { get; set; } = 80800;
+        public int ORG_FPC_X1 { get; set; } = 0;
+        public int ORG_FPC_X2 { get; set; } = 0;
+        public int ORG_FPC_Y { get; set; } = 0;
+        public int Distance_Mark_Org_X { get; set; } = 132990;
+        public int Distance_Mark_Org_Y { get; set; } = 11300;
+        public int[] X_Cad { get; set; } = new int[] { };
+        public int[] Y_Cad { get; set; } = new int[] { };
+        public int[] X1_GenFromCad { get; set; } = new int[] { };
+        public int[] Y_GenFromCad { get; set; } = new int[] { };
+       
+
+
         
         //Use for encode and decode treeview program
         public int enterCoordX1 { get; set; }
@@ -194,6 +218,18 @@ namespace MotionToolFPC
                     Function = Function.Append(value1).ToArray();
                 }
                 catch { }
+            }
+        }
+
+        public void ReadCsvCadData()
+        {
+            string[] rawData = File.ReadAllLines(PathCadInfor);
+            for(int i =0; i<rawData.Length; i++)
+            {
+                int x = Convert.ToInt32(rawData[i].Split(',')[1]);
+                int y = Convert.ToInt32(rawData[i].Split(',')[2]);
+                X_Cad = X_Cad.Append(x).ToArray();
+                Y_Cad = Y_Cad.Append(y).ToArray();
             }
         }
 

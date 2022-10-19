@@ -65,21 +65,17 @@ namespace MotionToolFPC
         }
     }
 
-    public class Command
+    public class PositionGenFormCad
     {
-        public Command()
+        public int ID { get; set; }
+        public int X1 { get; set; }
+        public int Y { get; set; }
+        public PositionGenFormCad(int id, int x1, int y)
         {
-            this.Agr = new ObservableCollection<Infor>();
+            ID = id;
+            X1 = x1;
+            Y = y;
         }
-        public string Name { get; set; }
-
-        public ObservableCollection<Infor> Agr { get; set; }
-    }
-    public class Infor
-    {
-        public string ArgName { get; set; }
-
-        public int Value { get; set; }
     }
     public enum JogMode
     {

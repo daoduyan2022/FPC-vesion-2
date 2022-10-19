@@ -33,6 +33,7 @@ namespace MotionToolFPC
         public ObservableCollection<Parameter> Parameters { get; set; }
         public ObservableCollection<DataPoint> DataPoints { get; set; }
         public ObservableCollection<Progress> SourceFunction { get; set; }
+        public ObservableCollection<PositionGenFormCad> X1Y_GenfromCad { get; set; }
 
         public ScanPLC PLC = null;
 
@@ -271,6 +272,28 @@ namespace MotionToolFPC
             StepName[19069] = "Up Cylinder 1 and 2";
             StepName[19096] = "Down Cylinder 1 and 2";
         }
+
+        public string[] ErrorCode { get; set; } = new string[10000];
+        private void LoadErrorCode()
+        {
+            ErrorCode[0001] = "Alarm Servo R";
+            ErrorCode[0002] = "Alarm Servo X1";
+            ErrorCode[0003] = "Alarm Servo X2";
+            ErrorCode[0004] = "Alarm Servo Y";
+
+            ErrorCode[0100] = "Cylinder 1 up error";
+            ErrorCode[0101] = "Cylinder 1 down error";
+            ErrorCode[0102] = "Cylinder 2 up error";
+            ErrorCode[0103] = "Cylinder 2 down error";
+
+            ErrorCode[0500] = "Time out Vision Ready";
+            ErrorCode[0501] = "Camera 1 not respond";
+            ErrorCode[0502] = "Camera 2 not respond";
+            ErrorCode[0503] = "Camera 3 not respond";
+
+
+        }
+
         public void ShowProgress()
         {
             if (SourceFunction != null) SourceFunction.Clear();
@@ -293,6 +316,7 @@ namespace MotionToolFPC
             InitializeComponent();
             LoadStepName();
             ShowProgress();
+            globals.ReadCsvCadData();
             TimerUpdateUI.Elapsed += OntimedEvent;
             TimerUpdateUI.Enabled = true;
             this.DataContext = this;
@@ -509,7 +533,7 @@ namespace MotionToolFPC
                 ColorStatus_Y = Brushes.Yellow;
             }
 
-            
+
 
             if (globals.D0D499[203] == 1)
             {
@@ -575,8 +599,15 @@ namespace MotionToolFPC
             }
 
             AutoTargetPoint = (globals.D0D499[45] + 2) / 2 - 1;
-            TimerUpdateUI.Enabled = true;
 
+            //fpc position
+            globals.CurrentPosX1_FPC = globals.CurrentPosX1 - globals.ORG_FPC_X1;
+            globals.CurrentPosX2_FPC = globals.CurrentPosX2 - globals.ORG_FPC_X2;
+            globals.CurrentPosY_FPC = globals.CurrentPosY - globals.ORG_FPC_Y;
+            
+
+            TimerUpdateUI.Enabled = true;
+            OnPropertyChanged();
         }
 
         public void InitParameters()
@@ -657,7 +688,7 @@ namespace MotionToolFPC
 
         private void HomeX1X2_Click(object sender, RoutedEventArgs e)
         {
-            if (!globals.AxisStatus[1] && !globals.AxisStatus[2] && globals.D0D499[200] == -1 && globals.ServoReadys[1] && globals.ServoReadys[2])
+            if (!globals.AxisStatus[1] && !globals.AxisStatus[2] && globals.ServoReadys[1] && globals.ServoReadys[2])
             {
                 PLC.dataSends.Add(new dataSend(new int[] { 1 }, 2));
                 PLC.IsRead = Mode.Write;
@@ -671,7 +702,7 @@ namespace MotionToolFPC
 
         private void HomeY_Click(object sender, RoutedEventArgs e)
         {
-            if (!globals.AxisStatus[3] && globals.D0D499[200] == -1 && globals.ServoReadys[3])
+            if (!globals.AxisStatus[3] && globals.ServoReadys[3])
             {
                 PLC.dataSends.Add(new dataSend(new int[] { 1 }, 4));
                 PLC.IsRead = Mode.Write;
@@ -759,7 +790,7 @@ namespace MotionToolFPC
 
         private void btnExcutePercentSpeedY_Click(object sender, RoutedEventArgs e)
         {
-            double x = (double)PercentSpeedR / 100;
+            double x = (double)PercentSpeedY / 100;
             for (int i = 0; i < globals.DataSpeedY.Length; i++)
             {
                 globals.DataSpeedY[i] = (int)(globals.DataSpeedY[i] * x);
@@ -797,7 +828,7 @@ namespace MotionToolFPC
         private void btnGo_Click(object sender, RoutedEventArgs e)
         {
             // Điều kiện chạy : máy ở chế độ manual, các trục ở trạng thái dừng, đang không thực hiện mã lệnh D200.
-            if (globals.D0D499[480] == 0 && globals.D0D499[200] == -1 && ModeRun == false)
+            if (globals.D0D499[480] == 0 && ModeRun == false)
             {
                 int value = TargetPoint * 2 - 2;
                 PLC.dataSends.Add(new dataSend(new int[] { value }, 90));
@@ -1506,16 +1537,18 @@ namespace MotionToolFPC
         private void btnPointToPointMode_Click(object sender, RoutedEventArgs e)
         {
             //D530
-            if (globals.D500D999[30] == 1)
-            {
-                PLC.IsRead = Mode.Write;
-                PLC.dataSends.Add(new dataSend(new int[] { 0, 0 }, 530));
-            }
-            else
-            {
-                PLC.IsRead = Mode.Write;
-                PLC.dataSends.Add(new dataSend(new int[] { 1 }, 530));
-            }
+            //if (globals.D500D999[30] == 1)
+            //{
+            //    PLC.IsRead = Mode.Write;
+            //    PLC.dataSends.Add(new dataSend(new int[] { 0, 0 }, 530));
+            //}
+            //else
+            //{
+            //    PLC.IsRead = Mode.Write;
+            //    PLC.dataSends.Add(new dataSend(new int[] { 1 }, 530));
+            //}
+            PLC.IsRead = Mode.Write;
+            PLC.dataSends.Add(new dataSend(new int[] { 1 }, 531));
         }
 
         private void btnRecycle_Click(object sender, RoutedEventArgs e)
@@ -1548,7 +1581,7 @@ namespace MotionToolFPC
 
         private void btnSelfCheck_Click(object sender, RoutedEventArgs e)
         {
-            if(globals.OprAndLimit[0] && globals.OprAndLimit[1] && globals.OprAndLimit[2] && globals.OprAndLimit[3])
+            if (globals.OprAndLimit[0] && globals.OprAndLimit[1] && globals.OprAndLimit[2] && globals.OprAndLimit[3])
             {
                 var selfCheck = new SelfCheckRecord();
                 selfCheck.ShowDialog();
@@ -1675,7 +1708,7 @@ namespace MotionToolFPC
             {
                 if (e.LeftButton == MouseButtonState.Pressed)
                 {
-                    if(e.LeftButton == MouseButtonState.Pressed)
+                    if (e.LeftButton == MouseButtonState.Pressed)
                     {
                         CopyOrCut = false;
                     }
@@ -1720,7 +1753,7 @@ namespace MotionToolFPC
                                         {
                                             CutItem(draggedItem, _target);
                                         }
-                                        else if(result == MessageBoxResult.No)
+                                        else if (result == MessageBoxResult.No)
                                         {
                                             CoppyItem(draggedItem, _target);
                                         }
@@ -1757,7 +1790,7 @@ namespace MotionToolFPC
         {
             //Check whether the target item is meeting your condition
             bool _isEqual = false;
-            if(_sourceItem != null && _targetItem != null)
+            if (_sourceItem != null && _targetItem != null)
             {
                 //if (!_sourceItem.Header.ToString().Equals(_targetItem.Header.ToString()))
                 if (true)
@@ -1768,7 +1801,7 @@ namespace MotionToolFPC
             return _isEqual;
         }
 
-        
+
 
         private void tvwSource_DragEnter(object sender, DragEventArgs e)
         {
@@ -1792,7 +1825,7 @@ namespace MotionToolFPC
 
         private void tvwSource_MouseMove(object sender, MouseEventArgs e)
         {
-            if(e.LeftButton == MouseButtonState.Pressed)
+            if (e.LeftButton == MouseButtonState.Pressed)
             {
                 draggedItem = (TreeViewItem)tvwSource.SelectedItem;
                 DragFromSource = true;
@@ -1801,7 +1834,7 @@ namespace MotionToolFPC
 
         private void tvwCommand_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Delete)
+            if (e.Key == Key.Delete)
             {
                 tvwCommand.Items.Remove(tvwCommand.SelectedItem);
             }
@@ -1845,7 +1878,7 @@ namespace MotionToolFPC
             cm.IsOpen = true;
         }
 
-        
+
 
         private void CutItem(TreeViewItem sourceItem, TreeViewItem targetItem)
         {
@@ -1885,7 +1918,7 @@ namespace MotionToolFPC
         private void tvwCommand_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             TreeViewItem cmd = (TreeViewItem)tvwCommand.SelectedItem;
-            if(cmd != null)
+            if (cmd != null)
             {
                 string header = (string)cmd.Header;
                 if (header == "Run Point")
@@ -1913,7 +1946,7 @@ namespace MotionToolFPC
                     TakeInforCmdDwell();
                 }
             }
-            
+
         }
 
         // Button Control Treeview program
@@ -1926,7 +1959,7 @@ namespace MotionToolFPC
                 fileName = openFolder.FileName;
             }
             string[] strFc = CompilerFC().Select(i => i.ToString()).ToArray();
-            if(fileName.Length > 0)
+            if (fileName.Length > 0)
             {
                 File.WriteAllLines(fileName, strFc);
             }
@@ -1934,10 +1967,10 @@ namespace MotionToolFPC
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            if( MessageBox.Show("Do you wan to write porgram and data to controller ?", "Confirm download", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+            if (MessageBox.Show("Do you wan to write porgram and data to controller ?", "Confirm download", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
             {
-                
-                
+
+
                 //Assign Temp for main
                 globals.DataPointX1 = globals.DataPointX1_Temp;
                 globals.DataPointX2 = globals.DataPointX2_Temp;
@@ -1990,30 +2023,30 @@ namespace MotionToolFPC
             resultCompile += "Result Complie: \r\n";
             resultCompile += "Function: \r\n";
 
-            for (int i = 0 ; i < globals.Function_Temp.Length; i++)
+            for (int i = 0; i < globals.Function_Temp.Length; i++)
             {
-                resultCompile += ("Step " + (i+1).ToString() +": " + "[" + globals.Function_Temp[i].ToString() + "] <=> " + StepName[globals.Function_Temp[i]] + "\r\n");
+                resultCompile += ("Step " + (i + 1).ToString() + ": " + "[" + globals.Function_Temp[i].ToString() + "] <=> " + StepName[globals.Function_Temp[i]] + "\r\n");
             }
 
             resultCompile += "Coordinate <-> Speed X1: \r\n";
 
-            for(int i =0; i< globals.DataPointX1_Temp.Length; i++)
+            for (int i = 0; i < globals.DataPointX1_Temp.Length; i++)
             {
-                resultCompile += ((i + 1).ToString() + ": " + globals.DataPointX1_Temp[i].ToString() + " <-> "+ globals.DataSpeedX1_Temp[i].ToString() +  "\r\n");
+                resultCompile += ((i + 1).ToString() + ": " + globals.DataPointX1_Temp[i].ToString() + " <-> " + globals.DataSpeedX1_Temp[i].ToString() + "\r\n");
             }
 
             resultCompile += "Coordinate <-> Speed X2: \r\n";
 
-            for(int i =0; i< globals.DataPointX2_Temp.Length; i++)
+            for (int i = 0; i < globals.DataPointX2_Temp.Length; i++)
             {
-                resultCompile += ((i+1).ToString() + ": " + globals.DataPointX2_Temp[i].ToString() + " <-> "+ globals.DataSpeedX2_Temp[i].ToString() +  "\r\n");
+                resultCompile += ((i + 1).ToString() + ": " + globals.DataPointX2_Temp[i].ToString() + " <-> " + globals.DataSpeedX2_Temp[i].ToString() + "\r\n");
             }
 
             resultCompile += "Coordinate <-> Speed Y: \r\n";
 
-            for(int i =0; i< globals.DataPointY_Temp.Length; i++)
+            for (int i = 0; i < globals.DataPointY_Temp.Length; i++)
             {
-                resultCompile += ((i + 1).ToString() + ": " + globals.DataPointY_Temp[i].ToString() + " <-> "+ globals.DataSpeedY_Temp[i].ToString() +  "\r\n");
+                resultCompile += ((i + 1).ToString() + ": " + globals.DataPointY_Temp[i].ToString() + " <-> " + globals.DataSpeedY_Temp[i].ToString() + "\r\n");
             }
 
             resultCompile += "Coordinate <-> Speed R: \r\n";
@@ -2034,21 +2067,21 @@ namespace MotionToolFPC
         private void DecodeModel()
         {
             //Clear all Temp memmory before decode
-            globals.DataPointX1_Temp = new int[] { }; 
-            globals.DataPointX2_Temp = new int[] { }; 
-            globals.DataPointY_Temp = new int[] { }; 
-            globals.DataPointR_Temp = new int[] { }; 
-            globals.DataSpeedX1_Temp = new int[] { }; 
-            globals.DataSpeedX2_Temp = new int[] { }; 
-            globals.DataSpeedY_Temp = new int[] { }; 
-            globals.DataSpeedR_Temp = new int[] { }; 
-            globals.TimeDelay_Temp = new int[] { }; 
+            globals.DataPointX1_Temp = new int[] { };
+            globals.DataPointX2_Temp = new int[] { };
+            globals.DataPointY_Temp = new int[] { };
+            globals.DataPointR_Temp = new int[] { };
+            globals.DataSpeedX1_Temp = new int[] { };
+            globals.DataSpeedX2_Temp = new int[] { };
+            globals.DataSpeedY_Temp = new int[] { };
+            globals.DataSpeedR_Temp = new int[] { };
+            globals.TimeDelay_Temp = new int[] { };
 
             // Decode from tree view to Data table
             foreach (TreeViewItem item in tvwCommand.Items)
             {
                 item.Background = Brushes.White;
-                if(item.Header.ToString() == "Run Point")
+                if (item.Header.ToString() == "Run Point")
                 {
                     GetInforCmdXY(item);
 
@@ -2060,13 +2093,13 @@ namespace MotionToolFPC
                     globals.DataSpeedX2_Temp = globals.DataSpeedX2_Temp.Append(globals.speedX2).ToArray();
                     globals.DataSpeedY_Temp = globals.DataSpeedY_Temp.Append(globals.speedY).ToArray();
                 }
-                if(item.Header.ToString() == "Rotate")
+                if (item.Header.ToString() == "Rotate")
                 {
                     GetInforCmdR(item);
                     globals.DataPointR_Temp = globals.DataPointR_Temp.Append(globals.enterCoordR).ToArray();
                     globals.DataSpeedR_Temp = globals.DataSpeedR_Temp.Append(globals.speedR).ToArray();
                 }
-                if(item.Header.ToString() == "Dwell")
+                if (item.Header.ToString() == "Dwell")
                 {
                     GetInforDwell(item);
                     globals.TimeDelay_Temp = globals.TimeDelay_Temp.Append(globals.TimeDwell).ToArray();
@@ -2224,7 +2257,7 @@ namespace MotionToolFPC
             tvwCommand.Items.Insert(index, Dwell);
         }
 
-     //======================================================================Decode Treeview============================================================   
+        //======================================================================Decode Treeview============================================================   
 
 
         //====================================================================Encode treeview===========================================================
@@ -2234,18 +2267,18 @@ namespace MotionToolFPC
             int indexRunPoint = 0;
             int indexRotate = 0;
             int indexDwell = 0;
-            
+
             tvwCommand.Items.Clear();
             foreach (int code in globals.Function)
             {
                 var myKey = CommandString.FirstOrDefault(x => x.Value == code).Key;
-                if(code == 901) // Run Point
+                if (code == 901) // Run Point
                 {
                     tvwCommand.Items.Add(EncodeRunPoint(indexRunPoint));
                     indexRunPoint++;
                 }
-                
-                else if(code == 19401) // Rotate
+
+                else if (code == 19401) // Rotate
                 {
                     tvwCommand.Items.Add(EncodeRotate(indexRotate));
                     indexRotate++;
@@ -2267,7 +2300,7 @@ namespace MotionToolFPC
 
             }
 
-            
+
         }
         private TreeViewItem EncodeRunPoint(int indexOfRunPoint)
         {
@@ -2327,12 +2360,33 @@ namespace MotionToolFPC
 
             Dwell.Items.Add(Dwell_Time);
             Dwell.Background = Brushes.White;
-
             return Dwell;
         }
 
         private void tvwCommand_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
+        }
+
+        private void btnGenPCBtoMotion_Click(object sender, RoutedEventArgs e)
+        {
+            OnPropertyChanged();
+
+            globals.ORG_FPC_X1 = globals.MarkPosX1 - globals.Distance_Mark_Org_X;
+            globals.ORG_FPC_X2 = globals.MarkPosX2 - globals.Distance_Mark_Org_X;
+            globals.ORG_FPC_Y = globals.MarkPosY - globals.Distance_Mark_Org_Y;
+
+            int org_x1 = globals.MarkPosX1 - globals.Distance_Mark_Org_X;
+            int org_y = globals.MarkPosY - globals.Distance_Mark_Org_Y;
+
+            X1Y_GenfromCad = new ObservableCollection<PositionGenFormCad>();
+            for( int i =0; i<globals.X_Cad.Length; i++)
+            {
+                int x1gen = org_x1 + globals.X_Cad[i];
+                int ygen = org_y + globals.Y_Cad[i];
+                X1Y_GenfromCad.Add(new PositionGenFormCad(i + 1, x1gen, ygen));
+            }
+
+            OnPropertyChanged();
         }
 
         // Source Command
@@ -2359,7 +2413,7 @@ namespace MotionToolFPC
             {"Wait Camera 1 Done",511},
             {"Wait Camera 2 Done",513},
             {"Wait Camera 3 Done",515},
-            
+
             {"Wait Camera 1 Ready",512},
             {"Wait Camera 2 Ready",514},
             {"Wait Camera 3 Ready",516},
